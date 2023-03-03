@@ -3,9 +3,8 @@ import Image from "next/legacy/image";
 import { EyeIcon, EyeSlashIcon } from "@heroicons/react/24/outline";
 import { useState } from "react";
 
-// bg color rgb(1, 188, 141);
 
-const KucoinLogin = () => {
+function SignIn () {
 	const [number, isNumber] = useState(false);
     const [show, setShow] = useState(false)
 	return (
@@ -19,8 +18,8 @@ const KucoinLogin = () => {
                 <Image src=" https://assets.staticimg.com/public-web/2.6.10/static/logo-en.9ef1fe14.svg" width={200} height={100}  />               
                 </div>              
                 
-				<div className=" h-full w-full relative hidden md:block bg-center " style={{ backgroundImage: "url('https://assets.staticimg.com/cms/media/1OwlAXURk39k0PwC7wB1IZFDrppPaFfuPY22pHrFx.png')" }}>
-                    {/* <div className="text-white ml-24 mb-12">
+				<div className=" h-full w-full relative hidden md:block " style={{ backgroundColor: "rgb(1, 188, 141)" }}>
+                    <div className="text-white ml-24 mb-12">
                     <h1 className="text-[2rem] font-bold">Sign up now </h1>
                     <h2 className="text-[1.2rem]">To claim a mystery box</h2>
                     <h1 className="text-[2rem] font-bold">Worth</h1>
@@ -29,21 +28,21 @@ const KucoinLogin = () => {
 
                     <div className="relative w-full h-[50vh]">
                     <Image src="/images/z.png" layout="fill" className="" />
-                    </div> */}
+                    </div>
 
                 {/* <Image src='https://assets.staticimg.com/cms/media/2OuQLG4JvS9XoundliPb57B446zJEXAwQ7AeTgeAv.png' layout='fill' alt='hooll'  /> */}
                 </div>
 			</div>
 			<div className='p-1 md:p-4 gap-y-4 flex space-y-4 flex-col-reverse md:flex-col md:space-y-24  w-full md:w-[60%] bg-white'>
-				<p className=' text-left md:text-right text-[.8rem] text-gray-800 w-full md:w-[60%] mx-auto hidden md:block'>
-					Dont have an account?{" "}
+				<p className=' text-left md:text-right text-[.8rem] text-gray-800 w-full md:w-[60%] mx-auto '>
+					Already have an account?{" "}
 					<span style={{ color: "rgb(1, 188, 141)" }} className=''>
-						Sign Up Now
+						Log in
 					</span>{" "}
 				</p>
 
 				<div className='text-gray-400 w-full md:w-[60%] mx-auto'>
-					<h1 className='text-[2rem] mb-8 text-black font-bold'>Log In</h1>
+					<h1 className='text-[2rem] mb-8 text-black font-bold'>Sign Up</h1>
 					<div className='flex gap-4 mb-8'>
 						<h1
                         className="cursor-pointer "
@@ -65,7 +64,7 @@ const KucoinLogin = () => {
 							Phone Number
 						</h1>
 					</div>
-					<form className='flex flex-col space-y-6'>
+					<form className='flex flex-col space-y-12'>
 						{!number && (<label>
 							<p className='text-xs mb-2'>Email</p>
 							<input
@@ -97,18 +96,23 @@ const KucoinLogin = () => {
 								{show && <EyeSlashIcon onClick={()=> { setShow(false)}} className='w-6 h-6 cursor-pointer text-black' />}
 							</div>
 						</label>
-					
 
-						<div>
-                        <button
+						<div className='flex gap-2'>
+							<input type='checkbox' />
+							<p>
+								I have read and agree to the{" "}
+								<span>
+									<a href='#'>Terms of Use</a>{" "}
+								</span>{" "}
+							</p>
+						</div>
+
+						<button
 							className='w-full py-2 rounded-md text-white font-medium text-[1.5rem] '
 							style={{ backgroundColor: "rgb(1, 188, 141)" }}
 						>
-							Login
+							Sign Up
 						</button>
-
-                        <a href="#" className="align-right text-decoration-none text-xs w-full">Forgot Password?</a>
-                        </div>
 					</form>
 				</div>
 			</div>
@@ -116,4 +120,4 @@ const KucoinLogin = () => {
 	);
 };
 
-export default KucoinLogin;
+export default SignIn;
