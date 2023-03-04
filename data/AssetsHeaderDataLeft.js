@@ -12,8 +12,8 @@ export const AssetsHeaderDataLeft = [
         name:"History",
         href:"/History"
     },
-    {
-        name:"My Bonuses",
-        href:"/MyBonuses"
-    }
+    // {
+    //     name:"My Bonuses",
+    //     href:"/MyBonuses"
+    // }
 ]

@@ -11,22 +11,22 @@ export const AssetsHeaderData = [
         name:"Trading",
         href:"/Trading"
     },
-    {
-        name:"Futures",
-        href:"/Futures"
-    },
-    {
-        name:"Margin",
-        href:"/Margin"
-    },
-    {
-        name:"Trading Bot",
-        href:"/TradingBot"
-    },
-    {
-        name:"Finance",
-        href:"/Finance"
-    },
+    // {
+    //     name:"Futures",
+    //     href:"/Futures"
+    // },
+    // {
+    //     name:"Margin",
+    //     href:"/Margin"
+    // },
+    // {
+    //     name:"Trading Bot",
+    //     href:"/TradingBot"
+    // },
+    // {
+    //     name:"Finance",
+    //     href:"/Finance"
+    // },
    
 
 ]

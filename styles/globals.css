@@ -25,3 +25,20 @@
 .green {
     color:rgb(1, 188, 141);
 }
+
+.modBg{
+    background-color: rgba(73, 73, 73, 0.668);
+    position: fixed;
+    z-index: 4;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+}
+
+.modal{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
