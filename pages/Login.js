@@ -46,8 +46,11 @@ const Login = () => {
 				)
 				.then((res) => {
 					console.log("Success");
+                    console.log(res)
+                    localStorage.setItem("userToken", res.data.token)
+                    localStorage.setItem("userData", JSON.stringify(res.data.user))
 					setBtnLoad(false);
-                    router.push("/assets")
+                    router.push("/assets" )
 				});
 		} catch (error) {
 			setBtnLoad(false);
