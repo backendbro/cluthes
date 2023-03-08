@@ -96,7 +96,7 @@ function SignIn() {
 					Already have an account?{" "}
 					<span
 						className='green cursor-pointer'
-						onClick={() => router.push("/Login")}
+						onClick={() => router.push("/")}
 					>
 						Log in
 					</span>{" "}
