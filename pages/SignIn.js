@@ -44,7 +44,7 @@ function SignIn() {
 				.then((res) => {
 					console.log("Success");
 					setBtnLoad(false);
-                    router.push("/Login")
+                    router.push("/")
 				});
 		} catch (error) {
 			setBtnLoad(false);
