@@ -2,6 +2,7 @@ import Image from "next/image";
 import React from "react";
 import axios from "axios";
 import { useState, useEffect } from "react";
+import { useRouter } from "next/router";
 
 import {
 	EyeIcon,
@@ -18,6 +19,7 @@ import {
 export default function Header() {
 	const [userDetails, setUserDetails] = useState();
     const [userMail, setUserMail] = useState("")
+    const router = useRouter()
     let userToken, userData;
 
 	useEffect(() => {
@@ -45,6 +47,10 @@ export default function Header() {
 			console.log(err);
 		}
 	};
+
+    const logout = () => {
+        router.push("./Login")
+    }
 	
     console.log(userMail)
 
@@ -89,15 +95,17 @@ export default function Header() {
 				</ul>
 			</div>
 
-			<div className='w-[40%] md:w-[20%]  flex gap-4 justify-end lg:justify-evenly items-center'>
-				<BellIcon className='w-8 h-8 rounded-lg bg-gray-300 px-2 py-2' />
+			<div className='w-[50%] md:w-[20%]  flex gap-4 justify-end lg:justify-evenly items-center'>
+				<BellIcon className='w-8 h-8 rounded-lg bg-gray-300 px-2 py-2 hidden lg:block' />
 				<DocumentTextIcon className='w-8 h-8 rounded-lg bg-gray-300 px-2 py-2 hidden  lg:flex' />
 				<CreditCardIcon className='w-8 h-8 rounded-lg bg-gray-300 px-2 py-2 hidden  lg:flex' />
 				<div className='h-8 w-8 flex items-center justify-center rounded-full border border-black text-sm uppercase text-black'>
 					{userMail}
 				</div>
-				<div className='h-6 w-10 text-sm items-center justify-center rounded-md border hidden  lg:flex   border-black text-center '>
-					USD
+				<div className='h-6 px-2 text-sm items-center justify-center rounded-md border cursor-pointer  border-black text-center ' onClick={()=> {
+                    logout()
+                }}>
+					Logout
 				</div>
 				<ListBulletIcon className='h-6 w-6 flex lg:hidden' />
 			</div>
