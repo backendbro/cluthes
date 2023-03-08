@@ -44,7 +44,7 @@ function SignIn() {
 				.then((res) => {
 					console.log("Success");
 					setBtnLoad(false);
-                    router.push("/")
+                    router.push("/Login")
 				});
 		} catch (error) {
 			setBtnLoad(false);
@@ -96,7 +96,7 @@ function SignIn() {
 					Already have an account?{" "}
 					<span
 						className='green cursor-pointer'
-						onClick={() => router.push("/")}
+						onClick={() => router.push("/Login")}
 					>
 						Log in
 					</span>{" "}
