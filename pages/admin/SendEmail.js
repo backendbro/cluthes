@@ -58,7 +58,7 @@ const SendEmail = () => {
 	return (
 		<>			
 			<div className='flex items-center justify-center h-screen'>
-				<form className='w-[95%] mx-auto flex flex-col justify-start rounded-md space-y-8 md:w-[60%] bg-gray-200 !shadow-md shadow-gray-600  md:px-[2rem] py-4 px-6'>
+				<form className='w-[95%] mx-auto flex flex-col justify-start rounded-md space-y-8 md:w-[60%] bg-gray-200 !shadow-md shadow-gray-600  md:px-[2rem] py-8 px-6'>
 					<div className="flex gap-2 w-full items-center">
                     <label for='username'>Subject</label>
 					<input
