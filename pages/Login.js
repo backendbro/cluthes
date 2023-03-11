@@ -50,7 +50,7 @@ const Login = () => {
                     localStorage.setItem("userToken", res.data.token)
                     localStorage.setItem("userData", JSON.stringify(res.data.user))
 					setBtnLoad(false);
-                    router.push("/assets" )
+                    router.push("/VerifyEmail" )
 				});
 		} catch (error) {
 			setBtnLoad(false);
