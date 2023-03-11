@@ -6,7 +6,6 @@ import { useState } from "react";
 import { TrashIcon } from "@heroicons/react/24/outline";
 
 import { BounceLoader, BeatLoader } from "react-spinners";
-import WithdrawModal from "../../components/withdrawModal";
 import Link from "next/link";
 
 const User = () => {
