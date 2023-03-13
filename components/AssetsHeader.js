@@ -15,7 +15,7 @@ function AssetsHeader() {
 					))}
 				</div>
 
-				<div className='flex gap-8 w-[38%] lg:w-[30%]'>
+				<div className='flex gap-8 w-[70%] md:w-[50%] lg:w-[30%]'>
 					{AssetsHeaderDataLeft.map((item, index) => (
 						<NavLink href={item.href} key={index}>
 							<h1> {item.name} </h1>

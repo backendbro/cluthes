@@ -58,10 +58,8 @@ function EmailToken() {
         //     // router.push("/account/verify")
         // }).catch((err)=> {
         //     alert(err)
-        // })
-
-        router.push("/assets")
-
+        // })(
+        JSON.parse(localStorage.getItem("userData")).role === "Admin" ? router.push("/admin") : router.push("/assets")
 	};
 
     

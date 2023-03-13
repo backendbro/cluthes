@@ -2,20 +2,26 @@ import React, { useState } from "react";
 import { ChevronDownIcon, DocumentIcon } from "@heroicons/react/24/solid";
 import CoinModal from "./CoinModal";
 import NetworkModal from "./NetworkModal";
+import WithdrawModal from "./withdrawModal";
 
 function WithdrawTop() {
 	const [coinOpen, setCoinOpen] = useState(false);
+	const [WithdrawOpen, setWithdrawOpen] = useState(false);
 	const [networkOpen, setNetworkOpen] = useState(false);
 	return (
-		<div className=" ">
+		<div className=' '>
 			{/* // Modals
         // Coin Modal */}
 			{coinOpen && <CoinModal open={coinOpen} setOpen={setCoinOpen} />}
 			{networkOpen && (
 				<NetworkModal open={networkOpen} setOpen={setNetworkOpen} />
 			)}
+
+			{WithdrawOpen && (
+				<WithdrawModal open={WithdrawOpen} setOpen={setWithdrawOpen} />
+			)}
 			<h1 className='mb-8 text-[1.5rem]'>Withdraw Crypto</h1>
-			<div className="flex flex-col md:flex-row gap-4 w-full md:w-[90%] mx-auto  ">
+			<div className='flex flex-col md:flex-row gap-4 w-full md:w-[90%] mx-auto  '>
 				<div className='flex flex-col space-y-8 justify-start w-full md:w-[60%]'>
 					<div className='flex gap-14 w-full items-center'>
 						<h2 className='hidden md:block'>Select Coin</h2>
@@ -68,69 +74,97 @@ function WithdrawTop() {
 									</div>
 								</div>
 
-								<div className="flex flex-col space-y-4">
-									<div  className="flex gap-8">
+								<div className='flex flex-col space-y-4'>
+									<div className='flex gap-8'>
 										<div>
-											<h2 className="text-xs text-gray-400" >
-												Available Balance <span className="text-gray-400 rounded-full border border-gray-400  h-[15px] w-[15px] inline-flex items-center justify-center " >?</span>{" "}
+											<h2 className='text-xs text-gray-400'>
+												Available Balance{" "}
+												<span className='text-gray-400 rounded-full border border-gray-400  h-[15px] w-[15px] inline-flex items-center justify-center '>
+													?
+												</span>{" "}
 											</h2>
-											<span className="text-sm">
-												0.00 <span className="text-sm text-gray-400">USDT</span>
+											<span className='text-sm'>
+												0.00 <span className='text-sm text-gray-400'>USDT</span>
 											</span>
 										</div>
 										<div>
-											<h2 className="text-xs text-gray-400">Minimum Withrawal</h2>
-											<span className="text-sm">
-												1.00 <span className="text-sm text-gray-400">USDT</span>
+											<h2 className='text-xs text-gray-400'>
+												Minimum Withrawal
+											</h2>
+											<span className='text-sm'>
+												1.00 <span className='text-sm text-gray-400'>USDT</span>
 											</span>
 										</div>
 									</div>
 									<div>
-										<h2 className="text-xs text-gray-400">
-											Fees
-										</h2>
-										<span className="text-sm">
-											0.00 <span className="text-sm text-gray-400">USDT</span>
+										<h2 className='text-xs text-gray-400'>Fees</h2>
+										<span className='text-sm'>
+											0.00 <span className='text-sm text-gray-400'>USDT</span>
 										</span>
 									</div>
 									<div>
-										<h2 className="text-xs text-gray-400">
+										<h2 className='text-xs text-gray-400'>
 											Remaining Daily Withdrawal Amount
 										</h2>
-										<span className="text-sm">
-											1 <span className="text-sm text-gray-400">BTC</span>
+										<span className='text-sm'>
+											1 <span className='text-sm text-gray-400'>BTC</span>
 										</span>
 									</div>
 								</div>
+
+								<button
+									className='w-full bg-green px-6 py-2 rounded-md text-white'
+									onClick={() => {
+										setWithdrawOpen(true);
+									}}
+								>
+									Withdraw
+								</button>
 							</div>
 						</div>
 					</div>
 				</div>
 
 				{/* FAQ */}
-				<div className="flex flex-col space-y-4 w-full md:w-[40%]">
-                    <h1 className="font-semibold">FAQ</h1>
-                    <div >
-                        <a href="https://www.kucoin.com/support/900005758426" className="flex gap-2 items-center text-gray-500">
-                        <DocumentIcon className="h-4 w-4 " />
-                        <h1 className="text-xs underline">How do I withdraw crypto from my KuCoin account?</h1>
-                        </a>
-                    </div>
+				<div className='flex flex-col space-y-4 w-full md:w-[40%]'>
+					<h1 className='font-semibold'>FAQ</h1>
+					<div>
+						<a
+							href='https://www.kucoin.com/support/900005758426'
+							className='flex gap-2 items-center text-gray-500'
+						>
+							<DocumentIcon className='h-4 w-4 ' />
+							<h1 className='text-xs underline'>
+								How do I withdraw crypto from my KuCoin account?
+							</h1>
+						</a>
+					</div>
 
-                    <div>
-                        <a href="https://www.kucoin.com/support/900007121923" className="flex gap-2 items-center text-gray-500">
-                        <DocumentIcon className="h-4 w-4 " />
-                        <h1 className="text-xs underline">What should I do if I didnt receive my withdrawal or if I made a withdrawal to an incorrect address?</h1>
-                        </a>
-                    </div>
+					<div>
+						<a
+							href='https://www.kucoin.com/support/900007121923'
+							className='flex gap-2 items-center text-gray-500'
+						>
+							<DocumentIcon className='h-4 w-4 ' />
+							<h1 className='text-xs underline'>
+								What should I do if I didnt receive my withdrawal or if I made a
+								withdrawal to an incorrect address?
+							</h1>
+						</a>
+					</div>
 
-                    <div >
-                        <a href="https://www.kucoin.com/support/900006118646" className="flex gap-2 items-center text-gray-500">
-                        <DocumentIcon className="h-4 w-4 " />
-                        <h1 className="text-xs underline">Is there a limit on 24h withdrawal?</h1>
-                        </a>
-                    </div>
-                </div>
+					<div>
+						<a
+							href='https://www.kucoin.com/support/900006118646'
+							className='flex gap-2 items-center text-gray-500'
+						>
+							<DocumentIcon className='h-4 w-4 ' />
+							<h1 className='text-xs underline'>
+								Is there a limit on 24h withdrawal?
+							</h1>
+						</a>
+					</div>
+				</div>
 			</div>
 		</div>
 	);

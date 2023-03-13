@@ -1,5 +1,6 @@
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { XMarkIcon, MagnifyingGlassIcon } from "@heroicons/react/24/solid";
+import axios from "axios";
 
 function CoinModal({ open, setOpen }) {
 	const inputRef = useRef(null);
@@ -7,6 +8,27 @@ function CoinModal({ open, setOpen }) {
 
 	const onFocus = () => setIsFocused(true);
 	const onBlur = () => setIsFocused(false);
+
+
+    useEffect(()=> {
+        getCoin()
+    }, [])
+
+    const getCoin = async () => {
+        try {
+            await axios.get("https://api.coingecko.com/api/v3/coins/list?include_platform=true")
+            .then((res)=> {
+                console.log(res)
+            })
+                
+            } catch (error) {
+                console.log(error)
+            }
+    }
+
+
+
+
 	return (
 		<div className='modBg '>
 			<div className='relative bg-transparent h-screen w-screen'>
