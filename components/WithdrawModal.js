@@ -11,8 +11,6 @@ function WithdrawModal({ open, setOpen }) {
 	const [Confirm, setConfirm] = useState(true);
     const router = useRouter()
 
-	const onFocus = () => setIsFocused(true);
-	const onBlur = () => setIsFocused(false);
 
 	useEffect(() => {
 		// getCoin();
