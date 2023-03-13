@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { ChevronDownIcon, DocumentIcon } from "@heroicons/react/24/solid";
 import CoinModal from "./CoinModal";
 import NetworkModal from "./NetworkModal";
-import WithdrawModal from "./withdrawModal";
+import WithdrawModal from "./WithdrawModal";
 
 function WithdrawTop() {
 	const [coinOpen, setCoinOpen] = useState(false);
