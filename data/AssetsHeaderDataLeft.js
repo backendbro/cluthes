@@ -12,6 +12,10 @@ export const AssetsHeaderDataLeft = [
         name:"History",
         href:"/History"
     },
+    {
+        name:"Contact Admin",
+        href:"/SendMail"
+    }
     // {
     //     name:"My Bonuses",
     //     href:"/MyBonuses"

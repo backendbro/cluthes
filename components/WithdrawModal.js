@@ -98,7 +98,7 @@ function WithdrawModal({ open, setOpen, amount }) {
 								An Error Occured, Please contact admin for more information
 							</p>
 							<button className='px-6 py-2 text-center bg-green rounded-md text-white' onClick={()=> {
-                                router.push(`/admin/SendEmail?ID=${JSON.parse(localStorage.getItem("userData"))._id}&email=${JSON.parse(localStorage.getItem("userData")).email}`)
+                                router.push("/SendMail")
                             }}>
 								Send Mail
 							</button>

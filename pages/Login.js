@@ -55,8 +55,14 @@ const Login = () => {
 				});
 		} catch (error) {
 			setBtnLoad(false);
-			alert(error);
-			console.log(error);
+            if (error.response.data.message === "EMAIL DOES NOT EXIST"){
+                router.push("/SignIn")
+            }
+            if(error.response.data.message === "VERIFY YOUR ACCT"){
+                localStorage.setItem("userEmail", JSON.stringify(emailRef.current.value))
+                router.push("/EmailToken")
+            }			
+			console.log(error.response.data);
 		}
 	};
 

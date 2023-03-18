@@ -3,17 +3,22 @@ import { ChevronDownIcon, DocumentIcon } from "@heroicons/react/24/solid";
 import CoinModal from "./CoinModal";
 import NetworkModal from "./NetworkModal";
 import WithdrawModal from "./WithdrawModal";
+import Image from "next/image"
 
 function WithdrawTop() {
 	const [coinOpen, setCoinOpen] = useState(false);
 	const [WithdrawOpen, setWithdrawOpen] = useState(false);
+    const [coin, setCoin] = useState()
 	const [networkOpen, setNetworkOpen] = useState(false);
     const amountRef= useRef()
+
+    console.log(coin)
+
 	return (
 		<div className=' '>
 			{/* // Modals
         // Coin Modal */}
-			{coinOpen && <CoinModal open={coinOpen} setOpen={setCoinOpen} />}
+			{coinOpen && <CoinModal open={coinOpen} setOpen={setCoinOpen} setCoin={setCoin} />}
 			{networkOpen && (
 				<NetworkModal open={networkOpen} setOpen={setNetworkOpen} />
 			)}
@@ -34,10 +39,23 @@ function WithdrawTop() {
 									setCoinOpen(true);
 								}}
 							>
-								<div>
-									<h1>
-										BTC <span className='text-gray-500'>Bitcoin</span>
+								<div className="flex gap-2">
+                              
+									{coin ?                                    
+                                    <div className="flex gap-2">
+                                          <Image
+                                      className=' rounded-full'
+                                      src={coin.optionsUrl}
+                                      alt="image"
+                                      height={25}
+                                      width={25}
+                                  />
+                                    <h1>
+										{coin.name} <span className='text-gray-500'>{coin.displayName}</span>
 									</h1>
+                                    </div> : <h1>
+										BTC <span className='text-gray-500'>Bitcoin</span>
+									</h1>}
 								</div>
 								<ChevronDownIcon className='w-4 h-4' />
 							</div>
@@ -48,8 +66,7 @@ function WithdrawTop() {
 						<h2 className='hidden md:block'>Withdraw To</h2>
 						<div className='w-full md:w-[60%] '>
 							<div className='flex gap-4 mb-8 border-2 border-b-gray-400 border-transparent w-full md:w-[14rem]'>
-								<h1>Wallet Address</h1>
-								<h1>KuCoin User</h1>
+								<h1>Wallet Address</h1>								
 							</div>
 
 							<div className='flex flex-col space-y-6 '>
@@ -62,7 +79,7 @@ function WithdrawTop() {
 									/>
 								</div>
 
-								<div>
+								{/* <div>
 									<p className='text-sm text-gray-400'>Network</p>
 									<div
 										className='bg-gray-300 rounded-md px-2 py-4 flex-grow flex cursor-pointer justify-between'
@@ -73,7 +90,7 @@ function WithdrawTop() {
 										<h1 className='text-gray-500'>Select a Network</h1>
 										<ChevronDownIcon className='w-4 h-4' />
 									</div>
-								</div>
+								</div> */}
 
                                 <div>
 									<p className='text-sm text-gray-400'>Amount</p>

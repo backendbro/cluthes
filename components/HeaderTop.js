@@ -23,7 +23,7 @@ function HeaderTop() {
 	// const [cookies, setCookie] = useCookies(['user']);
 	// const [singleUsercookies, setSingleUserCookie] = useCookies(["singleUser"]);
 	const router = useRouter();
-	const { ID } = router.query;
+    const  ID  = JSON.parse(localStorage.getItem("userData"))._id
 	const months = [
 		"JAN",
 		"FEB",
@@ -38,6 +38,119 @@ function HeaderTop() {
 		"NOV",
 		"DEC",
 	];
+
+
+
+    useEffect(() => {
+		// getUser();
+		getDeposit();
+		getWithdrawal();
+	}, []);
+
+	const getUser = async () => {
+		console.log("getting" + ID);
+		setLoad(true);
+		console.log(localStorage.getItem("userToken"));
+		await axios
+			.get(`https://cluth-space.onrender.com/api/user/${ID}`, {
+				headers: {
+					Authorization: `Bearer ${localStorage.getItem("userToken")}`,
+				},
+			})
+			.then((res) => {
+				setLoad(false);
+				const rep = res.data;
+				setUser(rep);
+				console.log(rep);
+			})
+			.catch((err) => {
+				console.log(err);
+			});
+	};
+
+	const getDeposit = async () => {
+		console.log("DEpositt");
+		await axios
+			.post(
+				`https://cluth-space.onrender.com/api/deposit/user-deposit`,
+				{
+					userId: ID,
+				},
+				{
+					headers: {
+						Authorization: `Bearer ${localStorage.getItem("userToken")}`,
+					},
+				},
+			)
+			.then((res) => {
+				setLoad(false);
+				const rep = res.data;
+				console.log(rep);
+				setDepositData(rep);
+				console.log("DEpositt Success");
+			})
+			.catch((err) => {
+				console.log("DEpositt fail");
+
+				console.log(err);
+			});
+	};
+
+	const deleteDeposit = async (id) => {
+		await axios
+			.delete(
+				"https://cluth-space.onrender.com/api/deposit/delete-deposit",
+				{
+					depositId: "640bb0420edec0524c2ea43b",
+				},
+				{
+					headers: {
+						Authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0MTUxNzUyMmIwZjJlZmRjMTcwZGNjYiIsImlhdCI6MTY3OTEwMzg1OCwiZXhwIjoxNjgwODMxODU4fQ.5hRMuI5nPLyiykNWk3JtxJKJv55Kdu-4H6crS5pMX4w`,
+					},
+				},
+			)
+			.then((res) => {
+				setLoad(false);
+				const rep = res.data;
+				// setDepositData(rep);
+				console.log(rep);
+				// console.log(depositData);
+				// console.log(depositData[0].createdAt);
+			})
+			.catch((err) => {
+				console.log(err);
+			});
+	};
+
+	const getWithdrawal = async () => {
+		console.log("Withdraw");
+		await axios
+			.post(
+				` https://cluth-space.onrender.com/api/withdrawal/single-user`,
+				{
+					userId: ID,
+				},
+				{
+					headers: {
+						Authorization: `Bearer ${localStorage.getItem("userToken")}`,
+					},
+				},
+			)
+			.then((res) => {
+				setLoad(false);
+				const rep = res.data;
+				console.log(rep);
+				setWithdrawlData(rep.withDrawalRequests);
+				console.log("Withdraw Success");
+			})
+			.catch((err) => {
+				console.log("Withdraw fail");
+
+				console.log(err);
+			});
+	};
+
+
 
 	return (
 		<div className='w-full flex flex-col space-y-4'>
@@ -71,7 +184,7 @@ function HeaderTop() {
 							<th className='text-sm font-medium p-2'>Status</th>
 						</tr>
 					</thead>
-					{/* <tbody>
+					<tbody>
 						{depositData?.map((item, i) => (
 							<tr className='text-center mt-4 p-4' key={i}>
 								<td className='py-1 px-6'>
@@ -84,68 +197,10 @@ function HeaderTop() {
 										{item.status}
 									</span>
 								</td>
-								<td className='hidden md:table-cell'>
-									<div
-										className='relative group flex flex-col items-center cursor-pointer'
-										onClick={() => {
-											deleteDeposit(item._id);
-										}}
-									>
-										<TrashIcon className='w-6 h-6' />
-										<div className='bg-gray-200  text-gray-400 absolute top-6 -left-6 rounded-md px-6 py-2 hidden text-center group-hover:block'>
-											Delete
-										</div>
-									</div>
-								</td>
-
-								<td className='hidden md:table-cell'>
-									<div
-										className='relative group flex flex-col items-center cursor-pointer'
-										onClick={() => {
-											router.push(`/admin/makeDeposit?ID=${item._id}`);
-										}}
-									>
-										<PlusCircleIcon className='w-6 h-6' />
-										<div className='bg-gray-200  text-gray-400 absolute top-6 -left-12 rounded-md px-6 py-2 hidden text-center group-hover:block md:w-[10rem]'>
-											Make Deposit
-										</div>
-									</div>
-								</td>
-
-								<td className='block md:hidden'>
-									<div
-										className='relative group flex flex-col items-center cursor-pointer'
-										onClick={() => {
-											setOpen(!open);
-										}}
-									>
-										<EllipsisHorizontalIcon className='w-6 h-6' />
-										{open && (
-											<div className='bg-gray-200  text-gray-400 absolute top-6 right-0 rounded-md px-6 py-2 hidden text-center group-hover:block w-[10rem]'>
-												<p
-													className='mb-4 hover:underline'
-													onClick={() => {
-														deleteDeposit(item._id);
-													}}
-												>
-													Delete
-												</p>
-												<p
-													className='hover:underline'
-													onClick={() => {
-														router.push(`/admin/makeDeposit?ID=${item._id}`);
-													}}
-												>
-													{" "}
-													Make Deposit
-												</p>
-											</div>
-										)}
-									</div>
-								</td>
+																				
 							</tr>
 						))}
-					</tbody> */}
+					</tbody>
 				</table>
 			)}
 
@@ -156,35 +211,35 @@ function HeaderTop() {
 					<table className='p-4 rounded-lg w-full bg-gray-100'>
 						<thead className=''>
 							<tr className='text-center'>
-								<th className='text-sm font-medium p-2'>Date</th>
+								{/* <th className='text-sm font-medium p-2'>Date</th> */}
 								<th className='text-sm font-medium p-2'>Amount</th>
 								<th className='text-sm font-medium p-2'>Status </th>
 							</tr>
 						</thead>
-						{/* <tbody>
+						<tbody>
 							{withdrawlData?.map((item, index = item._id) => (
 								<>
 									<tr
 										className='text-center mt-4 p-4 cursor-pointer '
 										key={index}
 									>
-										 <td className='py-1 px-6'>
+										 {/* <td className='py-1 px-6'>
 										{months[new Date(item.createdAt).getMonth() - 1]}{" "}
 										<span>{new Date(item.createdAt).getDate()}</span>{" "}
-									</td> 
+									</td>  */}
 										<td className='py-1 px-6'>
 											{" "}
 											{new Intl.NumberFormat().format(item.amount)}{" "}
 										</td>
 										<td className=''>
-											{item.status == "Approved" && (
+											{item.status == "Confirmed" && (
 												<span
 													className='cursor-pointer bg-green-200 green py-1 px-4 rounded-lg'
 													onClick={() => {
 														setaccept(false);
 													}}
 												>
-													Approved
+													Confirmed
 												</span>
 											)}
 
@@ -209,72 +264,11 @@ function HeaderTop() {
 													Failed
 												</span>
 											)}
-										</td>
-										<td className='hidden md:table-cell'>
-											<div
-												className='relative group flex flex-col items-center cursor-pointer'
-												onClick={() => {
-													deleteDeposit(item._id);
-												}}
-											>
-												<TrashIcon className='w-6 h-6' />
-												<div className='bg-gray-200  text-gray-400 absolute top-6 -left-6 rounded-md px-6 py-2 hidden text-center group-hover:block'>
-													Delete
-												</div>
-											</div>
-										</td>
-
-										<td className='hidden md:table-cell'>
-											<div
-												className='relative group flex flex-col items-center cursor-pointer'
-												onClick={() => {
-													router.push(`/admin/UpdatwWithdraw?ID=${item._id}`);
-												}}
-											>
-												<PlusCircleIcon className='w-6 h-6' />
-												<div className='bg-gray-200  text-gray-400 absolute top-6 -left-12 rounded-md px-6 py-2 hidden text-center group-hover:block md:w-[10rem]'>
-													Make Deposit
-												</div>
-											</div>
-										</td>
-
-										<td className='block md:hidden'>
-											<div
-												className='relative group flex flex-col items-center cursor-pointer'
-												onClick={() => {
-													setOpen(!open);
-												}}
-											>
-												<EllipsisHorizontalIcon className='w-6 h-6' />
-												{open && (
-													<div className='bg-gray-200  text-gray-400 absolute top-6 right-0 rounded-md px-6 py-2 hidden text-center group-hover:block w-[12rem]'>
-														<p
-															className='mb-4 hover:underline'
-															onClick={() => {
-																deleteDeposit(item._id);
-															}}
-														>
-															Delete
-														</p>
-														<p
-															className='hover:underline'
-															onClick={() => {
-																router.push(
-																	`/admin/UpdatwWithdraw?ID=${item._id}`,
-																);
-															}}
-														>
-															{" "}
-															Update Withdraw
-														</p>
-													</div>
-												)}
-											</div>
-										</td>
+										</td>										
 									</tr>
 								</>
 							))}
-						</tbody> */}
+						</tbody>
 					</table>
 				</div>
 			)}

@@ -1,6 +1,7 @@
 import React, { useState, useRef } from "react";
 import { ChevronDownIcon, DocumentIcon, DocumentDuplicateIcon } from "@heroicons/react/24/solid";
 import CoinModal from "./CoinModal";
+import Image from "next/image"
 import NetworkModal from "./NetworkModal";
 
 function DepositTop() {
@@ -24,13 +25,19 @@ function DepositTop() {
 							<p className='text-sm text-gray-400'>Coin</p>
 							<div
 								className='bg-gray-300 rounded-md px-2 py-4 flex-grow flex cursor-pointer justify-between'
-								onClick={() => {
-									setCoinOpen(true);
-								}}
+								// onClick={() => {
+								// 	setCoinOpen(true);
+								// }}
 							>
-								<div>
+								<div className="flex gap-4">
+                                    <Image
+                                    src=       "https://assets.coingecko.com/coins/images/1/small/bitcoin.png?1547033579"
+                                    width={24}
+                                    height={24}
+                                    alt="image"
+                                    />
 									<h1>
-										BTC <span className='text-gray-500'>Bitcoin</span>
+										USDT <span className='text-xs text-gray-500'>Tether</span>
 									</h1>
 								</div>
 								<ChevronDownIcon className='w-4 h-4' />
@@ -44,11 +51,11 @@ function DepositTop() {
 							<p className='text-sm text-gray-400'>Network</p>
 							<div
 								className='bg-gray-300 rounded-md px-2 py-4 flex-grow flex cursor-pointer justify-between'
-								onClick={() => {
-									setNetworkOpen(true);
-								}}
+								// onClick={() => {
+								// 	setNetworkOpen(true);
+								// }}
 							>
-								<h1 className='text-gray-500'>Select a Network</h1>
+								<h1 className='text-gray-500'>TRX <span className='text-xs text-gray-500'>Tron</span> </h1>
 								<ChevronDownIcon className='w-4 h-4' />
 							</div>
 						</div>
