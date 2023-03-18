@@ -5,7 +5,7 @@ import { useEffect } from "react";
 import { useState } from "react";
 import {
 	TrashIcon,
-	PlusCircleIcon,
+	PencilSquareIcon,
 	EllipsisHorizontalIcon,
 } from "@heroicons/react/24/outline";
 
@@ -211,12 +211,12 @@ const User = () => {
 				{deposit && (
 					<>
 						<div
-							className='flex gap-4 text-white px-8 py-4 rounded-lg bg-green w-full md:w-[30%]'
+							className='flex gap-4 text-white px-8 py-4 rounded-lg bg-green w-full md:w-[30%] cursor-pointer'
 							onClick={() => {
 								router.push(`/admin/makeDeposit?ID=${ID}`);
 							}}
 						>
-							<PlusCircleIcon className='w-6 h-6 text-white' />
+							<PencilSquareIcon className='w-6 h-6 text-white' />
 
 							<h1>Add Deposit</h1>
 						</div>
@@ -356,19 +356,7 @@ const User = () => {
 													</span>
 												)}
 											</td>
-											<td className='hidden md:table-cell'>
-												<div
-													className='relative group flex flex-col items-center cursor-pointer'
-													onClick={() => {
-														deleteDeposit(item._id);
-													}}
-												>
-													<TrashIcon className='w-6 h-6' />
-													<div className='bg-gray-200  text-gray-400 absolute top-6 -left-6 rounded-md px-6 py-2 hidden text-center group-hover:block'>
-														Delete
-													</div>
-												</div>
-											</td>
+											
 
 											<td className='hidden md:table-cell'>
 												<div
@@ -377,9 +365,9 @@ const User = () => {
 														router.push(`/admin/UpdateWithdraw?ID=${item._id}`);
 													}}
 												>
-													<PlusCircleIcon className='w-6 h-6' />
+													<PencilSquareIcon className='w-6 h-6' />
 													<div className='bg-gray-200  text-gray-400 absolute top-6 -left-12 rounded-md px-6 py-2 hidden text-center group-hover:block md:w-[10rem]'>
-														Make Deposit
+														Update Withdraw
 													</div>
 												</div>
 											</td>
@@ -394,14 +382,7 @@ const User = () => {
 													<EllipsisHorizontalIcon className='w-6 h-6' />
 													{open && (
 														<div className='bg-gray-200  text-gray-400 absolute top-6 right-0 rounded-md px-6 py-2 hidden text-center group-hover:block w-[12rem]'>
-															<p
-																className='mb-4 hover:underline'
-																onClick={() => {
-																	deleteDeposit(item._id);
-																}}
-															>
-																Delete
-															</p>
+														
 															<p
 																className='hover:underline'
 																onClick={() => {

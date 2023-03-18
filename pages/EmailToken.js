@@ -33,7 +33,7 @@ function EmailToken() {
 	const sendToken = async () => {
         setLoad(true)
 		console.log(JSON.parse(localStorage.getItem("userEmail")))
-        await axios.post(
+        await axios.put(
 			"https://cluth-space.onrender.com/api/auth/resend-pin",
 			{
 				email: JSON.parse(localStorage.getItem("userEmail")),

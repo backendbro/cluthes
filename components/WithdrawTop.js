@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import { ChevronDownIcon, DocumentIcon } from "@heroicons/react/24/solid";
 import CoinModal from "./CoinModal";
 import NetworkModal from "./NetworkModal";
@@ -8,6 +8,7 @@ function WithdrawTop() {
 	const [coinOpen, setCoinOpen] = useState(false);
 	const [WithdrawOpen, setWithdrawOpen] = useState(false);
 	const [networkOpen, setNetworkOpen] = useState(false);
+    const amountRef= useRef()
 	return (
 		<div className=' '>
 			{/* // Modals
@@ -18,7 +19,7 @@ function WithdrawTop() {
 			)}
 
 			{WithdrawOpen && (
-				<WithdrawModal open={WithdrawOpen} setOpen={setWithdrawOpen} />
+				<WithdrawModal open={WithdrawOpen} setOpen={setWithdrawOpen} amount={amountRef.current.value} />
 			)}
 			<h1 className='mb-8 text-[1.5rem]'>Withdraw Crypto</h1>
 			<div className='flex flex-col md:flex-row gap-4 w-full md:w-[90%] mx-auto  '>
@@ -72,6 +73,16 @@ function WithdrawTop() {
 										<h1 className='text-gray-500'>Select a Network</h1>
 										<ChevronDownIcon className='w-4 h-4' />
 									</div>
+								</div>
+
+                                <div>
+									<p className='text-sm text-gray-400'>Amount</p>
+									<input
+										className='bg-gray-300 rounded-md px-2 py-4 outline-green-300 w-full'
+										type='number'
+										placeholder='Enter Amount'
+                                        ref={amountRef}
+									/>
 								</div>
 
 								<div className='flex flex-col space-y-4'>

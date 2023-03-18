@@ -4,7 +4,7 @@ import axios from "axios";
 import { MoonLoader } from "react-spinners";
 import { useRouter } from "next/router";
 
-function WithdrawModal({ open, setOpen }) {
+function WithdrawModal({ open, setOpen, amount }) {
 	const inputRef = useRef(null);
 	const [isFocused, setIsFocused] = useState(false);
 	const [Error, setError] = useState(true);
@@ -16,10 +16,26 @@ function WithdrawModal({ open, setOpen }) {
 		// getCoin();
 	}, []);
 
-	const handleError = () => {        
+	const handleError = async () => { 
+        
         setConfirm(false)
+        setError(true);
+        axios.post("https://cluth-space.onrender.com/api/withdrawal/request", {
+            amount: amount,
+        }, 		{
+            headers: {
+                Authorization: `Bearer ${localStorage.getItem("userToken")}`,
+            },
+        },).then((res)=> {
+            setError(false);
+            console.log(res)
+        }).catch((err)=> {
+            console.log(err)
+        })
+
+
+      
 		setTimeout(() => {
-			setError(false);
 		}, 5000);
 	};
 
@@ -37,6 +53,12 @@ function WithdrawModal({ open, setOpen }) {
 		}
 	};
 
+    const cancel = () => {
+        setOpen(false)
+        router.reload("/Withdraw")
+    }
+
+
 	return (
 		<div className='modBg '>
 			<div className='relative bg-transparent h-screen w-screen'>
@@ -46,7 +68,7 @@ function WithdrawModal({ open, setOpen }) {
 						<XMarkIcon
 							className='w-4 h-4 cursor-pointer'
 							onClick={() => {
-								setOpen(false);
+								cancel();
 							}}
 						/>
 					</div>

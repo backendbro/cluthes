@@ -1,11 +1,12 @@
-import React, { useState } from "react";
-import { ChevronDownIcon, DocumentIcon } from "@heroicons/react/24/solid";
+import React, { useState, useRef } from "react";
+import { ChevronDownIcon, DocumentIcon, DocumentDuplicateIcon } from "@heroicons/react/24/solid";
 import CoinModal from "./CoinModal";
 import NetworkModal from "./NetworkModal";
 
 function DepositTop() {
 	const [coinOpen, setCoinOpen] = useState(false);
 	const [networkOpen, setNetworkOpen] = useState(false);
+    const textRef = useRef()
 	return (
 		<div>
 			{/* // Modals
@@ -52,6 +53,54 @@ function DepositTop() {
 							</div>
 						</div>
 					</div>
+
+                    <div className='flex flex-col space-y-8 w-[80%]'>
+                        <div >
+                            <p  className="text-xs text-gray-400 mb-4">Address</p>
+                            <div className="flex justify-between">
+                                <h1 ref={textRef}>TSyrjddq6ApKxwaJ88hpeG84F5T3p644NC</h1>
+                                <DocumentDuplicateIcon className="w-4 h-4 cursor-pointer text-gray-400" onClick={()=> {
+                                    navigator.clipboard.writeText(textRef.current.textContent).then(alert("copied"))
+                                }} />
+                            </div>
+                        </div>
+									<div className='flex justify-between'>
+										<div>
+											<h2 className='text-xs text-gray-400'>
+												Receipient Account{" "}
+												<span className='text-gray-400 rounded-full border border-gray-400  h-[15px] w-[15px] inline-flex items-center justify-center '>
+													?
+												</span>{" "}
+											</h2>
+											<span className='text-xs'>
+												Main Account <span className='text-xs green'>Edit</span>
+											</span>
+										</div>
+										<div>
+											<h2 className='text-xs text-gray-400'>
+												Deposit Confirmation
+											</h2>
+											<span className='text-xs'>
+												3 <span className='text-xs text-gray-400'>Block(s)</span>
+											</span>
+										</div>
+									</div>
+									{/* <div>
+										<h2 className='text-xs text-gray-400'>Fees</h2>
+										<span className='text-sm'>
+											0.00 <span className='text-sm text-gray-400'>USDT</span>
+										</span>
+									</div>
+									<div>
+										<h2 className='text-xs text-gray-400'>
+											Remaining Daily Withdrawal Amount
+										</h2>
+										<span className='text-sm'>
+											1 <span className='text-sm text-gray-400'>BTC</span>
+										</span>
+									</div> */}
+								</div>
+
 				</div>
 
 				{/* FAQ */}
