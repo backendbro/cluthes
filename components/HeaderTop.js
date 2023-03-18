@@ -23,7 +23,7 @@ function HeaderTop() {
 	// const [cookies, setCookie] = useCookies(['user']);
 	// const [singleUsercookies, setSingleUserCookie] = useCookies(["singleUser"]);
 	const router = useRouter();
-    const  ID  = JSON.parse(localStorage.getItem("userData"))._id
+    let  ID ;
 	const months = [
 		"JAN",
 		"FEB",
@@ -42,6 +42,7 @@ function HeaderTop() {
 
 
     useEffect(() => {
+        ID = JSON.parse(localStorage.getItem("userData"))._id
 		// getUser();
 		getDeposit();
 		getWithdrawal();
