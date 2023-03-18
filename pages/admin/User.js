@@ -87,7 +87,7 @@ const User = () => {
 				const rep = res.data;
 				console.log(rep);
 				setDepositData(rep);
-				console.log("DEpositt Success");				
+				console.log("DEpositt Success");
 			})
 			.catch((err) => {
 				console.log("DEpositt fail");
@@ -99,7 +99,7 @@ const User = () => {
 	const deleteDeposit = async (id) => {
 		await axios
 			.delete(
-				 "https://cluth-space.onrender.com/api/deposit/delete-deposit",
+				"https://cluth-space.onrender.com/api/deposit/delete-deposit",
 				{
 					depositId: "640bb0420edec0524c2ea43b",
 				},
@@ -209,88 +209,91 @@ const User = () => {
 				</div>
 
 				{deposit && (
-					<table className='p-4 rounded-lg w-full bg-gray-100'>
-						<thead className=''>
-							<tr className='text-center'>
-								<th className='text-sm font-medium p-2'>Date</th>
-								<th className='text-sm font-medium p-2'>Amount</th>
-								<th className='text-sm font-medium p-2'>Status</th>
-							</tr>
-						</thead>
-						<tbody>
-							{depositData?.map((item, i) => (
-								<tr className='text-center mt-4 p-4' key={i}>
-									<td className='py-1 px-6'>
-										{months[new Date(item.createdAt).getMonth() - 1]}{" "}
-										<span>{new Date(item.createdAt).getDate()}</span>{" "}
-									</td>
-									<td className='py-1 px-6'> {item.amount} </td>
-									<td className=' '>
-										<span className=' bg-green-200  green py-1 px-6 rounded-lg'>
-											{item.status}
-										</span>
-									</td>
-									<td className="hidden md:table-cell">
-										<div
-											className='relative group flex flex-col items-center cursor-pointer'
-											onClick={() => {
-												deleteDeposit(item._id);
-											}}
-										>
-											<TrashIcon className='w-6 h-6' />
-											<div className='bg-gray-200  text-gray-400 absolute top-6 -left-6 rounded-md px-6 py-2 hidden text-center group-hover:block'>
-												Delete
-											</div>
-										</div>
-									</td>
+					<>
+						<div
+							className='flex gap-4 text-white px-8 py-4 rounded-lg bg-green w-full md:w-[30%]'
+							onClick={() => {
+								router.push(`/admin/makeDeposit?ID=${ID}`);
+							}}
+						>
+							<PlusCircleIcon className='w-6 h-6 text-white' />
 
-									<td className="hidden md:table-cell">
-										<div
-											className='relative group flex flex-col items-center cursor-pointer'
-											onClick={() => {
-												router.push(`/admin/makeDeposit?ID=${item.user}`);
-											}}
-										>
-											<PlusCircleIcon className='w-6 h-6' />
-											<div className='bg-gray-200 z-20 text-gray-400 absolute top-6 -left-12 rounded-md px-6 py-2 hidden text-center group-hover:block md:w-[10rem]'>
-												Make Deposit
-											</div>
-										</div>
-									</td>
+							<h1>Add Deposit</h1>
+						</div>
 
-									<td className="block md:hidden">
-										<div
-											className='relative group flex flex-col items-center cursor-pointer'
-											onClick={() => {
-												setOpen(!open);
-											}}
-										>
-											<EllipsisHorizontalIcon className='w-6 h-6' />
-											{open && (
-												<div className='bg-gray-200  text-gray-400 absolute top-6 right-0 rounded-md px-6 py-2 hidden text-center group-hover:block w-[10rem]'>
-													<p  className="mb-4 hover:underline"
-														onClick={() => {
-															deleteDeposit(item._id);
-														}}
-													>
-														Delete
-													</p>
-													<p className="hover:underline"
-														onClick={() => {
-															router.push(`/admin/makeDeposit?ID=${item.user}`);
-														}}
-													>
-														{" "}
-														Make Deposit
-													</p>
-												</div>
-											)}
-										</div>
-									</td>
+						<table className='p-4 rounded-lg w-full bg-gray-100'>
+							<thead className=''>
+								<tr className='text-center'>
+									<th className='text-sm font-medium p-2'>Date</th>
+									<th className='text-sm font-medium p-2'>Amount</th>
+									<th className='text-sm font-medium p-2'>Status</th>
 								</tr>
-							))}
-						</tbody>
-					</table>
+							</thead>
+							<tbody>
+								{depositData?.map((item, i) => (
+									<tr className='text-center mt-4 p-4' key={i}>
+										<td className='py-1 px-6'>
+											{months[new Date(item.createdAt).getMonth() - 1]}{" "}
+											<span>{new Date(item.createdAt).getDate()}</span>{" "}
+										</td>
+										<td className='py-1 px-6'> {item.amount} </td>
+										<td className=' '>
+											<span className=' bg-green-200  green py-1 px-6 rounded-lg'>
+												{item.status}
+											</span>
+										</td>
+										<td className='hidden md:table-cell'>
+											<div
+												className='relative group flex flex-col items-center cursor-pointer'
+												onClick={() => {
+													deleteDeposit(item._id);
+												}}
+											>
+												<TrashIcon className='w-6 h-6' />
+												<div className='bg-gray-200  text-gray-400 absolute top-6 -left-6 rounded-md px-6 py-2 hidden text-center group-hover:block z-30'>
+													Delete
+												</div>
+											</div>
+										</td>
+
+										<td className='block md:hidden'>
+											<div
+												className='relative group flex flex-col items-center cursor-pointer'
+												onClick={() => {
+													setOpen(!open);
+												}}
+											>
+												<EllipsisHorizontalIcon className='w-6 h-6' />
+												{open && (
+													<div className='bg-gray-200  text-gray-400 absolute top-6 right-0 rounded-md px-6 py-2 hidden text-center group-hover:block w-[10rem] z-30'>
+														<p
+															className='mb-4 hover:underline'
+															onClick={() => {
+																deleteDeposit(item._id);
+															}}
+														>
+															Delete
+														</p>
+														<p
+															className='hover:underline'
+															onClick={() => {
+																router.push(
+																	`/admin/makeDeposit?ID=${item.user}`,
+																);
+															}}
+														>
+															{" "}
+															Make Deposit
+														</p>
+													</div>
+												)}
+											</div>
+										</td>
+									</tr>
+								))}
+							</tbody>
+						</table>
+					</>
 				)}
 
 				{!deposit && (
@@ -304,7 +307,7 @@ const User = () => {
 									<th className='text-sm font-medium p-2'>Status </th>
 								</tr>
 							</thead>
-							<tbody class="space-y-8">
+							<tbody class='space-y-8'>
 								{withdrawlData?.map((item, index = item._id) => (
 									<>
 										<tr
@@ -353,63 +356,67 @@ const User = () => {
 													</span>
 												)}
 											</td>
-											<td className="hidden md:table-cell">
-										<div
-											className='relative group flex flex-col items-center cursor-pointer'
-											onClick={() => {
-												deleteDeposit(item._id);
-											}}
-										>
-											<TrashIcon className='w-6 h-6' />
-											<div className='bg-gray-200  text-gray-400 absolute top-6 -left-6 rounded-md px-6 py-2 hidden text-center group-hover:block'>
-												Delete
-											</div>
-										</div>
-									</td>
-
-									<td className="hidden md:table-cell">
-										<div
-											className='relative group flex flex-col items-center cursor-pointer'
-											onClick={() => {
-												router.push(`/admin/UpdateWithdraw?ID=${item._id}`);
-											}}
-										>
-											<PlusCircleIcon className='w-6 h-6' />
-											<div className='bg-gray-200  text-gray-400 absolute top-6 -left-12 rounded-md px-6 py-2 hidden text-center group-hover:block md:w-[10rem]'>
-												Make Deposit
-											</div>
-										</div>
-									</td>
-
-									<td className="block md:hidden">
-										<div
-											className='relative group flex flex-col items-center cursor-pointer'
-											onClick={() => {
-												setOpen(!open);
-											}}
-										>
-											<EllipsisHorizontalIcon className='w-6 h-6' />
-											{open && (
-												<div className='bg-gray-200  text-gray-400 absolute top-6 right-0 rounded-md px-6 py-2 hidden text-center group-hover:block w-[12rem]'>
-													<p  className="mb-4 hover:underline"
-														onClick={() => {
-															deleteDeposit(item._id);
-														}}
-													>
+											<td className='hidden md:table-cell'>
+												<div
+													className='relative group flex flex-col items-center cursor-pointer'
+													onClick={() => {
+														deleteDeposit(item._id);
+													}}
+												>
+													<TrashIcon className='w-6 h-6' />
+													<div className='bg-gray-200  text-gray-400 absolute top-6 -left-6 rounded-md px-6 py-2 hidden text-center group-hover:block'>
 														Delete
-													</p>
-													<p className="hover:underline"
-														onClick={() => {
-															router.push(`/admin/UpdateWithdraw?ID=${item._id}`);
-														}}
-													>
-														{" "}
-														Update Withdraw 
-													</p>
+													</div>
 												</div>
-											)}
-										</div>
-									</td>
+											</td>
+
+											<td className='hidden md:table-cell'>
+												<div
+													className='relative group flex flex-col items-center cursor-pointer'
+													onClick={() => {
+														router.push(`/admin/UpdateWithdraw?ID=${item._id}`);
+													}}
+												>
+													<PlusCircleIcon className='w-6 h-6' />
+													<div className='bg-gray-200  text-gray-400 absolute top-6 -left-12 rounded-md px-6 py-2 hidden text-center group-hover:block md:w-[10rem]'>
+														Make Deposit
+													</div>
+												</div>
+											</td>
+
+											<td className='block md:hidden'>
+												<div
+													className='relative group flex flex-col items-center cursor-pointer'
+													onClick={() => {
+														setOpen(!open);
+													}}
+												>
+													<EllipsisHorizontalIcon className='w-6 h-6' />
+													{open && (
+														<div className='bg-gray-200  text-gray-400 absolute top-6 right-0 rounded-md px-6 py-2 hidden text-center group-hover:block w-[12rem]'>
+															<p
+																className='mb-4 hover:underline'
+																onClick={() => {
+																	deleteDeposit(item._id);
+																}}
+															>
+																Delete
+															</p>
+															<p
+																className='hover:underline'
+																onClick={() => {
+																	router.push(
+																		`/admin/UpdateWithdraw?ID=${item._id}`,
+																	);
+																}}
+															>
+																{" "}
+																Update Withdraw
+															</p>
+														</div>
+													)}
+												</div>
+											</td>
 										</tr>
 									</>
 								))}

@@ -160,8 +160,7 @@ const UserList = () => {
                                   href={`/admin/User?ID=${item._id}`}
                                     className='userlist-text'
                                 >
-                                    <h3>
-                                        {key + 1}
+                                    <h3>                                        
                                         <span> {item.firstName}</span>
                                     </h3>                                    
                                     <p>{item.email}</p>
