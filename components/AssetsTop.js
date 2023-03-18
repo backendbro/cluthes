@@ -12,28 +12,29 @@ function AssetsTop() {
 	const [converter, setConverter] = useState(null);
 	let userData, userID;
 
-	useEffect(() => {	
-        getBalance();
-    }, []);
+	// useEffect(() => {	
+    //     getBalance();
+    // }, []);
 	
-	const url = "https://cluth-space.onrender.com/api/deposit/user-deposit";
-	async function getBalance() {
-        const bearer_token = localStorage.getItem("userToken");	
-		const response = await fetch(url, {
-			method: "POST",
-			headers: {
-				Authorization: `Bearer ${bearer_token}`,
-				"Content-Type": "application/json",
-			},
-			body: JSON.stringify({
-				userId: JSON.parse(localStorage.getItem("userData"))._id,
-			}),
-		});
+	// const url = "https://cluth-space.onrender.com/api/deposit/user-deposit";
 
-		const json = await response.json();
-		setUserBal(json[0].balance);
+	// async function getBalance() {
+    //     const bearer_token = localStorage.getItem("userToken");	
+	// 	const response = await fetch(url, {
+	// 		method: "POST",
+	// 		headers: {
+	// 			Authorization: `Bearer ${bearer_token}`,
+	// 			"Content-Type": "application/json",
+	// 		},
+	// 		body: JSON.stringify({
+	// 			userId: JSON.parse(localStorage.getItem("userData"))._id,
+	// 		}),
+	// 	});
+
+	// 	const json = await response.json();
+	// 	setUserBal(json[0].balance);
         
-	}
+	// }
     
     
 

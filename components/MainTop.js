@@ -11,10 +11,10 @@ function MainTop() {
         <div className='flex items-center gap-2'>            
             <p>0.00BTC <span className=' text-gray-600'>=0.00 USD</span></p>           
         </div>
-        <div>
+        {/* <div>
             <MagnifyingGlassIcon className='h-4 w-4 text=gray-300' />
             <input type="text" placeholder='search' />
-        </div>
+        </div> */}
     </div>   
 </div>
   )

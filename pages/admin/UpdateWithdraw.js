@@ -39,7 +39,7 @@ const UpdateWithdraw = () => {
 			.post(
 				` https://cluth-space.onrender.com/api/withdrawal/single-withdraw`,
 				{
-					withDrawalId: "640bb3f146c67eed2f177c6e",
+					withDrawalId: ID,
 				},
 				{
 					headers: {
@@ -84,6 +84,7 @@ const UpdateWithdraw = () => {
 			})
 			.catch((err) => {
 				setLoad(false);
+				router.push(`/admin/User?ID=${withdraw?.user}`);
 				console.log(err);
 			});
 	};
@@ -107,10 +108,10 @@ const UpdateWithdraw = () => {
 						) : (
 							<option>Pending</option>
 						)}
-						{withdraw?.status === "Approved" ? (
-							<option selected>Approved</option>
+						{withdraw?.status === "Confirmed" ? (
+							<option selected>Confirmed</option>
 						) : (
-							<option>Approved</option>
+							<option>Confirmed</option>
 						)}
 						{withdraw?.status === "Failed" ? (
 							<option selected>Failed</option>
@@ -120,7 +121,7 @@ const UpdateWithdraw = () => {
 					</select>
 				</div>
 
-				{withdraw?.status === "Approved"  ? (
+				{withdraw?.status === "Confirmed" || withdraw?.status ==="Failed"  ? (
 					<button
 						className='bg-green py-2 px-6 text-white text-center rounded-lg'
 						onClick={() => {

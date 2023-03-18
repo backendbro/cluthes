@@ -15,51 +15,61 @@ function EmailToken() {
 	const TokenUrl = "https://copyoptions.onrender.com/api/user/resend-pin";
     const VerifyUrl = "https://copyoptions.onrender.com/api/user/confirm-email"
 
+    	//     URL: https://cluth-space.onrender.com/api/auth/confirm-pin
+// METHOD: PUT 
+// BODY: {
+//     "pin":"d9ca24"
+// },
+
+// URL: https://cluth-space.onrender.com/api/auth/resend-pin
+// METHOD: PUT 
+// BODY:{
+//     "email":"backendbomafiaso@gmail.com"
+// }
+		
+
+
+
 	const sendToken = async () => {
         setLoad(true)
-		
+		console.log(JSON.parse(localStorage.getItem("userEmail")))
         await axios.post(
-			TokenUrl,
+			"https://cluth-space.onrender.com/api/auth/resend-pin",
 			{
-				email: cookies.userData.email,
-			},
-			{
-				headers: {
-					Authorization: `Bearer ${cookies.userToken}`,
-				},
-			},
+				email: JSON.parse(localStorage.getItem("userEmail")),
+			},		
 		).then((res)=> {
             setLoad(false)
+            console.log("success")
             setMsg(true)
         }).catch((err)=> {
             alert(err)
+            setLoad(false)
+            console.log(err)
         })
 
 	};
 
 
-    const VerifyToken = async () => {
-        // console.log( typeof inputRef.current.value)
-        // setVerifyLoad(true)
+    const VerifyToken = async () => {        
+        setVerifyLoad(true)
 		
-        // await axios.put(
-		// 	VerifyUrl,
-		// 	{
-		// 		pin: inputRef.current.value
-		// 	},
-		// 	{
-		// 		headers: {
-		// 			// Authorization: `Bearer ${cookies.userToken}`,
-		// 		},
-		// 	},
-		// ).then((res)=> {
-        //     setVerifyLoad(false)
-        //     setVerify(true)
-        //     // router.push("/account/verify")
-        // }).catch((err)=> {
-        //     alert(err)
-        // })(
-        JSON.parse(localStorage.getItem("userData")).role === "Admin" ? router.push("/admin") : router.push("/assets")
+        await axios.put( "https://cluth-space.onrender.com/api/auth/confirm-pin",
+			{
+				pin: inputRef.current.value
+			},
+			{
+				
+			},
+		).then((res)=> {
+            setVerifyLoad(false)        
+            setVerify(true)
+            router.push("/Login")
+            localStorage.removeItem("userEmail")
+        }).catch((err)=> {
+            alert(err)
+        })
+        
 	};
 
     
@@ -87,7 +97,7 @@ function EmailToken() {
 						className='text-white  cursor-pointer !mt-14  font-semibold rounded-lg bg-green py-[1rem] px-[3rem] text-center md:w-[30%] w-[70%] mx-auto'
 						onClick={sendToken}
 					>
-						{Load ? <BeatLoader color="white" /> : "Request Token"}                    
+						{Load ? <BeatLoader color="white" /> : "Resend Token"}                    
                         
 					</div>
 

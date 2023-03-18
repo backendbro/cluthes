@@ -16,8 +16,7 @@ function WithdrawModal({ open, setOpen }) {
 		// getCoin();
 	}, []);
 
-	const handleError = () => {
-        alert("dsd")
+	const handleError = () => {        
         setConfirm(false)
 		setTimeout(() => {
 			setError(false);

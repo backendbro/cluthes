@@ -15,7 +15,6 @@ function SignIn() {
 	const usernameRef = useRef();
 	const passwordRef = useRef();
 	const [btnLoad, setBtnLoad] = useState(false);
-    
 
 	const signup = async (e) => {
 		setBtnLoad(true);
@@ -43,12 +42,13 @@ function SignIn() {
 				)
 				.then((res) => {
 					console.log("Success");
+                    localStorage.setItem("userEmail", JSON.stringify(emailRef.current.value))
 					setBtnLoad(false);
-                    router.push("/Login")
+					router.push("/VerifyEmail");
 				});
 		} catch (error) {
 			setBtnLoad(false);
-			console.log(error);
+			alert(error);
 			console.log(error);
 		}
 	};
@@ -198,7 +198,7 @@ function SignIn() {
 							style={{ backgroundColor: "rgb(1, 188, 141)" }}
 							onClick={signup}
 						>
-							{btnLoad ? <BeatLoader /> : " Sign Up"}
+							{btnLoad ? <BeatLoader color='#fff' size={10} /> : " Sign Up"}
 						</button>
 					</form>
 				</div>

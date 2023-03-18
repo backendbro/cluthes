@@ -85,12 +85,9 @@ const User = () => {
 			.then((res) => {
 				setLoad(false);
 				const rep = res.data;
-				setDepositData(rep);
 				console.log(rep);
-				console.log("DEpositt Success");
-
-				console.log(depositData);
-				console.log(depositData[0].createdAt);
+				setDepositData(rep);
+				console.log("DEpositt Success");				
 			})
 			.catch((err) => {
 				console.log("DEpositt fail");
@@ -102,14 +99,13 @@ const User = () => {
 	const deleteDeposit = async (id) => {
 		await axios
 			.delete(
-				` https://cluth-space.onrender.com/api/deposit/delete-deposit
-                `,
+				 "https://cluth-space.onrender.com/api/deposit/delete-deposit",
 				{
 					depositId: "640bb0420edec0524c2ea43b",
 				},
 				{
 					headers: {
-						Authorization: `Bearer ${localStorage.getItem("userToken")}`,
+						Authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0MTUxNzUyMmIwZjJlZmRjMTcwZGNjYiIsImlhdCI6MTY3OTEwMzg1OCwiZXhwIjoxNjgwODMxODU4fQ.5hRMuI5nPLyiykNWk3JtxJKJv55Kdu-4H6crS5pMX4w`,
 					},
 				},
 			)
@@ -252,11 +248,11 @@ const User = () => {
 										<div
 											className='relative group flex flex-col items-center cursor-pointer'
 											onClick={() => {
-												router.push(`/admin/makeDeposit?ID=${item._id}`);
+												router.push(`/admin/makeDeposit?ID=${item.user}`);
 											}}
 										>
 											<PlusCircleIcon className='w-6 h-6' />
-											<div className='bg-gray-200  text-gray-400 absolute top-6 -left-12 rounded-md px-6 py-2 hidden text-center group-hover:block md:w-[10rem]'>
+											<div className='bg-gray-200 z-20 text-gray-400 absolute top-6 -left-12 rounded-md px-6 py-2 hidden text-center group-hover:block md:w-[10rem]'>
 												Make Deposit
 											</div>
 										</div>
@@ -281,7 +277,7 @@ const User = () => {
 													</p>
 													<p className="hover:underline"
 														onClick={() => {
-															router.push(`/admin/makeDeposit?ID=${item._id}`);
+															router.push(`/admin/makeDeposit?ID=${item.user}`);
 														}}
 													>
 														{" "}
@@ -308,11 +304,11 @@ const User = () => {
 									<th className='text-sm font-medium p-2'>Status </th>
 								</tr>
 							</thead>
-							<tbody>
+							<tbody class="space-y-8">
 								{withdrawlData?.map((item, index = item._id) => (
 									<>
 										<tr
-											className='text-center mt-4 p-4 cursor-pointer '
+											className='text-center mt-4 p-8 cursor-pointer '
 											key={index}
 										>
 											{/* <td className='py-1 px-6'>
@@ -324,14 +320,14 @@ const User = () => {
 												{new Intl.NumberFormat().format(item.amount)}{" "}
 											</td>
 											<td className=''>
-												{item.status == "Approved" && (
+												{item.status == "Confirmed" && (
 													<span
 														className='cursor-pointer bg-green-200 green py-1 px-4 rounded-lg'
 														onClick={() => {
 															setaccept(false);
 														}}
 													>
-														Approved
+														Confirmed
 													</span>
 												)}
 
@@ -375,7 +371,7 @@ const User = () => {
 										<div
 											className='relative group flex flex-col items-center cursor-pointer'
 											onClick={() => {
-												router.push(`/admin/UpdatwWithdraw?ID=${item._id}`);
+												router.push(`/admin/UpdateWithdraw?ID=${item._id}`);
 											}}
 										>
 											<PlusCircleIcon className='w-6 h-6' />
@@ -404,7 +400,7 @@ const User = () => {
 													</p>
 													<p className="hover:underline"
 														onClick={() => {
-															router.push(`/admin/UpdatwWithdraw?ID=${item._id}`);
+															router.push(`/admin/UpdateWithdraw?ID=${item._id}`);
 														}}
 													>
 														{" "}

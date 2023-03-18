@@ -49,12 +49,13 @@ const Login = () => {
                     console.log(res)
                     localStorage.setItem("userToken", res.data.token)
                     localStorage.setItem("userData", JSON.stringify(res.data.user))
+                    res.data.user.role === "Admin" ? router.push("/admin") : router.push("/assets")
 					setBtnLoad(false);
-                    router.push("/VerifyEmail" )
+                    
 				});
 		} catch (error) {
 			setBtnLoad(false);
-			console.log(error);
+			alert(error);
 			console.log(error);
 		}
 	};
