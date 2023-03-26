@@ -20,6 +20,9 @@
 }
 
 @media only screen and (max-width: 600px) {
+    body{
+        overflow-x: hidden;
+    }
     .row .left-section{
      display: none;
     }
@@ -37,7 +40,7 @@
    
    
    .input-div, .bottom-section  .btn-div button, .terms, h3 {
-    margin-left: -220px;
+    margin-left: 0px;
    }
    
    
@@ -45,8 +48,29 @@
      width: 400px;
       flex-wrap: nowrap;
    }
+     
+   .input-div .form-control {
+    width: 380px;
+    padding: 10px;
+    }
+
+    .input-div .pass-stuff{
+      width: 380px;
+      padding: 10px;
+      position: relative;
+    }
+
+    .input-div .eyeIcon {
+      position: absolute;
+      width: 20px;
+      top: 45px;
+      left: 350px;
+      right: 0px;
+  }
+
    
    }
+
 
    @media only screen and (max-width: 480px) {
     body {
@@ -55,7 +79,7 @@
     }
     
    .container-fluid  {
-      border: 1px solid blue;
+    
       position: relative;
   }
 
@@ -68,33 +92,40 @@
     border: 1px solid green;
     margin-top: 140px;
     width: 100%;
-  }
-
-
-   
-  .btn-div  {
-      margin-left: 100px;
-      
-    }
-    
-    .please {
-        border: var(--debugger);
-        width: 40px;
-        height: 8px;
-        font-size: 18px;
-        padding: 0px 12px;
-        color: rgb(255, 255, 255);
-        background: rgb(1, 188, 141);
-        margin-top: 200px;
-    }
-    
+  }    
     .input-div .form-control {
         width: 300px;
+        padding: 10px;
+    }
+    
+    .input-div .pass-stuff{
+      width: 300px;
+      padding: 10px;
+    
     }
 
-    .input-div {
-      margin-left: 0px;
+   .bottom-section .input-div{
+      width: 310px;
     }
+
+    .input-div .eyeIcon {
+      position: absolute;
+      width: 20px;
+      top: 50px;
+      left: 270px;
+      right: 0px;
+  }
+
+  
+    .btn-div button {
+    /* width: 40px; */
+    /* height: 48px;
+    font-size: 18px;
+    padding: 0px 18px;
+    color: rgb(255, 255, 255);
+    background: rgb(1, 188, 141);
+    margin-top: 20px; */
+}
 
    }
 
@@ -180,6 +211,7 @@
   
     .input-div {
         width: 480px;
+        position: relative;
     }
     
     .form-control{
@@ -191,9 +223,30 @@
       outline: none;
       background: rgba(125, 135, 146, 0.08);
       width: 100%;
+      padding: 10px;
     }
   
+        
+    .pass-stuff{
+        color: rgb(0, 13, 29);
+        cursor: text;
+        font-size: 16px;
+        height: 48px;
+        line-height: 26px;
+        outline: none;
+        background: rgba(125, 135, 146, 0.08);
+        width: 100%;
+        padding: 10px;
+      }
   
+      .eyeIcon {
+        position: absolute;
+        width: 20px;
+        top: 45px;
+        left: 450px;
+        cursor: pointer;
+    }
+
     .terms  {
       margin-bottom: 20px;
     }
@@ -211,7 +264,7 @@
     color: rgb(1, 188, 141);
   }
   
-  .bottom-section  .btn-div button {
+  .btn-div button {
     width: 480px;
     height: 48px;
     font-size: 18px;

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Image from "next/legacy/image";
 
 import { EyeIcon, EyeSlashIcon } from "@heroicons/react/24/outline";
@@ -17,7 +17,10 @@ const Login = () => {
 	const emailRef = useRef();	
 	const passwordRef = useRef();
 	const [btnLoad, setBtnLoad] = useState(false);
-    
+
+	useEffect(() => {
+		checkWidth()
+	})
 
 	//     https://cluth-space.onrender.com/api/auth/login
 	// method: post
@@ -67,6 +70,22 @@ const Login = () => {
 			console.log(error.response.data);
 		}
 	};
+
+
+	// For some reason I couuldnt change the width from the css file, I had to do it here.
+	function checkWidth() {
+		let width = (window.innerWidth > 0) ? window.innerWidth : screen.width;
+		
+		if(width >= 600){
+			const btn = document.querySelector('.btn')
+			btn.style.width = "480px"	
+		}
+		
+		if(width <= 600){
+			const btn = document.querySelector('.btn')
+			btn.style.width = "320px"	
+		}
+	}
 
 	return (
 		<div className=' flex flex-col space-y-4 md:space-y-0 py-4 px-8 md:p-0  md:flex-row w-full min-h-[100vh] h-full bg-white '>
@@ -167,18 +186,46 @@ const Login = () => {
 
                   
 
-                  <div class="mb-4 input-div" >
+                  {/* <div class="mb-4 input-div" >
                     <label for="exampleFormControlInput1" id="labelForFormControl" class="form-label">
-					<p className='text-s text-black mb-2'>Password</p>
+					<p className='text-s text-black mb-2 pr-4'>Password</p>
 					</label>
                     <input  class="form-control shadow-none" id="exampleFormControlInput1" placeholder="Password" 
 					type={`${show ? "text" : "password"}`}
-					
 					ref={passwordRef}
 					/>
+					
+                  </div> */}
+
+<div class="mb-2 input-div" >
+                    <label for="exampleFormControlInput1" id="labelForFormControl" class="form-label">
+					<p className='text-s text-black mb-2'>Password</p>
+					</label>
+					<input
+						type={`${show ? "text" : "password"}`}
+						class="pass-stuff shadow-none"
+						placeholder="Password"
+						ref={passwordRef}
+					/>
+					{!show && (
+									<EyeIcon
+										onClick={() => {
+											setShow(true);
+										}}
+										class="eyeIcon"
+									/>
+								)}
+								{show && (
+									<EyeSlashIcon
+										onClick={() => {
+											setShow(false);
+										}}
+										class="eyeIcon"
+									/>
+								)}
                   </div>
 
-				  <div>
+				  {/* <div>
 							<button
 								className='w-full py-2 rounded-md text-white font-medium  mt-6 '
 								style={{ backgroundColor: "rgb(1, 188, 141)" }}
@@ -188,8 +235,11 @@ const Login = () => {
 							</button>
 
 						
-						</div>
+						</div> */}
                  
+				 <div class="btn-div mb-3 mt-3">
+    	                 <button class="btn" type="button" onClick={Login}>{btnLoad ? <BeatLoader color='#36d7b7' size={7} /> : "Log In"}</button>
+                 </div>
 			   
                </div>
 					{/* <h1 className='text-[2rem] mb-8 text-black font-bold'>Log In</h1> */}
