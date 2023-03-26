@@ -221,7 +221,7 @@ function SignIn() {
 					</div>
 
 					<div class="btn-div mb-3 mt-3">
-    	                 <button class="btn" type="button">Log In</button>
+					<button class="btn" type="button" onClick={signup}>{btnLoad ? <BeatLoader color='#36d7b7' size={7} /> : "Sign Up"}</button>
                  </div>
 					</form>
 				</div>
