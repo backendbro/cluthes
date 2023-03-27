@@ -32,6 +32,8 @@ const SendEmail = () => {
 					userId: ID,
 					email: email,
 					message: body,
+					issue:name,
+					subject:"Follow up on of Request of WithDrawal"
 				},
 				{
 					headers: {
@@ -40,19 +42,20 @@ const SendEmail = () => {
 				},
 			)
 			.then((res) => {
+				
 				setLoader(false);
-                console.log(res)   
+               
                 nameRef.current.value  = ""          
                 bodyRef.current.value = ""
                 router.push(`/admin/User?ID=${ID}`)
 			})
 			.catch((err) => {
-				console.log(err);
+				console.log(err.message);
 				setLoader(false);
 			});
 	};
 
-    console.log(ID, email)
+   
 
 
 	return (

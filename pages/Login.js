@@ -60,6 +60,7 @@ const Login = () => {
 				});
 		} catch (error) {
 			setBtnLoad(false);
+			console.log(error.response)
             if (error.response.data.message === "EMAIL DOES NOT EXIST"){
                 router.push("/SignIn")
             }
@@ -83,7 +84,7 @@ const Login = () => {
 		
 		if(width <= 600){
 			const btn = document.querySelector('.btn')
-			btn.style.width = "320px"	
+			btn.style.width = "300px"	
 		}
 	}
 

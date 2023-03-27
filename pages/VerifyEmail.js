@@ -10,7 +10,7 @@ function VerifyEmail() {
 					<h4 className='text-capitalize text-center font-bold text-[2rem] capitalize '>
 						Verify your email
 					</h4>
-					<p className='text-center font-medium' style='color:#051036;'>
+					<p className='text-center font-medium color_dark_1'>
 						Please click the button below to verify your email
 					</p>
 

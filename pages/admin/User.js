@@ -14,6 +14,7 @@ import Link from "next/link";
 
 const User = () => {
 	const [user, setUser] = useState(null);
+	const [getBalance, setBalance] = useState(null);
 	const [Load, setLoad] = useState(false);
 	const [open, setOpen] = useState(false);
 	const [deposit, setDeposit] = useState(true);
@@ -39,18 +40,39 @@ const User = () => {
 		"DEC",
 	];
 
-	// console.log(ID)
 
 	useEffect(() => {
 		getUser();
+		fetchBalance();
 		getDeposit();
 		getWithdrawal();
 	}, []);
+	
 
-	const getUser = async () => {
-		console.log("getting" + ID);
+	async function fetchBalance  () {
+		
+		const url = "https://cluth-space.onrender.com/api/deposit/get-balance"
+		try {
+			
+			const res = await axios.post(url, 
+				{ userId:String(ID) }, {
+					headers: {
+						Authorization: `Bearer ${localStorage.getItem("userToken")}`,
+						'Content-Type': 'application/json'
+					}
+				});
+				
+				const balance = res.data
+				setLoad(false);
+				setBalance(balance)
+			} catch (error) {
+				console.log(error.message)
+			}
+			
+		}
+
+	async function getUser () {
 		setLoad(true);
-		console.log(localStorage.getItem("userToken"));
 		await axios
 			.get(`https://cluth-space.onrender.com/api/user/${ID}`, {
 				headers: {
@@ -61,15 +83,16 @@ const User = () => {
 				setLoad(false);
 				const rep = res.data;
 				setUser(rep);
-				console.log(rep);
+				
+				
 			})
 			.catch((err) => {
-				console.log(err);
+				return
 			});
 	};
 
-	const getDeposit = async () => {
-		console.log("DEpositt");
+	async function getDeposit  ()  {
+		
 		await axios
 			.post(
 				`https://cluth-space.onrender.com/api/deposit/user-deposit`,
@@ -85,42 +108,14 @@ const User = () => {
 			.then((res) => {
 				setLoad(false);
 				const rep = res.data;
-				console.log(rep);
 				setDepositData(rep);
-				console.log("DEpositt Success");
 			})
 			.catch((err) => {
-				console.log("DEpositt fail");
-
-				console.log(err);
+				return
 			});
 	};
 
-	const deleteDeposit = async (id) => {
-		await axios
-			.delete(
-				"https://cluth-space.onrender.com/api/deposit/delete-deposit",
-				{
-					depositId: "640bb0420edec0524c2ea43b",
-				},
-				{
-					headers: {
-						Authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0MTUxNzUyMmIwZjJlZmRjMTcwZGNjYiIsImlhdCI6MTY3OTEwMzg1OCwiZXhwIjoxNjgwODMxODU4fQ.5hRMuI5nPLyiykNWk3JtxJKJv55Kdu-4H6crS5pMX4w`,
-					},
-				},
-			)
-			.then((res) => {
-				setLoad(false);
-				const rep = res.data;
-				// setDepositData(rep);
-				console.log(rep);
-				// console.log(depositData);
-				// console.log(depositData[0].createdAt);
-			})
-			.catch((err) => {
-				console.log(err);
-			});
-	};
+	
 
 	const getWithdrawal = async () => {
 		console.log("Withdraw");
@@ -174,6 +169,11 @@ const User = () => {
 						<div className='flex gap-2 text-xs text-gray-400'>
 							<p className='user__p1 '>USERNAME</p>
 							<p className='text-xs'>: {user?.username}</p>
+						</div>
+
+						<div className='flex gap-2  text-gray-400'>
+							<p className='user__p1 text-xs'>BALANCE</p>
+							<p className='text-s'>: ${getBalance?.balance.balance}</p>
 						</div>
 					</div>
 
@@ -249,10 +249,10 @@ const User = () => {
 													deleteDeposit(item._id);
 												}}
 											>
-												<TrashIcon className='w-6 h-6' />
+												{/* <TrashIcon className='w-6 h-6' />
 												<div className='bg-gray-200  text-gray-400 absolute top-6 -left-6 rounded-md px-6 py-2 hidden text-center group-hover:block z-30'>
 													Delete
-												</div>
+												</div> */}
 											</div>
 										</td>
 

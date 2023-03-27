@@ -21,7 +21,7 @@
 
 @media only screen and (max-width: 600px) {
     body{
-        overflow-x: hidden;
+        /* overflow-x: hidden; */
     }
     .row .left-section{
      display: none;
@@ -75,11 +75,10 @@
    @media only screen and (max-width: 480px) {
     body {
       border: var(--debugger);
-      overflow-x: hidden;
+      /* overflow-x: hidden; */
     }
     
    .container-fluid  {
-    
       position: relative;
   }
 
@@ -129,84 +128,21 @@
 
    }
 
-.left-section {
-   
-}
 
-.logo {
-    position: absolute;
-    left: 35px;
-    top: 20px;
-}
-
-
-.img-div {
-    width: 680px;
-    height: 790px;
-}
-
-.img-div img {
-    object-fit: cover;
-    height: 100%;
-    width: 100%;
-}
-
-
-
-.right-section {
-    background-color: white;
-  }
-  
-  .right-section .top-section {
-   z-index: 7;
-   margin-right: 20px;
-  }
-  
-  .right-section .top-section ul {
-    list-style: none;
-    float: right;
-    margin-top: 20px;
-  }
-  
-  .right-section .top-section ul li {
-    display: inline-block;
-    margin-right: 10px;
-    color: rgba(0, 13, 29, 0.6);
-    font-size: 14px;
-    line-height: 22px;
-  }
-  
-  
-  .right-section .top-section ul li:nth-child(1) span {
-    color: rgb(1, 188, 141);
-  }
-  
-  .right-section .top-section ul li:nth-child(1) span  a {
-   text-decoration: none;
-  }
-
-  .right-section .bottom-section {
-    z-index: 6;
-    margin-top: 200px;
-    padding-bottom: 50px;
-    padding-left: 230px;
-    padding-right: 50px;
-   }
-  
-   .right-section .bottom-section h3 {
+    /* h3 {
       font-size: 34px;
       line-height: 48px;
       margin-bottom: 40px;
       text-align: left;
-    }
+    } */
   
-    .right-section .bottom-section .form-label {
+   /* .form-label {
       font-size: 12px;
       line-height: 20px;
       font-weight: 400;
       color: rgba(0, 13, 29, 0.6);
       position: relative;
-    }
+    } */
     
   
     .input-div {

@@ -127,7 +127,7 @@ const UserList = () => {
 
 
     
-	// console.log(userList)
+	
 
 	return load ? (
 	<div className="flex items-center justify-center h-screen">
@@ -152,8 +152,8 @@ const UserList = () => {
                                     className='userlist-img'
                                 >
                                     {item.profilePicture ? <img src={item.profilePicture}  /> : <img
-                                        src='https://protradeoptions.live/uploads/images/1664319566CE58F48A-7F6C-404A-B09D-586541DFE14D.jpeg'
-                                        alt=''
+                                        src='https://t3.ftcdn.net/jpg/03/05/37/70/360_F_305377064_hcyh2OfYl94tMARpvLw8Rzigdx442ajZ.jpg'
+                                        alt='User Profile Picture'
                                     />}
                                 </Link>
                                 <Link

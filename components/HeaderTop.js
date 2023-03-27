@@ -212,22 +212,23 @@ function HeaderTop() {
 					<table className='p-4 rounded-lg w-full bg-gray-100'>
 						<thead className=''>
 							<tr className='text-center'>
-								{/* <th className='text-sm font-medium p-2'>Date</th> */}
+								<th className='text-sm font-medium p-2'>Date</th>
 								<th className='text-sm font-medium p-2'>Amount</th>
 								<th className='text-sm font-medium p-2'>Status </th>
 							</tr>
 						</thead>
 						<tbody>
 							{withdrawlData?.map((item, index = item._id) => (
+								
 								<>
 									<tr
 										className='text-center mt-4 p-4 cursor-pointer '
 										key={index}
 									>
-										 {/* <td className='py-1 px-6'>
-										{months[new Date(item.createdAt).getMonth() - 1]}{" "}
-										<span>{new Date(item.createdAt).getDate()}</span>{" "}
-									</td>  */}
+										<td className='py-1 px-6'>
+									{months[new Date(item.createdAt).getMonth() - 1]}{" "}
+									<span>{new Date(item.createdAt).getDate()}</span>{" "}
+									</td>
 										<td className='py-1 px-6'>
 											{" "}
 											{new Intl.NumberFormat().format(item.amount)}{" "}
@@ -268,7 +269,8 @@ function HeaderTop() {
 										</td>										
 									</tr>
 								</>
-							))}
+							))
+							}
 						</tbody>
 					</table>
 				</div>

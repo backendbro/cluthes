@@ -80,7 +80,7 @@ function EmailToken() {
 		<div className='flex items-center justify-center items-center  h-[100vh]'>
 			<div className='bg-gray-100 shadow-md shadow-gray-700 w-[95%] p-4 md:w-[50rem] mx-auto py-[4rem] '>
 				<div className='flex flex-col space-y-4  justify-center'>
-					<p className='text-[1.2rem] font-bold text-center mb-6'>
+					<p className='text-[1.1rem] font-bold text-center mb-6'>
 						{Verify === true ? "Email Verified Successfully" : msg ? "Token Sent Successfully" : `Please input the token sent to to verify
 						your email`}
 					</p>
@@ -93,6 +93,14 @@ function EmailToken() {
 							className='p-2 outline-none w-full mx-auto rounded-md'
 						/>
 					</label>
+
+					<div className='text-white  cursor-pointer font-semibold rounded-lg bg-green py-[1rem] px-[3rem] text-center md:w-[30%] w-[70%] mx-auto'
+						onClick={VerifyToken}
+                    
+                    >
+						{VerifyLoad ? <BeatLoader color="white" /> : "Submit"} 
+					</div>
+					
 					<div
 						className='text-white  cursor-pointer !mt-14  font-semibold rounded-lg bg-green py-[1rem] px-[3rem] text-center md:w-[30%] w-[70%] mx-auto'
 						onClick={sendToken}
@@ -101,12 +109,7 @@ function EmailToken() {
                         
 					</div>
 
-					<div className='text-white  cursor-pointer font-semibold rounded-lg bg-green py-[1rem] px-[3rem] text-center md:w-[30%] w-[70%] mx-auto'
-						onClick={VerifyToken}
-                    
-                    >
-						{VerifyLoad ? <BeatLoader color="white" /> : "Submit"} 
-					</div>
+					
 				</div>
 			</div>
 		</div>

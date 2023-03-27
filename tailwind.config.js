@@ -8,7 +8,8 @@ module.exports = {
     extend: {
         screens:{
             "3xl":"2000px",
-        }
+        },
+        colors: {"color_dark_1": "green"}
     },
   },
   plugins: [],

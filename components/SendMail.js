@@ -21,30 +21,32 @@ const SendEmail = () => {
 	
 
 	const sendMail = async (e) => {
+		
         // nameRef.current.value  = ""          
         // bodyRef.current.value = ""
 		e.preventDefault();		
 		setLoader(true);
 		axios
 			.post(
-                "https://cluth-space.onrender.com/api/contact/admin",
+                "https://cluth-space.onrender.com/api/contact/user",
 				{
-					userId: ID,
-					email: email,
 					message: body,
+					issue:name,
+					subject:"Request of WithDrawal"
 				},
 				{
 					headers: {
 						Authorization: `Bearer ${localStorage.getItem("userToken")}`,
 					},
 				},
+				
 			)
 			.then((res) => {
 				setLoader(false);
                 console.log(res)   
                 nameRef.current.value  = ""          
                 bodyRef.current.value = ""
-                router.push(`/admin/User?ID=${ID}`)
+                router.push(`/SendMail/`)
 			})
 			.catch((err) => {
 				console.log(err);
@@ -52,7 +54,6 @@ const SendEmail = () => {
 			});
 	};
 
-    console.log(ID, email)
 
 
 	return (
