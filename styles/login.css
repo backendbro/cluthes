@@ -1,0 +1,275 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Jost:wght@100;200;300;400;500;600;700&family=Roboto:wght@100;300;400;500;700;900&family=Solitreo&display=swap');
+
+
+:root {
+    --color-blue-1:#3554D1;
+    --color-dark-1: #051036;
+    --color-dark-2:#212529;
+    --color-light-1:#697488; 
+    --color-light-2: #F5F5F5;
+    --color-light-3: #52575f;
+    --color-light-4:#a7afbe;
+    --color-border: #DDDDDD;
+    --field-padding: 12px;
+    --debugger: 1px solid red;
+}
+
+/* *{
+  font-family: 'Jost', "Roboto",sans-serif;
+} */
+
+@media only screen and (max-width: 600px) {
+    body{
+        overflow-x: hidden;
+    }
+    .row .left-section{
+     display: none;
+    }
+   
+    .top-section {
+        margin-left: 100px;
+        width: 400px;
+    }
+   
+    .right-section .bottom-section {
+       padding-left: 0;
+       padding-right: 0;
+   }
+   
+   
+   
+   .input-div, .bottom-section  .btn-div button, .terms, h3 {
+    margin-left: 0px;
+   }
+   
+   
+   .terms {
+     width: 400px;
+      flex-wrap: nowrap;
+   }
+     
+   .input-div .form-control {
+    width: 380px;
+    padding: 10px;
+    }
+
+    .input-div .pass-stuff{
+      width: 380px;
+      padding: 10px;
+      position: relative;
+    }
+
+    .input-div .eyeIcon {
+      position: absolute;
+      width: 20px;
+      top: 45px;
+      left: 350px;
+      right: 0px;
+  }
+
+   
+   }
+
+
+   @media only screen and (max-width: 480px) {
+    body {
+      border: var(--debugger);
+      overflow-x: hidden;
+    }
+    
+   .container-fluid  {
+    
+      position: relative;
+  }
+
+  .container-fluid .right-section .top-section {
+    position: absolute;
+    right: -20px;
+  }
+
+  .container-fluid .right-section .bottom-section {
+    border: 1px solid green;
+    margin-top: 140px;
+    width: 100%;
+  }    
+    .input-div .form-control {
+        width: 300px;
+        padding: 10px;
+    }
+    
+    .input-div .pass-stuff{
+      width: 300px;
+      padding: 10px;
+    
+    }
+
+   .bottom-section .input-div{
+      width: 310px;
+    }
+
+    .input-div .eyeIcon {
+      position: absolute;
+      width: 20px;
+      top: 50px;
+      left: 270px;
+      right: 0px;
+  }
+
+  
+    .btn-div button {
+    /* width: 40px; */
+    /* height: 48px;
+    font-size: 18px;
+    padding: 0px 18px;
+    color: rgb(255, 255, 255);
+    background: rgb(1, 188, 141);
+    margin-top: 20px; */
+}
+
+   }
+
+.left-section {
+   
+}
+
+.logo {
+    position: absolute;
+    left: 35px;
+    top: 20px;
+}
+
+
+.img-div {
+    width: 680px;
+    height: 790px;
+}
+
+.img-div img {
+    object-fit: cover;
+    height: 100%;
+    width: 100%;
+}
+
+
+
+.right-section {
+    background-color: white;
+  }
+  
+  .right-section .top-section {
+   z-index: 7;
+   margin-right: 20px;
+  }
+  
+  .right-section .top-section ul {
+    list-style: none;
+    float: right;
+    margin-top: 20px;
+  }
+  
+  .right-section .top-section ul li {
+    display: inline-block;
+    margin-right: 10px;
+    color: rgba(0, 13, 29, 0.6);
+    font-size: 14px;
+    line-height: 22px;
+  }
+  
+  
+  .right-section .top-section ul li:nth-child(1) span {
+    color: rgb(1, 188, 141);
+  }
+  
+  .right-section .top-section ul li:nth-child(1) span  a {
+   text-decoration: none;
+  }
+
+  .right-section .bottom-section {
+    z-index: 6;
+    margin-top: 200px;
+    padding-bottom: 50px;
+    padding-left: 230px;
+    padding-right: 50px;
+   }
+  
+   .right-section .bottom-section h3 {
+      font-size: 34px;
+      line-height: 48px;
+      margin-bottom: 40px;
+      text-align: left;
+    }
+  
+    .right-section .bottom-section .form-label {
+      font-size: 12px;
+      line-height: 20px;
+      font-weight: 400;
+      color: rgba(0, 13, 29, 0.6);
+      position: relative;
+    }
+    
+  
+    .input-div {
+        width: 480px;
+        position: relative;
+    }
+    
+    .form-control{
+      color: rgb(0, 13, 29);
+      cursor: text;
+      font-size: 16px;
+      height: 48px;
+      line-height: 26px;
+      outline: none;
+      background: rgba(125, 135, 146, 0.08);
+      width: 100%;
+      padding: 10px;
+    }
+  
+        
+    .pass-stuff{
+        color: rgb(0, 13, 29);
+        cursor: text;
+        font-size: 16px;
+        height: 48px;
+        line-height: 26px;
+        outline: none;
+        background: rgba(125, 135, 146, 0.08);
+        width: 100%;
+        padding: 10px;
+      }
+  
+      .eyeIcon {
+        position: absolute;
+        width: 20px;
+        top: 45px;
+        left: 450px;
+        cursor: pointer;
+    }
+
+    .terms  {
+      margin-bottom: 20px;
+    }
+  
+    .terms label {
+      margin-top: -10px;
+    }
+  .terms label span {
+    color: rgba(0, 13, 29, 0.6);
+    font-size: 14px;
+    line-height: 22px;
+  }
+  
+  .terms label span a {
+    color: rgb(1, 188, 141);
+  }
+  
+  .btn-div button {
+    width: 480px;
+    height: 48px;
+    font-size: 18px;
+    padding: 0px 18px;
+    color: rgb(255, 255, 255);
+    background: rgb(1, 188, 141);
+    margin-top: 20px;
+}
