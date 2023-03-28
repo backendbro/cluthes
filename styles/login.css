@@ -15,9 +15,9 @@
     --debugger: 1px solid red;
 }
 
-/* *{
+*, .new_font{
   font-family: 'Jost', "Roboto",sans-serif;
-} */
+}
 
    @media only screen and (max-width: 480px) {
     .bottom-section  {
@@ -30,22 +30,25 @@
     }
       .bottom-section .login {
         width: 200px;
-        margin-right: 110px;
+        margin-right: 105px;
         float:left;
       }
-    .input-div .form-control {
-        width: 300px;
+
+      .input-div .form-control {
+        width: 298px;
         padding: 10px;
+        margin-left: 5px;
     }
     
     .input-div .pass-stuff{
-      width: 300px;
+      width: 298px;
       padding: 10px;
-    
+      margin-left: 5px;
     }
 
    .bottom-section .input-div{
-      width: 310px;
+      width: 300px;
+      border: var(--debugger);
     }
 
     .input-div .eyeIcon {
