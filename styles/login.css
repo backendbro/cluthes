@@ -1,6 +1,9 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Jost:wght@100;200;300;400;500;600;700&family=Roboto:wght@100;300;400;500;700;900&family=Solitreo&display=swap');
 
+*, html, body{
+  font-family: 'Jost', "Roboto",sans-serif;
+}
 
 :root {
     --color-blue-1:#3554D1;
@@ -15,9 +18,8 @@
     --debugger: 1px solid red;
 }
 
-*, .new_font{
-  font-family: 'Jost', "Roboto",sans-serif;
-}
+
+
 
    @media only screen and (max-width: 480px) {
     .bottom-section  {
@@ -88,7 +90,10 @@
       position: relative;
     } */
     
-  
+    .new_font{
+      font-family: sans-serif;
+    }
+
     .input-div {
         width: 480px;
         position: relative;

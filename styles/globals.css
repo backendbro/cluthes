@@ -5,9 +5,11 @@
 @tailwind utilities;
 
 @layer base {
-    body{
-        font-family: 'Jost', "Roboto",sans-serif;
-    }
+    
+}
+
+html, body{
+    font-family: 'Jost', "Roboto",sans-serif;
 }
 
 [aria-current]{

@@ -160,8 +160,8 @@ const Login = () => {
                </div> */}
               {/* </div> */}
 			  
-			<div className='p-1 md:p-4 gap-y-4 flex space-y-2 flex-col-reverse md:flex-col md:space-y-20  w-full md:w-[60%] bg-white new_font'>
-				<p className=' text-left md:text-right text-[.8rem] text-gray-800 w-full md:w-[60%] mx-auto  md:block new_font'>
+			<div className='p-1 md:p-4 gap-y-4 flex space-y-2 flex-col-reverse md:flex-col md:space-y-20  w-full md:w-[60%] bg-white'>
+				<p className=' text-left md:text-right text-[.8rem] text-gray-800 w-full md:w-[60%] mx-auto  md:block'>
 					Dont have an account?{" "}
 					<span
 						className='green cursor-pointer '
@@ -177,7 +177,7 @@ const Login = () => {
 				<div className='text-gray-400 w-full md:w-[60%] mx-auto'>
 
 				<div class="bottom-section">
-                <h4 className='text-[2rem] mb-8 text-black font-bold login new_font'>Log In</h4>
+                <h4 className='text-[2rem] mb-8 text-black font-bold login'>Log In</h4>
                 <div class="mb-5 input-div">
                     <label for="exampleFormControlInput1"  id="labelForFormControl" class="form-label">
 					<p className='text-s text-black mb-2'>Email</p>
