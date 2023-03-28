@@ -25,11 +25,11 @@
       justify-content: center;
       flex-direction: column;
       align-items: center; 
+      border: var(--debugger);
       /* overflow-x: hidden; */
     }
       .bottom-section .login {
         width: 200px;
-        border: var(--debugger);
         margin-right: 110px;
         float:left;
       }
