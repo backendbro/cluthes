@@ -30,3 +30,10 @@ export const AssetsHeaderData = [
    
 
 ]
+
+export const AssetDataMobile = [
+    {
+        name:"Overview",
+        href:"/assets"
+    },
+]

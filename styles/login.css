@@ -19,79 +19,20 @@
   font-family: 'Jost', "Roboto",sans-serif;
 } */
 
-@media only screen and (max-width: 600px) {
-    body{
-        /* overflow-x: hidden; */
-    }
-    .row .left-section{
-     display: none;
-    }
-   
-    .top-section {
-        margin-left: 100px;
-        width: 400px;
-    }
-   
-    .right-section .bottom-section {
-       padding-left: 0;
-       padding-right: 0;
-   }
-   
-   
-   
-   .input-div, .bottom-section  .btn-div button, .terms, h3 {
-    margin-left: 0px;
-   }
-   
-   
-   .terms {
-     width: 400px;
-      flex-wrap: nowrap;
-   }
-     
-   .input-div .form-control {
-    width: 380px;
-    padding: 10px;
-    }
-
-    .input-div .pass-stuff{
-      width: 380px;
-      padding: 10px;
-      position: relative;
-    }
-
-    .input-div .eyeIcon {
-      position: absolute;
-      width: 20px;
-      top: 45px;
-      left: 350px;
-      right: 0px;
-  }
-
-   
-   }
-
-
    @media only screen and (max-width: 480px) {
-    body {
-      border: var(--debugger);
+    .bottom-section  {
+      display: flex;
+      justify-content: center;
+      flex-direction: column;
+      align-items: center; 
       /* overflow-x: hidden; */
     }
-    
-   .container-fluid  {
-      position: relative;
-  }
-
-  .container-fluid .right-section .top-section {
-    position: absolute;
-    right: -20px;
-  }
-
-  .container-fluid .right-section .bottom-section {
-    border: 1px solid green;
-    margin-top: 140px;
-    width: 100%;
-  }    
+      .bottom-section .login {
+        width: 200px;
+        border: var(--debugger);
+        margin-right: 110px;
+        float:left;
+      }
     .input-div .form-control {
         width: 300px;
         padding: 10px;

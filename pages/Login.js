@@ -34,10 +34,10 @@ const Login = () => {
 		e.preventDefault();
 		
 		setBtnLoad(true);
-        console.log(emailRef.current.value, passwordRef.current.value)
+        
 		
 		try {
-			console.log("trying");
+			
 			await axios
 				.post(
 					"https://cluth-space.onrender.com/api/auth/login",
@@ -50,8 +50,7 @@ const Login = () => {
 					},
 				)
 				.then((res) => {
-					console.log("Success");
-                    console.log(res)
+					
                     localStorage.setItem("userToken", res.data.token)
                     localStorage.setItem("userData", JSON.stringify(res.data.user))
                     res.data.user.role === "Admin" ? router.push("/admin") : router.push("/assets")
@@ -60,7 +59,7 @@ const Login = () => {
 				});
 		} catch (error) {
 			setBtnLoad(false);
-			console.log(error.response)
+			
             if (error.response.data.message === "EMAIL DOES NOT EXIST"){
                 router.push("/SignIn")
             }
@@ -68,7 +67,7 @@ const Login = () => {
                 localStorage.setItem("userEmail", JSON.stringify(emailRef.current.value))
                 router.push("/EmailToken")
             }			
-			console.log(error.response.data);
+			
 		}
 	};
 
@@ -89,14 +88,15 @@ const Login = () => {
 	}
 
 	return (
-		<div className=' flex flex-col space-y-4 md:space-y-0 py-4 px-8 md:p-0  md:flex-row w-full min-h-[100vh] h-full bg-white '>
+		<div className=' flex flex-col space-y-4 md:space-y-0 py-4 px-8 md:p-0  md:flex-row w-full min-h-[100vh] h-full bg-white'>
 			<div className=' w-[40%] relative'>
-				<div className='flex h-full w-full md:hidden'>
+				<div className='flex h-full w-full md:hidden logo'>
 					<Image
 						src='https://assets.staticimg.com/cms/media/1lB3PkckFDyfxz6VudCEACBeRRBi6sQQ7DDjz0yWM.svg'
 						width={100}
 						height={100}
 						alt='logo'
+						
 					/>
 				</div>
 
@@ -177,7 +177,7 @@ const Login = () => {
 				<div className='text-gray-400 w-full md:w-[60%] mx-auto'>
 
 				<div class="bottom-section">
-                <h4 className='text-[2rem] mb-8 text-black font-bold'>Log In</h4>
+                <h4 className='text-[2rem] mb-8 text-black font-bold login'>Log In</h4>
                 <div class="mb-5 input-div">
                     <label for="exampleFormControlInput1"  id="labelForFormControl" class="form-label">
 					<p className='text-s text-black mb-2'>Email</p>
@@ -198,7 +198,7 @@ const Login = () => {
 					
                   </div> */}
 
-<div class="mb-2 input-div" >
+					<div class="mb-2 input-div" >
                     <label for="exampleFormControlInput1" id="labelForFormControl" class="form-label">
 					<p className='text-s text-black mb-2'>Password</p>
 					</label>

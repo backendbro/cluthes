@@ -32,7 +32,6 @@ function EmailToken() {
 
 	const sendToken = async () => {
         setLoad(true)
-		console.log(JSON.parse(localStorage.getItem("userEmail")))
         await axios.put(
 			"https://cluth-space.onrender.com/api/auth/resend-pin",
 			{
@@ -40,12 +39,10 @@ function EmailToken() {
 			},		
 		).then((res)=> {
             setLoad(false)
-            console.log("success")
             setMsg(true)
         }).catch((err)=> {
             alert(err)
             setLoad(false)
-            console.log(err)
         })
 
 	};
@@ -78,9 +75,9 @@ function EmailToken() {
 
 	return (
 		<div className='flex items-center justify-center items-center  h-[100vh]'>
-			<div className='bg-gray-100 shadow-md shadow-gray-700 w-[95%] p-4 md:w-[50rem] mx-auto py-[4rem] '>
+			<div className='bg-gray-100 shadow-md shadow-gray-400 w-[95%] p-4 md:w-[50rem] mx-auto py-[4rem] '>
 				<div className='flex flex-col space-y-4  justify-center'>
-					<p className='text-[1.1rem] font-bold text-center mb-6'>
+					<p className='text-[1.1rem] font-medium text-center mb-6' style={{ color: "#051036" }}>
 						{Verify === true ? "Email Verified Successfully" : msg ? "Token Sent Successfully" : `Please input the token sent to to verify
 						your email`}
 					</p>
@@ -91,23 +88,29 @@ function EmailToken() {
                             ref={inputRef}
 							placeholder='Enter Token'
 							className='p-2 outline-none w-full mx-auto rounded-md'
+							style={{
+									color:"rgb(0, 13, 29)",
+									background: "rgba(125, 135, 146, 0.08)"
+								}}
 						/>
 					</label>
+					
+					<div
+						className='text-white  cursor-pointer !mt-14  font-medium rounded-lg bg-green py-[1rem] px-[3rem] text-center md:w-[30%] w-[70%] mx-auto'
+						onClick={sendToken}
+					>
+						{Load ? <BeatLoader color="white" /> : "Resend Token"}                    
+                        
+					</div>
 
-					<div className='text-white  cursor-pointer font-semibold rounded-lg bg-green py-[1rem] px-[3rem] text-center md:w-[30%] w-[70%] mx-auto'
+					<div className='text-white  cursor-pointer font-medium rounded-lg bg-green py-[1rem] px-[3rem] text-center md:w-[30%] w-[70%] mx-auto'
 						onClick={VerifyToken}
                     
                     >
 						{VerifyLoad ? <BeatLoader color="white" /> : "Submit"} 
 					</div>
 					
-					<div
-						className='text-white  cursor-pointer !mt-14  font-semibold rounded-lg bg-green py-[1rem] px-[3rem] text-center md:w-[30%] w-[70%] mx-auto'
-						onClick={sendToken}
-					>
-						{Load ? <BeatLoader color="white" /> : "Resend Token"}                    
-                        
-					</div>
+					
 
 					
 				</div>
