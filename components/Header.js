@@ -102,7 +102,7 @@ export default function Header() {
 				<div className='h-8 w-8 flex items-center justify-center rounded-full border border-black text-sm uppercase text-black'>
 					{userMail}
 				</div>
-				<Bars3Icon className='h-8 w-8 ml-4 text-black' onClick={()=>{
+				<Bars3Icon className='h-8 w-8 ml-4 text-black lg:hidden' onClick={()=>{
                     document.querySelector(".menu-content").classList.toggle("!max-h-full")                 
                     document.querySelector(".menu-content").classList.toggle("!py-[1rem]")                 
                 }} />
