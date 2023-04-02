@@ -4,6 +4,8 @@ import "../styles/UserList.scss";
 import '../styles/User.scss'
 import '../styles/UpdateWithdraw.scss'
 import '../styles/login.css'
+import '../styles/register.css'
+import '../styles/collapse-menu.css'
 
 
 function MyApp({ Component, pageProps }) {

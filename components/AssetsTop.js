@@ -8,7 +8,7 @@ function AssetsTop() {
 	const router = useRouter();
 
 	const [userDetails, setUserDetails] = useState();
-	const [userBal, setUserBal] = useState();
+	const [userBal, setUserBal] = useState(0.00);
 	const [converter, setConverter] = useState(null);
 	let userData, userID;
 
@@ -48,13 +48,16 @@ function AssetsTop() {
     getConverter()
 
 	
+	function toggleBtn () {
+
+	}
 
 	return (
 		<div className='mt- flex flex-col space-y-8  md:flex-row md: justify-between md:items-end'>
 			<div className='flex flex-col space-y-8'>
 				<div className='flex items-center gap-2'>
 					<h1 className='text-[1.8rem] font-medium'>Asset Overview</h1>
-					<EyeIcon className='h-4 w-4 text-gray-500 mt-2' />
+					<EyeIcon className='h-4 w-4 text-gray-500 mt-2' onClick={toggleBtn}/>
 				</div>
 				<div className='flex items-center gap-2'>
 					<Image
@@ -64,7 +67,7 @@ function AssetsTop() {
 						alt='svg'
 					/>
 					<p>
-						{converter}TC <span className='text-xs text-gray-300'>={userBal} USD</span>
+						{converter}USDT <span className='text-xs text-gray-300'> = {userBal} USD </span>
 					</p>
 					<div className='bg-gray-100 px-4 py-1 flex items-center justify-center rounded-full'>
 						BTC
@@ -72,8 +75,8 @@ function AssetsTop() {
 				</div>
 			</div>
 			<div className='flex gap-4 w-full md:w-[50%] lg:w-[40%]'>
-				<button
-					className='py-2 px-4 w-full rounded-md text-white bg-green '
+				<button	
+					className='py-2 px-4 w-full rounded-md text-white bg-green'
 					onClick={() => {
 						router.push("./Deposit");
 					}}

@@ -16,9 +16,6 @@ function SignIn() {
 	const passwordRef = useRef();
 	const [btnLoad, setBtnLoad] = useState(false);
 
-	useEffect(() => {
-		checkWidth()
-	})
 
 	const signup = async (e) => {
 		setBtnLoad(true);
@@ -59,20 +56,7 @@ function SignIn() {
 
 	
 
-	// For some reason I couuldnt change the width from the css file, I had to do it here.
-	function checkWidth() {
-		let width = (window.innerWidth > 0) ? window.innerWidth : screen.width;
-		console.log(width)
-		if(width >= 600){
-			const btn = document.querySelector('.btn')
-			btn.style.width = "480px"	
-		}
-		
-		if(width <= 600){
-			const btn = document.querySelector('.btn')
-			btn.style.width = "320px"	
-		}
-	}
+
 
 	return (
 		<div className=' flex flex-col space-y-4 md:space-y-0 py-4 px-8 md:p-0  md:flex-row w-full min-h-[100vh] h-full bg-white '>
@@ -124,14 +108,13 @@ function SignIn() {
 				</p>
 
 				<div className='text-gray-400 w-full md:w-[60%] mx-auto'>
-					<h4 className='text-[2rem] mb-10 text-black font-bold'>Sign Up</h4>
+					<h1 className='text-[2rem] mb-8 text-black font-bold'>Sign Up</h1>
 					{/* <div className='flex gap-4 mb-8'>
 						<h1
                         className="cursor-pointer "
 							onClick={() => {
 								isNumber(false);
 							}}
-
                             style={{ color: `${ !number ? "rgb(1, 188, 141)": "gray" }` }}
 						>
 							Email
@@ -147,48 +130,50 @@ function SignIn() {
 						</h1>
 					</div> */}
 					<form className='flex flex-col space-y-8'>
-						
-
-						<div class="mb-2 input-div">
-						<label for="exampleFormControlInput1"  id="labelForFormControl" class="form-label">
-						<p className='text-s text-black mb-2'>Email</p>
+						<label>
+							<p className='text-xs mb-2'>Email</p>
+							<input
+								type='email'
+								placeholder='Email'
+								className='bg-gray-200 w-full p-2 outline-none rounded-md'
+								ref={emailRef}
+							/>
 						</label>
-						<input type="email" class="form-control shadow-none" id="exampleFormControlInput1" placeholder="Email" ref={emailRef} />
-						</div>
 
-	
-
-						<div class="mb-2 input-div" >
-						<label for="exampleFormControlInput1" id="labelForFormControl" class="form-label">
-						<p className='text-s text-black mb-2'>Phone Number</p>
+						<label>
+							<p className='text-xs mb-2'>Phone Number </p>
+							<input
+								type='text'
+								placeholder='Phone Number'
+								className='bg-gray-200 w-full p-2 rounded-md'
+								ref={phoneNoRef}
+							/>
 						</label>
-						<input type="number" class="form-control shadow-none" id="exampleFormControlInput1" placeholder="Phone Number" ref={phoneNoRef} />
-						</div>
 
+						<label>
+							<p className='text-xs mb-2'>Username </p>
+							<input
+								type='text'
+								placeholder='Username'
+								className='bg-gray-200 w-full p-2 rounded-md'
+								ref={usernameRef}
+							/>
+						</label>
 
-						<div class="mb-2 input-div" >
-                    <label for="exampleFormControlInput1" id="labelForFormControl" class="form-label">
-					<p className='text-s text-black mb-2'>Username</p>
-					</label>
-                    <input type="text" class="form-control shadow-none" id="exampleFormControlInput1" placeholder="Username" ref={usernameRef}/> 
-                  </div>
-
-				  <div class="mb-2 input-div" >
-                    <label for="exampleFormControlInput1" id="labelForFormControl" class="form-label">
-					<p className='text-s text-black mb-2'>Password</p>
-					</label>
-					<input
-						type={`${show ? "text" : "password"}`}
-						class="pass-stuff shadow-none"
-						placeholder="Password"
-						ref={passwordRef}
-					/>
-					{!show && (
+						<label className='group'>
+							<p className='text-xs mb-2'>Password</p>
+							<div className='flex gap-2 bg-gray-200 p-2 items-center'>
+								<input
+									type={`${show ? "text" : "password"}`}
+									className='bg-transparent outline-none w-full rounded-md'
+									ref={passwordRef}
+								/>
+								{!show && (
 									<EyeIcon
 										onClick={() => {
 											setShow(true);
 										}}
-										class="eyeIcon"
+										className='w-4 h-4  text-black cursor-pointer'
 									/>
 								)}
 								{show && (
@@ -196,14 +181,13 @@ function SignIn() {
 										onClick={() => {
 											setShow(false);
 										}}
-										class="eyeIcon"
+										className='w-4 h-4  cursor-pointer text-black'
 									/>
 								)}
-                  </div>
+							</div>
+						</label>
 
-						
-
-						{/* <div className='flex gap-2'>
+						<div className='flex gap-2'>
 							<input type='checkbox' />
 							<p className='text-xs'>
 								I have read and agree to the{" "}
@@ -211,23 +195,22 @@ function SignIn() {
 									<a href='#'>Terms of Use</a>{" "}
 								</span>{" "}
 							</p>
-						</div> */}
+						</div>
 
-						<div class="terms">
-						<input class="form-check-input  shadow-none" type="checkbox" value="" id="flexCheckDefault" />
-						<label class="form-check-label" for="flexCheckDefault">
-						<span> &nbsp; I have read and agree to the <a href="#">Terms of Use.</a> </span>
-						</label>
-					</div>
-
-					<div class="btn-div mb-3 mt-3">
-					<button class="btn" type="button" onClick={signup}>{btnLoad ? <BeatLoader color='#36d7b7' size={7} /> : "Sign Up"}</button>
-                 </div>
+						<button
+							className='w-full py-2 rounded-md text-white font-medium  '
+							style={{ backgroundColor: "rgb(1, 188, 141)" }}
+							onClick={signup}
+						>
+							{btnLoad ? <BeatLoader color='#fff' size={10} /> : " Sign Up"}
+						</button>
 					</form>
 				</div>
 			</div>
 		</div>
 	);
 }
+
+
 
 export default SignIn;

@@ -1,0 +1,68 @@
+@import url('https://fonts.googleapis.com/css2?family=Jost:wght@100;200;300;400;500;600;700&family=Roboto:wght@100;300;400;500;700;900&family=Solitreo&display=swap');
+
+html {
+    font-family: 'Jost',sans-serif;
+}
+
+.menu-content {
+  padding: 0 0 0 50px;
+}
+
+.collapsible-menu {
+  background-color: rgb(255, 255, 255);
+  padding: 0px 30px;
+}
+.collapsible-menu ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.collapsible-menu a {
+  display:block;
+  padding: 10px;
+  text-decoration: none;
+}
+
+.collapsible-menu label {
+  font-size: 56px;
+  display: block;
+  cursor: pointer;
+  background: url(../public/images/meni.png) no-repeat left center;
+  padding: 10px;
+  transition: .5s ease-in-out; 
+}
+
+input#menu {
+  display: none;
+}
+
+input:checked +label {
+  background-image: url(../public/images/klose.png);
+  transition: .5s ease-in-out; 
+}
+
+.menu-content {
+  max-height: 0;
+  overflow: hidden;
+  color: white;
+  right: 2px;
+  top: 60px;
+  position: absolute;
+  height: 50%;
+  position: fixed;
+  width: 250px;
+  margin-right: 2px;
+  transition: .8s ease-in-out;
+  background: rgb(36, 174, 143);
+  z-index: 1000;
+  cursor: pointer;
+}
+
+
+/* Toggle Effect */
+input:checked ~ label {
+  background-image: url(../public/images/klose.png);
+}
+input:checked ~ .menu-content {
+  max-height: 100%;
+}

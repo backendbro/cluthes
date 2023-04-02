@@ -103,11 +103,33 @@ export default function Header() {
 					{userMail}
 				</div>
 				<div className='h-6 px-2 text-sm items-center justify-center rounded-md border cursor-pointer  border-black text-center ' onClick={()=> {
-                    logout()
-                }}>
-					Logout
+						logout()
+					}}>
+						Logout
 				</div>
-				<ListBulletIcon className='h-6 w-6 flex lg:hidden' />
+				{/* <ListBulletIcon className='h-6 w-6 flex lg:hidden' /> */}
+				
+                
+               
+                
+
+                
+                
+				<div class="collapsible-menu h-6 w-6 flex lg:hidden">
+					<input type="checkbox" id="menu" />
+					<label for="menu"></label>
+					<div class="menu-content">
+						<ul>
+							<li><a href="#"></a>Overview</li>
+							<li><a href="#"></a>Deposit</li>
+							<li><a href="#"></a>WithDraw</li>
+							<li><a href="#"></a>History</li>
+							<li><a href="#"></a>Contact Admin</li>
+							
+						</ul>
+					</div>
+				</div>
+
 			</div>
 		</div>
 	);

@@ -6,7 +6,7 @@ function GridElement({title, amount, subAmount, color }) {
           <h1 className='text-black font-medium'> {title} </h1>
           <div>
           <h1 className='text-black font-medium'> {amount} <span className='text-sm'>BTC</span> </h1>
-          <p className='text-gray-300'> ={subAmount} USD </p>
+          <p className='text-gray-300'> = {subAmount} USD </p>
           </div>
     </div>
   )
