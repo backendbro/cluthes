@@ -55,7 +55,7 @@ export default function Header() {
     console.log(userMail)
 
 	return (
-		<div className='flex justify-between p-4 items-center'>
+		<div className='flex justify-between p-4 items-center mb-8 lg:mb-0'>
 			<div className='w-[80%] flex gap-2 items-center '>
 				{/* logo */}
 				<Image
@@ -95,36 +95,46 @@ export default function Header() {
 				</ul>
 			</div>
 
-			<div className='w-[50%] md:w-[20%]  flex gap-4 justify-end lg:justify-evenly items-center'>
+			<div className='w-[50%] md:w-[20%]  flex  justify-end lg:justify-evenly items-center'>
 				<BellIcon className='w-8 h-8 rounded-lg bg-gray-300 px-2 py-2 hidden lg:block' />
 				<DocumentTextIcon className='w-8 h-8 rounded-lg bg-gray-300 px-2 py-2 hidden  lg:flex' />
 				<CreditCardIcon className='w-8 h-8 rounded-lg bg-gray-300 px-2 py-2 hidden  lg:flex' />
 				<div className='h-8 w-8 flex items-center justify-center rounded-full border border-black text-sm uppercase text-black'>
 					{userMail}
 				</div>
-				<div className='h-6 px-2 text-sm items-center justify-center rounded-md border cursor-pointer  border-black text-center ' onClick={()=> {
+				<div className='h-6 px-2 text-sm items-center justify-center rounded-md border cursor-pointer  border-black text-center hidden lg:block ' onClick={()=> {
 						logout()
 					}}>
 						Logout
 				</div>
-				{/* <ListBulletIcon className='h-6 w-6 flex lg:hidden' /> */}
-				
-                
-               
-                
-
-                
+								                                   
                 
 				<div class="collapsible-menu h-6 w-6 flex lg:hidden">
 					<input type="checkbox" id="menu" />
 					<label for="menu"></label>
 					<div class="menu-content">
-						<ul>
-							<li><a href="#"></a>Overview</li>
-							<li><a href="#"></a>Deposit</li>
-							<li><a href="#"></a>WithDraw</li>
-							<li><a href="#"></a>History</li>
-							<li><a href="#"></a>Contact Admin</li>
+						<ul className="flex flex-col space-y-2 w-full">
+							<li onClick={()=> {
+                                router.push("/assets");
+                            }}>Overview</li>
+							<li onClick={()=> {
+                                router.push("/Deposit")
+                            }}>Deposit</li>
+							<li onClick={()=> {
+                                router.push("/Withdraw")
+                            }}>WithDraw</li>
+							<li onClick={()=> {
+                                router.push("/History")
+                            }}>History</li>
+							<li onClick={()=> {
+                                router.push("/SendMail")
+                            }}>Contact Admin</li>
+
+                            <hr/>
+
+                            <li onClick={()=> {
+                                logout()
+                            }}>Logout</li>
 							
 						</ul>
 					</div>
