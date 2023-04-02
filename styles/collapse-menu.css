@@ -41,8 +41,8 @@ input:checked +label {
   transition: .5s ease-in-out; 
 }
 
-.menu-content {
-  display: none;
+.menu-content {  
+  max-height: 0;
   overflow: hidden;
   color: white;
   right: 2px;
@@ -55,16 +55,9 @@ input:checked +label {
   background: rgb(36, 174, 143);
   z-index: 1000;
   cursor: pointer;
-  padding: 0.5rem 0;
+  padding: 0;
   text-align: center;
 }
 
 
 /* Toggle Effect */
-input:checked ~ label {
-  background-image: url(../public/images/klose.png);
-}
-input:checked ~ .menu-content {
-  display: block;
-  max-height: 100%;
-}

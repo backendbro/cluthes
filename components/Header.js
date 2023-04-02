@@ -8,7 +8,7 @@ import {
 	EyeIcon,
 	EyeSlashIcon,
 	Squares2X2Icon,
-	ListBulletIcon,
+	Bars3Icon,
 } from "@heroicons/react/24/outline";
 import {
 	BellIcon,
@@ -18,15 +18,15 @@ import {
 
 export default function Header() {
 	const [userDetails, setUserDetails] = useState();
-    const [userMail, setUserMail] = useState("")
-    const router = useRouter()
-    let userToken, userData;
+	const [userMail, setUserMail] = useState("");
+	const router = useRouter();
+	let userToken, userData;
 
 	useEffect(() => {
-        userToken = localStorage.getItem("userToken");
-	    userData = JSON.parse(localStorage.getItem("userData"));  
-        let  email = userData.email.slice(0, 2);
-         setUserMail(email)
+		userToken = localStorage.getItem("userToken");
+		userData = JSON.parse(localStorage.getItem("userData"));
+		let email = userData.email.slice(0, 2);
+		setUserMail(email);
 		getUserDetails();
 	}, []);
 
@@ -48,11 +48,11 @@ export default function Header() {
 		}
 	};
 
-    const logout = () => {
-        router.push("./Login")
-    }
-	
-    console.log(userMail)
+	const logout = () => {
+		router.push("./Login");
+	};
+
+	console.log(userMail);
 
 	return (
 		<div className='flex justify-between p-4 items-center mb-8 lg:mb-0'>
@@ -102,44 +102,68 @@ export default function Header() {
 				<div className='h-8 w-8 flex items-center justify-center rounded-full border border-black text-sm uppercase text-black'>
 					{userMail}
 				</div>
-				<div className='h-6 px-2 text-sm items-center justify-center rounded-md border cursor-pointer  border-black text-center hidden lg:block ' onClick={()=> {
-						logout()
-					}}>
-						Logout
-				</div>
-								                                   
-                
-				<div class="collapsible-menu h-6 w-6 flex lg:hidden">
-					<input type="checkbox" id="menu" />
-					<label for="menu"></label>
-					<div class="menu-content">
-						<ul className="flex flex-col space-y-2 w-full">
-							<li onClick={()=> {
-                                router.push("/assets");
-                            }}>Overview</li>
-							<li onClick={()=> {
-                                router.push("/Deposit")
-                            }}>Deposit</li>
-							<li onClick={()=> {
-                                router.push("/Withdraw")
-                            }}>WithDraw</li>
-							<li onClick={()=> {
-                                router.push("/History")
-                            }}>History</li>
-							<li onClick={()=> {
-                                router.push("/SendMail")
-                            }}>Contact Admin</li>
-
-                            <hr/>
-
-                            <li onClick={()=> {
-                                logout()
-                            }}>Logout</li>
-							
-						</ul>
-					</div>
+				<Bars3Icon className='h-8 w-8 ml-4 text-black' onClick={()=>{
+                    document.querySelector(".menu-content").classList.toggle("!max-h-full")                 
+                    document.querySelector(".menu-content").classList.toggle("!py-[1rem]")                 
+                }} />
+				<div
+					className='h-6 px-2 text-sm items-center justify-center rounded-md border cursor-pointer  border-black text-center hidden lg:block '
+					onClick={() => {
+						logout();
+					}}
+				>
+					Logout
 				</div>
 
+				<div class='menu-content'>
+					<ul className='flex flex-col space-y-2 w-full'>
+						<li
+							onClick={() => {
+								router.push("/assets");
+							}}
+						>
+							Overview
+						</li>
+						<li
+							onClick={() => {
+								router.push("/Deposit");
+							}}
+						>
+							Deposit
+						</li>
+						<li
+							onClick={() => {
+								router.push("/Withdraw");
+							}}
+						>
+							WithDraw
+						</li>
+						<li
+							onClick={() => {
+								router.push("/History");
+							}}
+						>
+							History
+						</li>
+						<li
+							onClick={() => {
+								router.push("/SendMail");
+							}}
+						>
+							Contact Admin
+						</li>
+
+						<hr />
+
+						<li
+							onClick={() => {
+								logout();
+							}}
+						>
+							Logout
+						</li>
+					</ul>
+				</div>
 			</div>
 		</div>
 	);
