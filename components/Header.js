@@ -155,7 +155,7 @@ export default function Header() {
 
                         <li
 							onClick={() => {
-								router.push("/Verificatiob");
+								router.push("/Verification");
 							}}
 						>
 							Verification
