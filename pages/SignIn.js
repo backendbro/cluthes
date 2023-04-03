@@ -9,15 +9,18 @@ import { BeatLoader } from "react-spinners";
 function SignIn() {
 	const [number, isNumber] = useState(false);
 	const [show, setShow] = useState(false);
+    const [msg, setMsg] = useState("")
 	const router = useRouter();
 	const emailRef = useRef();
 	const phoneNoRef = useRef();
 	const usernameRef = useRef();
+    const checkRef = useRef()
 	const passwordRef = useRef();
 	const [btnLoad, setBtnLoad] = useState(false);
 
 
 	const signup = async (e) => {
+        console.log(checkRef.current.checked)
 		setBtnLoad(true);
 		console.log(
 			emailRef.current.value,
@@ -25,33 +28,41 @@ function SignIn() {
 			phoneNoRef.current.value,
 			passwordRef.current.value,
 		);
-		e.preventDefault();
-		try {
-			console.log("trying");
-			await axios
-				.post(
-					"https://cluth-space.onrender.com/api/auth/register",
-					{
-						email: emailRef.current.value,
-						username: usernameRef.current.value,
-						phoneNumber: phoneNoRef.current.value,
-						password: passwordRef.current.value,
-					},
-					{
-						headers: { "Content-Type": "application/json" },
-					},
-				)
-				.then((res) => {
-					console.log("Success");
-                    localStorage.setItem("userEmail", JSON.stringify(emailRef.current.value))
-					setBtnLoad(false);
-					router.push("/VerifyEmail");
-				});
-		} catch (error) {
-			setBtnLoad(false);
-			alert(error);
-			console.log(error);
-		}
+        if(checkRef.current.checked === false) {
+            e.preventDefault()
+            setMsg("Please agree to our terms and conditions")
+            setBtnLoad(false)
+        } else{
+            e.preventDefault();
+            try {
+                console.log("trying");
+                await axios
+                    .post(
+                        "https://cluth-space.onrender.com/api/auth/register",
+                        {
+                            email: emailRef.current.value,
+                            username: usernameRef.current.value,
+                            phoneNumber: phoneNoRef.current.value,
+                            password: passwordRef.current.value,
+                        },
+                        {
+                            headers: { "Content-Type": "application/json" },
+                        },
+                    )
+                    .then((res) => {
+                        console.log("Success");
+                        localStorage.setItem("userEmail", JSON.stringify(emailRef.current.value))
+                        setBtnLoad(false);
+                        router.push("/VerifyEmail");
+                    });
+            } catch (error) {
+                setBtnLoad(false);
+                setMsg(error.response.data.message)
+                console.log(error.response.data.message)                
+                console.log(error);
+            }
+        }
+		
 	};
 
 	
@@ -188,7 +199,7 @@ function SignIn() {
 						</label>
 
 						<div className='flex gap-2'>
-							<input type='checkbox' />
+							<input ref={checkRef} type='checkbox' />
 							<p className='text-xs'>
 								I have read and agree to the{" "}
 								<span>
@@ -196,6 +207,8 @@ function SignIn() {
 								</span>{" "}
 							</p>
 						</div>
+
+                        <p className="text-red-500 text-center">{msg}</p>
 
 						<button
 							className='w-full py-2 rounded-md text-white font-medium  '

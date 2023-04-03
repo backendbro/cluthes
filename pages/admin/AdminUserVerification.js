@@ -131,7 +131,7 @@ const AdminUserVerification = () => {
 					</div>
                     
 					<div className='admin__user__profile__con__third'>
-						<form>
+						<form className="flex flex-col space-y-4">
 							<div>
 								<label>Id Verification</label>
 								<select ref={IDref}>

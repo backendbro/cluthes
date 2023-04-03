@@ -13,6 +13,7 @@ import { BeatLoader } from "react-spinners";
 const Login = () => {
 	const [number, isNumber] = useState(false);
 	const [show, setShow] = useState(false);
+    const [msg, setMsg] = useState("")
 	const router = useRouter();
 	const emailRef = useRef();	
 	const passwordRef = useRef();
@@ -57,15 +58,18 @@ const Login = () => {
 				});
 		} catch (error) {
 			setBtnLoad(false);
-			console.log(error)
+			console.log(error)            
             if (error.response.data.message === "EMAIL DOES NOT EXIST"){
                 router.push("/SignIn")
+            }
+            if (error.response.data.message === "YOUR ACCT IS UNDER REVIEW"){
+                setMsg("Your account is currently under review")
             }
             if(error.response.data.message === "VERIFY YOUR ACCT"){
                 localStorage.setItem("userEmail", JSON.stringify(emailRef.current.value))
                 router.push("/EmailToken")
-            }			
-			
+            }	
+            setMsg(error.response.data.message)			
 		}
 	};
 
@@ -196,6 +200,7 @@ const Login = () => {
 							</label>
 	
 							<div>
+                                <p className="text-red-500 text-center">{msg}</p>
 								<button
 									className='w-full py-2 rounded-md text-white font-medium  mt-6 '
 									style={{ backgroundColor: "rgb(1, 188, 141)" }}
