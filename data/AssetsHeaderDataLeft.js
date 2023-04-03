@@ -15,9 +15,10 @@ export const AssetsHeaderDataLeft = [
     {
         name:"Contact Admin",
         href:"/SendMail"
+    },
+    
+    {
+        name:"Verification",
+        href:"/Verification"
     }
-    // {
-    //     name:"My Bonuses",
-    //     href:"/MyBonuses"
-    // }
 ]

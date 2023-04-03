@@ -115,7 +115,7 @@ export default function Header() {
 					Logout
 				</div>
 
-				<div class='menu-content'>
+				<div className='menu-content'>
 					<ul className='flex flex-col space-y-2 w-full'>
 						<li
 							onClick={() => {
@@ -152,6 +152,15 @@ export default function Header() {
 						>
 							Contact Admin
 						</li>
+
+                        <li
+							onClick={() => {
+								router.push("/Verificatiob");
+							}}
+						>
+							Verification
+						</li>
+
 
 						<hr />
 

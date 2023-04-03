@@ -1,9 +1,11 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import { ChevronDownIcon, DocumentIcon } from "@heroicons/react/24/solid";
 import CoinModal from "./CoinModal";
 import NetworkModal from "./NetworkModal";
 import WithdrawModal from "./WithdrawModal";
 import Image from "next/image"
+import axios from "axios";
+
 
 function WithdrawTop() {
 	const [coinOpen, setCoinOpen] = useState(false);
@@ -11,8 +13,53 @@ function WithdrawTop() {
     const [coin, setCoin] = useState()
 	const [networkOpen, setNetworkOpen] = useState(false);
     const amountRef= useRef()
+	const [converter, setConverter] = useState(null);
+    const [balance, setBalance] = useState()
+   
 
-    console.log(coin)
+    useEffect(()=>{
+        getBalance()
+    }, [])
+
+    const handleWithdraw = () =>thdraw = () => {         
+        setWithdrawOpen(true);
+    }
+
+    const getBalance = async () => {
+        
+    const url = "https://cluth-space.onrender.com/api/deposit/get-balance"
+    try {
+        
+        const res = await axios.post(url, 
+            { userId:String(JSON.parse(localStorage.getItem("userData"))._id) }, {
+                headers: {
+                    Authorization: `Bearer ${localStorage.getItem("userToken")}`,
+                    'Content-Type': 'application/json'
+                }
+            });
+            
+            const bal = res.data
+            console.log(bal.balance.balance)   
+            setBalance(bal.balance.balance)
+            console.log(balance)
+            getConverter()
+        } catch (error) {
+            console.log(error.message)
+        }
+        
+    }
+
+    async function getConverter() {
+        console.log(balance)
+        const res = await axios.get(`https://blockchain.info/tobtc?currency=USD&value=${balance}`).then((res)=> {
+            console.log(res.data)
+            setConverter(res.data)
+        }).catch((err)=> console.log(err))
+    }
+
+    
+
+
 
 	return (
 		<div className=' '>
@@ -112,7 +159,7 @@ function WithdrawTop() {
 												</span>{" "}
 											</h2>
 											<span className='text-sm'>
-												0.00 <span className='text-sm text-gray-400'>USDT</span>
+												{converter} <span className='text-sm text-gray-400'>USDT</span>
 											</span>
 										</div>
 										<div>
@@ -140,10 +187,12 @@ function WithdrawTop() {
 									</div>
 								</div>
 
+                                <p className="text-red-500 text-center">Error processing request</p>
+
 								<button
 									className='w-full bg-green px-6 py-2 rounded-md text-white'
 									onClick={() => {
-										setWithdrawOpen(true);
+										handleWithdraw()
 									}}
 								>
 									Withdraw

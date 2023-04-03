@@ -1,0 +1,149 @@
+.idv__container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    margin-top: 100px;
+    margin-bottom: 100px;
+
+    .idv__con {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        text-align: center;
+
+        .idv__box {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            width: 45%;
+            box-shadow: rgba(0, 0, 0, 0.2) 2px 2px 15px;
+            border-radius: 5px;
+            background-color: white;
+            gap: 30px;
+            padding: 30px;
+            padding-bottom: 60px;
+
+            @media screen and (max-width: 1024px) {
+                width: 80%;
+            }
+
+            @media screen and (max-width: 600px) {
+                width: 95%;
+            }
+
+            .idv__head {
+                display: flex;
+                justify-content: center;
+                flex-direction: column;
+                align-items: center;
+                gap: 5px;
+                background-color: inherit;
+
+                h1 {
+                    background-color: inherit;
+                    font-size: 40px;
+                    font-weight: 700;
+                }
+
+                p {
+                    background-color: inherit;
+                    color: gray;
+                    font-size: 15px;
+                }
+            }
+
+            .idv__inputs {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                gap: 20px;
+                width: 100%;
+                background-color: inherit;
+
+                p {
+                    background-color: inherit;
+                    color: gray;
+                    font-size: 15px;
+                }
+
+                .idv__input__div {
+                    display: flex;
+                    flex-direction: row;
+                    justify-content: center;
+                    align-items: center;
+                    width: 100%;
+                    background-color: inherit;
+                    gap: 10px;
+
+                    .idv__input__button {
+                        display: flex;
+                        flex-direction: row;
+                        justify-content: center;
+                        align-items: center;
+                        padding: 14px 30px;
+                        border: 1.8px solid #0086dc;
+                        border-radius: 3px;
+                        background-color: inherit;
+                        width: 15%;
+
+                        @media screen and (max-width: 1200px) {
+                            width: 20%;
+                            padding: 12px 25px;
+                        }
+
+                        @media screen and (max-width: 1024px) {
+                            width: 15%;
+                        }
+
+                        @media screen and (max-width: 650px) {
+                            padding: 2px 20px;
+                            text-align: center;
+                        }
+
+                        p {
+                            background-color: inherit;
+                            font-size: 13px;
+                            font-weight: 400;
+                            color: #0086dc;
+                        }
+                    }
+
+                    .idv__input {
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        padding: 15px 10px;
+                        align-items: center;
+                        background-color: white;
+                        border-radius: 5px;
+                        width: 85%;
+
+                        @media screen and (max-width: 1200px) {
+                            width: 80%;
+                        }
+
+                        @media screen and (max-width: 1024px) {
+                            width: 85%;
+                        }
+                    }
+                }
+
+                .idv__button {
+                    background-color: #0086dc !important;
+                    width: 100%;
+                    padding: 5px;
+
+                    p {
+                        color: white;
+                    }
+                }
+            }
+        }
+    }
+}

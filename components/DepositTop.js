@@ -6,13 +6,14 @@ import NetworkModal from "./NetworkModal";
 
 function DepositTop() {
 	const [coinOpen, setCoinOpen] = useState(false);
+	const [coin, setCoin] = useState();
 	const [networkOpen, setNetworkOpen] = useState(false);
     const textRef = useRef()
 	return (
 		<div>
 			{/* // Modals
         // Coin Modal */}
-			{coinOpen && <CoinModal open={coinOpen} setOpen={setCoinOpen} />}
+			{coinOpen && <CoinModal open={coinOpen} setOpen={setCoinOpen} setCoin={setCoin} />}			
 			{networkOpen && (
 				<NetworkModal open={networkOpen} setOpen={setNetworkOpen} />
 			)}
@@ -25,21 +26,28 @@ function DepositTop() {
 							<p className='text-sm text-gray-400'>Coin</p>
 							<div
 								className='bg-gray-300 rounded-md px-2 py-4 flex-grow flex cursor-pointer justify-between'
-								// onClick={() => {
-								// 	setCoinOpen(true);
-								// }}
+								onClick={() => {
+									setCoinOpen(true);
+								}}
 							>
-								<div className="flex gap-4">
+								<div className="flex gap-2">
+                              
+                              {coin ?                                    
+                              <div className="flex gap-2">
                                     <Image
-                                    src=       "https://assets.coingecko.com/coins/images/1/small/bitcoin.png?1547033579"
-                                    width={24}
-                                    height={24}
-                                    alt="image"
-                                    />
-									<h1>
-										USDT <span className='text-xs text-gray-500'>Tether</span>
-									</h1>
-								</div>
+                                className=' rounded-full'
+                                src={coin.optionsUrl}
+                                alt="image"
+                                height={25}
+                                width={25}
+                            />
+                              <h1>
+                                  {coin.name} <span className='text-gray-500'>{coin.displayName}</span>
+                              </h1>
+                              </div> : <h1>
+                                  BTC <span className='text-gray-500'>Bitcoin</span>
+                              </h1>}
+                          </div>
 								<ChevronDownIcon className='w-4 h-4' />
 							</div>
 						</div>
