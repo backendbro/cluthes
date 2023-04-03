@@ -57,7 +57,7 @@ const Login = () => {
 				});
 		} catch (error) {
 			setBtnLoad(false);
-			
+			console.log(error)
             if (error.response.data.message === "EMAIL DOES NOT EXIST"){
                 router.push("/SignIn")
             }

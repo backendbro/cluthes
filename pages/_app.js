@@ -9,6 +9,7 @@ import '../styles/collapse-menu.css'
 import "../styles/Verification.scss";
 import "../styles//IdentityVerification.scss"
 import "../styles//AddressVerification.scss"
+import "../styles//AdminUserVerification.scss"
 
 
 
