@@ -7,6 +7,7 @@ import NetworkModal from "./NetworkModal";
 function DepositTop() {
 	const [coinOpen, setCoinOpen] = useState(false);
 	const [coin, setCoin] = useState();
+	const [network, setNetwork] = useState();
 	const [networkOpen, setNetworkOpen] = useState(false);
     const textRef = useRef()
 	return (
@@ -15,7 +16,7 @@ function DepositTop() {
         // Coin Modal */}
 			{coinOpen && <CoinModal open={coinOpen} setOpen={setCoinOpen} setCoin={setCoin} />}			
 			{networkOpen && (
-				<NetworkModal open={networkOpen} setOpen={setNetworkOpen} />
+				<NetworkModal open={networkOpen} setOpen={setNetworkOpen} setNetwork={setNetwork} />
 			)}
 			<h1 className='mb-8 text-[1.5rem]'>Deposit Crypto</h1>
 			<div className="flex flex-col md:flex-row gap-4 w-full md:w-[90%] mx-auto ">
@@ -59,12 +60,18 @@ function DepositTop() {
 							<p className='text-sm text-gray-400'>Network</p>
 							<div
 								className='bg-gray-300 rounded-md px-2 py-4 flex-grow flex cursor-pointer justify-between'
-								// onClick={() => {
-								// 	setNetworkOpen(true);
-								// }}
+								onClick={() => {
+									setNetworkOpen(true);
+								}}
 							>
-								<h1 className='text-gray-500'>TRX <span className='text-xs text-gray-500'>Tron</span> </h1>
-								<ChevronDownIcon className='w-4 h-4' />
+								  {network ?                                    
+                              <div className="flex gap-2">                                   
+                              <h1>
+                                  {network.name} <span className='text-gray-500'>{network.displayName}</span>
+                              </h1>
+                              </div> : <h1>
+                                  Trc <span className='text-gray-500'>Token</span>
+                              </h1>}
 							</div>
 						</div>
 					</div>
@@ -73,7 +80,7 @@ function DepositTop() {
                         <div >
                             <p  className="text-xs text-gray-400 mb-4">Address</p>
                             <div className="flex justify-between">
-                                <h1 ref={textRef}>TSyrjddq6ApKxwaJ88hpeG84F5T3p644NC</h1>
+                                <h1 ref={textRef}>{network?.address}</h1>
                                 <DocumentDuplicateIcon className="w-4 h-4 cursor-pointer text-gray-400" onClick={()=> {
                                     navigator.clipboard.writeText(textRef.current.textContent).then(alert("copied"))
                                 }} />

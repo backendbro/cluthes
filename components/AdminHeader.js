@@ -43,7 +43,7 @@ export default function AdminHeader() {
 	};
 
 	const logout = () => {
-		router.push("./Login");
+		router.push("/Login");
 	};
 
 	console.log(userMail);

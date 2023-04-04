@@ -1,12 +1,42 @@
-import React, { useRef, useState } from "react";
+import React, { useRef, useState, useEffect } from "react";
 import { XMarkIcon, MagnifyingGlassIcon } from "@heroicons/react/24/solid";
+import { MoonLoader } from "react-spinners";
+import Image from "next/image"
+import axios from "axios"
 
-function NetworkModal({ open, setOpen }) {
+function NetworkModal({ open, setOpen, setNetwork }) {
 	const inputRef = useRef(null);
 	const [isFocused, setIsFocused] = useState(false);
+	const [data, setData] = useState();
 
 	const onFocus = () => setIsFocused(true);
 	const onBlur = () => setIsFocused(false);
+
+
+	useEffect(() => {
+		getNetwork();
+	}, []);
+
+    const getNetwork = async () => {
+		try {
+			const res = await axios.get(
+				" https://cluth-space.onrender.com/api/stock/network",
+				{
+					headers: {
+						Authorization: `Bearer ${localStorage.getItem("userToken")}`,
+					},
+				},
+			);
+			console.log(res);
+			setData(res.data.network);
+		} catch (error) {
+			console.log(error);
+        }
+    }
+	
+
+
+
 	return (
 		<div className='modBg '>
 			<div className='relative bg-transparent h-screen w-screen'>
@@ -31,99 +61,32 @@ function NetworkModal({ open, setOpen }) {
 						/>
 					</div>					
                     <div className="overflow-y-scroll h-[45vh] ">
-                        <h1>d</h1>
-                        <h1>d</h1>
-                        <h1>d</h1>
-                        <h1>d</h1>
-                        <h1>d</h1>
-                        <h1>d</h1>
-                        <h1>d</h1>
-                        <h1>d</h1>
-                        <h1>d</h1>
-                        <h1>d</h1>
-                        <h1>d</h1>
-                        <h1>d</h1>
-                        <h1>d</h1>
-                        <h1>d</h1>
-                        <h1>d</h1>
-                        <h1>d</h1>
-                        <h1>d</h1>
-                        <h1>d</h1>
-                        <h1>d</h1>
-                        <h1>d</h1>
-                        <h1>d</h1>
-                        <h1>d</h1>
-                        <h1>d</h1>
-                        <h1>d</h1>
-                        <h1>d</h1>
-                        <h1>d</h1>
-                        <h1>d</h1>
-                        <h1>d</h1>
-                        <h1>d</h1>
-                        <h1>d</h1>
-                        <h1>d</h1>
-                        <h1>d</h1>
-                        <h1>d</h1>
-                        <h1>d</h1>
-                        <h1>d</h1>
-                        <h1>d</h1>
-                        <h1>d</h1>
-                        <h1>d</h1>
-                        <h1>d</h1>
-                        <h1>d</h1>
-                        <h1>d</h1>
-                        <h1>d</h1>
-                        <h1>d</h1>
-                        <h1>d</h1>
-                        <h1>d</h1>
-                        <h1>d</h1>
-                        <h1>d</h1>
-                        <h1>d</h1>
-                        <h1>d</h1>
-                        <h1>d</h1>
-                        <h1>d</h1>
-                        <h1>d</h1>
-                        <h1>d</h1>
-                        <h1>d</h1>
-                        <h1>d</h1>
-                        <h1>d</h1>
-                        <h1>d</h1>
-                        <h1>d</h1>
-                        <h1>d</h1>
-                        <h1>d</h1>
-                        <h1>d</h1>
-                        <h1>d</h1>
-                        <h1>d</h1>
-                        <h1>d</h1>
-                        <h1>d</h1>
-                        <h1>d</h1>
-                        <h1>d</h1>
-                        <h1>d</h1>
-                        <h1>d</h1>
-                        <h1>d</h1>
-                        <h1>d</h1>
-                        <h1>d</h1>
-                        <h1>d</h1>
-                        <h1>d</h1>
-                        <h1>d</h1>
-                        <h1>d</h1>
-                        <h1>d</h1>
-                        <h1>d</h1>
-                        <h1>d</h1>
-                        <h1>d</h1>
-                        <h1>d</h1>
-                        <h1>d</h1>
-                        <h1>d</h1>
-                        <h1>d</h1>
-                        <h1>d</h1>
-                        <h1>d</h1>
-                        <h1>d</h1>
-                        <h1>d</h1>
-                        <h1>d</h1>
-                        <h1>d</h1>
-                        <h1>d</h1>
-                        <h1>d</h1>
+                    {data ? (
+                            
+							Object.keys(data)?.map((cryp, i) => (
+                                
+								<div
+									key={i}
+									className='flex gap-4 rounded-lg mb-2 items-center hover:bg-gray-300 cursor-pointer text-gray-400 py-4 px-4'
+                                    onClick={()=>{
+                                        setOpen(false)
+                                        setNetwork(data[cryp])
+                                    }}
+								>									
+									<h1 value={cryp} key={i}>
+										{data[cryp].name}
+									</h1>
+								</div>
+							))
+						) : (
+							<div className='flex flex-col space-y-4 text-center items-center justify-center mt-24'>
+								<MoonLoader color='#36d7b7' />
+								Please Wait...
+							</div>
+						)}
                     </div>
+
+                    
 				</div>
 			</div>
 		</div>

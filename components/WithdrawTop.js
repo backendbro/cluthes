@@ -43,8 +43,30 @@ function WithdrawTop() {
 					console.log(err);
 				});
 		};
+
+       
 		data();
 	}, []);
+
+    useEffect(()=> {
+        let network = async () => {
+            console.log("waiting Network...")
+			await axios
+				.get("https://cluth-space.onrender.com/api/stock/network", {
+					headers: {
+						Authorization: `Bearer ${localStorage.getItem("userToken")}`,
+					},
+				})
+				.then((res) => {
+					console.log(res);					           		                 
+				})
+				.catch((err) => {
+					console.log(err);
+				});
+		};
+        network();
+
+    }, [])
 
 
 	const handleWithdraw = () => {
