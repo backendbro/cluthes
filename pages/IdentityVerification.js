@@ -11,6 +11,7 @@ const IdentityVerification = () => {
 
     const [loader, setloader] = useState(false)
     const [file, setFile] = useState()
+    const [msg, setMsg] = useState(false)
     const [Image1, setImage1] = useState()
     const [Image2, setImage2] = useState()
     const [file2, setFile2] = useState()  
@@ -88,7 +89,11 @@ const IdentityVerification = () => {
                     console.log(response)
                     if (response.data.message == "IMAGE UPLOADED") {                        
                         setloader(true)
-                        router.push("/assets")
+                        setMsg(true)
+
+                        setTimeout(() => {
+                            router.push("/Verification")
+                        }, 3000);
                     }
                 })
                 .catch((err) => {
@@ -156,6 +161,9 @@ const IdentityVerification = () => {
                             />
                             {file2?.name}
                         </div>
+
+                            {msg && <p className="text-center text-green-500">Image Uploaded Successfully</p>}
+
                         <div className="bg-green rounded-lg w-full py-4 !text-white" onClick={submitPhoto} style={{ cursor: "pointer" }}>
                         {loader ? <BeatLoader color='#FFF' size={7} /> : <p className="!text-white">Submit</p>}
                         </div>

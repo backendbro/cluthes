@@ -18,6 +18,10 @@ function SignIn() {
 	const passwordRef = useRef();
 	const [btnLoad, setBtnLoad] = useState(false);
 
+    useEffect(()=>{
+        checkRef.current.checked = true
+    }, [])
+
 
 	const signup = async (e) => {
         console.log(checkRef.current.checked)
@@ -64,6 +68,7 @@ function SignIn() {
         }
 		
 	};
+
 
 	
 

@@ -51,8 +51,8 @@ const Verification = () => {
 
 	return (
 		<>
-        {/* <Header />
-        <AssetsHeader /> */}
+        <Header />
+        <AssetsHeader />
 
         <div className='verification__container'>
 			<div className='verification__con'>
@@ -85,7 +85,7 @@ const Verification = () => {
 						</div>
 					</div>
 
-					<div
+					{/* <div
 						className='verification__icon'
 						onClick={
 							userData?.addressVerification === "Completed"
@@ -103,7 +103,7 @@ const Verification = () => {
 								{userData?.addressVerification}{" "}
 							</p>
 						</div>
-					</div>
+					</div> */}
 				</div>
 			</div>
 		</div>

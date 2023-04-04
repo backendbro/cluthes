@@ -34,7 +34,7 @@ function WithdrawTop() {
 				.then((res) => {
 					console.log(res);					
             		setUserData(res.data.user);
-                    if(res.data.user?.addressVerification === "Completed" && res.data.user?.idVerification === "Completed"){                        
+                    if(res.data.user?.idVerification === "Completed"){                        
                         setVerified(false)
                     }
 
@@ -159,9 +159,18 @@ function WithdrawTop() {
 											</h1>
 										</div>
 									) : (
-										<h1>
-											BTC <span className='text-gray-500'>Bitcoin</span>
-										</h1>
+										<div className="flex gap-2">
+                              <Image
+                                className=' rounded-full'
+                                src="https://assets.coingecko.com/coins/images/325/small/Tether.png?1668148663"
+                                alt="image"
+                                height={25}
+                                width={25}
+                            />
+                            <h1>
+                                  USDT <span className='text-gray-500'>Tether USDT</span>
+                              </h1>
+                                </div>
 									)}
 								</div>
 								<ChevronDownIcon className='w-4 h-4' />

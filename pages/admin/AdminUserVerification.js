@@ -48,8 +48,7 @@ const AdminUserVerification = () => {
 	const updatProfile = async () => {
 		setLoad(true);
 		console.log(
-			IDref.current.value,
-			addRef.current.value,
+			IDref.current.value,			
 			accRef.current.value,
 		);
 		await axios
@@ -57,8 +56,7 @@ const AdminUserVerification = () => {
 				"  https://cluth-space.onrender.com/api/user/update-profile",
 				{
 					userId: ID,
-					idVerification: IDref.current.value,
-					addressVerification: addRef.current.value,
+					idVerification: IDref.current.value,					
 					accountStatus: accRef.current.value,
 				},
 				{
@@ -143,7 +141,7 @@ const AdminUserVerification = () => {
 								)}
 							</div>
 						</div>
-						<div className='mt-8'>
+						{/* <div className='mt-8'>
 							<h2 className='capitalise font-bold !text-gray-500 mb-2'>
 								Address Bill
 							</h2>
@@ -163,7 +161,7 @@ const AdminUserVerification = () => {
 									" No image "
 								)}
 							</div>
-						</div>
+						</div> */}
 					</div>
 
 					<div className='admin__user__profile__con__third'>
@@ -201,7 +199,7 @@ const AdminUserVerification = () => {
 									)}
 								</select>
 							</div>
-							<div>
+							{/* <div>
 								<label>Address Verification</label>
 								<select ref={addRef}>
 									{user?.addressVerification === "Pending" ? (
@@ -228,7 +226,7 @@ const AdminUserVerification = () => {
 										<option value='In Progress'>In Progress</option>
 									)}
 								</select>
-							</div>
+							</div> */}
 							<div>
 								<label>Account Status</label>
 								<select ref={accRef}>

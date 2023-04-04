@@ -12,9 +12,11 @@ function AssetsTop() {
 	const [converter, setConverter] = useState(null);
 	let userData, userID;
 
-	// useEffect(() => {	
-    //     getBalance();
-    // }, []);
+
+
+	useEffect(() => {	
+        getBalance();
+    }, []);
 	
 	// const url = "https://cluth-space.onrender.com/api/deposit/user-deposit";
 
@@ -35,6 +37,29 @@ function AssetsTop() {
 	// 	setUserBal(json[0].balance);
         
 	// }
+
+    const getBalance = async () => {
+		const url = "https://cluth-space.onrender.com/api/deposit/get-balance";
+		try {
+			const res = await axios.post(
+				url,
+				{ userId: String(JSON.parse(localStorage.getItem("userData"))._id) },
+				{
+					headers: {
+						Authorization: `Bearer ${localStorage.getItem("userToken")}`,
+						"Content-Type": "application/json",
+					},
+				},
+			);
+
+			const bal = res.data;
+			console.log(bal.balance.balance);
+			setUserBal(bal.balance.balance);			
+			getConverter();
+		} catch (error) {
+			console.log(error);
+		}
+	};
     
     
 
@@ -45,19 +70,15 @@ function AssetsTop() {
         }).catch((err)=> console.log(err))
     }
 
-    getConverter()
 
-	
-	function toggleBtn () {
-
-	}
+		
 
 	return (
 		<div className='mt- flex flex-col space-y-8  md:flex-row md: justify-between md:items-end'>
 			<div className='flex flex-col space-y-8'>
 				<div className='flex items-center gap-2'>
 					<h1 className='text-[1.8rem] font-medium'>Asset Overview</h1>
-					<EyeIcon className='h-4 w-4 text-gray-500 mt-2' onClick={toggleBtn}/>
+					<EyeIcon className='h-4 w-4 text-gray-500 mt-2'/>
 				</div>
 				<div className='flex items-center gap-2'>
 					<Image
