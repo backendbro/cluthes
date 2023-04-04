@@ -47,7 +47,6 @@ const Verification = () => {
 		};
 		data();
 	}, []);
-	
 
 	return (
 		<>
