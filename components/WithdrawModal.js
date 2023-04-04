@@ -4,39 +4,46 @@ import axios from "axios";
 import { MoonLoader } from "react-spinners";
 import { useRouter } from "next/router";
 
-function WithdrawModal({ open, setOpen, amount }) {
+function WithdrawModal({ open, setOpen, amount, verified, setVerified }) {
 	const inputRef = useRef(null);
 	const [isFocused, setIsFocused] = useState(false);
 	const [Error, setError] = useState(true);
 	const [Confirm, setConfirm] = useState(true);
+	const [userData, setUserData] = useState()
+    const [early, setEarly] = useState(false)
     const router = useRouter()
 
 
-	useEffect(() => {
-		// getCoin();
-	}, []);
-
+	
 	const handleError = async () => { 
+
+
+       
+            setConfirm(false)
+            setError(true);
+            axios.post("https://cluth-space.onrender.com/api/withdrawal/request", {
+                amount: amount,
+            }, 		{
+                headers: {
+                    Authorization: `Bearer ${localStorage.getItem("userToken")}`,
+                },
+            },).then((res)=> {
+                setError(false);
+                console.log(res)
+            }).catch((err)=> {
+                console.log(err)
+                if(err.response.data.message === "YOU CANNOT WITHDRAW IN THE NEXT 48HRS"){
+                    setError(false)
+                    setEarly(true)
+                }
+            })
+    
+    
+          
+            setTimeout(() => {
+            }, 5000);       
         
-        setConfirm(false)
-        setError(true);
-        axios.post("https://cluth-space.onrender.com/api/withdrawal/request", {
-            amount: amount,
-        }, 		{
-            headers: {
-                Authorization: `Bearer ${localStorage.getItem("userToken")}`,
-            },
-        },).then((res)=> {
-            setError(false);
-            console.log(res)
-        }).catch((err)=> {
-            console.log(err)
-        })
-
-
       
-		setTimeout(() => {
-		}, 5000);
 	};
 
 	const getCoin = async () => {
@@ -72,7 +79,18 @@ function WithdrawModal({ open, setOpen, amount }) {
 							}}
 						/>
 					</div>
-					{Confirm ? (
+					{verified ? (<div className="flex flex-col space-y-4 items-center">
+							<p>
+								Only verified accounts are allowed to withdraw
+							</p>
+
+							<button
+								className='px-6 py-2 text-center bg-green rounded-md text-white'
+								onClick={()=> router.push("/Verification")}
+							>
+								Verifiy Account
+							</button>
+						</div>) : Confirm ? (
 						<div className="flex flex-col space-y-4 items-center">
 							<p>
 								Please make sure your wallet address is correct, or funds maybe
@@ -91,7 +109,19 @@ function WithdrawModal({ open, setOpen, amount }) {
 							<MoonLoader color='#36d7b7' />
 							Please Wait...
 						</div>
-					) : (
+					) : early ? (
+                        <div className="flex flex-col space-y-4 ">
+                            <p className='text-center'>
+								<span className="text-[1.2rem] font-bold">Withdrawal Function is temporarily unavialible</span> <br/>
+                                Withdrawal can only be made after 48 hours of deposit
+							</p>
+							<button className='px-6 py-2 text-center bg-green rounded-md text-white mx-auto' onClick={()=> {
+                                router.push("/SendMail")
+                            }}>
+								Contact Admin
+							</button>
+                        </div>
+                    ) : (
 						<div className='flex flex-col space-y-4 mt-24 items-center justify-center'>
 							<ExclamationCircleIcon className='w-24 h-24 text-red-600' />
 							<p className='text-center'>

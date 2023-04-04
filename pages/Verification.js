@@ -5,6 +5,8 @@ import { BsFillHouseDoorFill } from "react-icons/bs";
 import {useRouter} from "next/router"
 
 import axios from "axios";
+import AssetsHeader from "../components/AssetsHeader";
+import Header from "../components/Header";
 
 const Verification = () => {	
     const [userData, setUserData] = useState()
@@ -17,6 +19,7 @@ const Verification = () => {
     useEffect(() => {
 		
 		setUserData(JSON.parse(localStorage.getItem("userData")));
+
 		let email = userData?.email.slice(0, 2);
 		setUserMail(email);		
 	}, []);
@@ -24,16 +27,19 @@ const Verification = () => {
      
 
 	useEffect(() => {
-        setUserData(JSON.parse(localStorage.getItem("userData")))
+        // setUserData(JSON.parse(localStorage.getItem("userData")))
 		let data = async () => {
+            console.log("waiting...")
 			await axios
-				.get("https://copyoptions.onrender.com/api/user/get-user", {
+				.get("https://cluth-space.onrender.com/api/auth/logged-in-user", {
 					headers: {
 						Authorization: `Bearer ${localStorage.getItem("userToken")}`,
 					},
 				})
 				.then((res) => {
 					console.log(res);					
+            		setUserData(res.data.user);
+
 				})
 				.catch((err) => {
 					console.log(err);
@@ -44,7 +50,11 @@ const Verification = () => {
 	
 
 	return (
-		<div className='verification__container'>
+		<>
+        {/* <Header />
+        <AssetsHeader /> */}
+
+        <div className='verification__container'>
 			<div className='verification__con'>
 				<div className='images__head'>
                 <div className='h-16 w-16 flex items-center justify-center rounded-full border border-black text-lg uppercase text-black mb-6'>
@@ -97,6 +107,7 @@ const Verification = () => {
 				</div>
 			</div>
 		</div>
+        </>
 	);
 };
 

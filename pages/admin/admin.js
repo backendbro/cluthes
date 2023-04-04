@@ -1,5 +1,5 @@
 import React from 'react'
-// import InsideNav from '../components/Dashboard/Deposit/InsideNav/InsideNav'
+import AdminHeader from "../../components/AdminHeader"
 
 import { useRouter } from "next/router"
 // import { FaUserFriends, FaPiggyBank } from 'react-icons/fa'
@@ -12,7 +12,8 @@ const Admin = () => {
     const router = useRouter()
 
     return (
-        <>            
+        <>         
+        <AdminHeader />   
             <div className='admin__con'>
                 {/* <div className="admin__wal">
                     <p>BTC -bc1qu46s440fv3732etygcz5ng23fr9jylkjf062fk</p>

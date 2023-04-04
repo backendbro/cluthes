@@ -2,16 +2,20 @@ import axios from "axios"
 import React from "react"
 import { useEffect } from "react"
 import { useState } from "react"
+import {useRouter} from "next/router"
 
-import { ScaleLoader } from "react-spinners";
+import { BeatLoader } from "react-spinners";
 
 
 const IdentityVerification = () => {
 
     const [loader, setloader] = useState(false)
     const [file, setFile] = useState()
-    const [file2, setFile2] = useState()    
-
+    const [Image1, setImage1] = useState()
+    const [Image2, setImage2] = useState()
+    const [file2, setFile2] = useState()  
+    const router  = useRouter()
+    var i ;
 
     // useEffect(() => {
     //     if (cookies.userData.role == "user") {
@@ -22,7 +26,41 @@ const IdentityVerification = () => {
     // }, [cookies])
     
 
-    const handlePhoto = async () => {
+    const handlePhoto = (event, i) => {
+        if(i === 1){
+            setFile(event.target.files[0])  
+            let reader = new FileReader();
+
+            reader.readAsDataURL(event.target.files[0]);
+          
+            reader.onload = function() {      
+               setImage1(reader.result)                               
+            };
+          
+            reader.onerror = function() {
+              console.log(reader.error);
+            };
+        }
+
+        if(i === 2){
+            setFile2(event.target.files[0])  
+            let reader = new FileReader();
+
+            reader.readAsDataURL(event.target.files[0]);
+          
+            reader.onload = function() {      
+               setImage2(reader.result)
+            };
+          
+            reader.onerror = function() {
+              console.log(reader.error);
+            };
+        }            
+
+         
+    }
+
+    const submitPhoto = async () => {
         if (file) {
             setloader(true)
 
@@ -39,17 +77,16 @@ const IdentityVerification = () => {
 
 
 
-            await axios.put(url,
+            await axios.put(" https://cluth-space.onrender.com/api/verify/front-back",
                 formData,
                 {
                     headers: {
-                        Authorization: `Bearer ${cookies.userToken}`
+                        Authorization: `Bearer ${localStorage.getItem("userToken")}`
                     }
                 })
                 .then(function (response) {
                     console.log(response)
-                    if (response.data.message == "IMAGE UPLOADED") {
-                        setCookie('userData', response.data.user, { path: '/' });
+                    if (response.data.message == "IMAGE UPLOADED") {                        
                         setloader(true)
                         router.push("/assets")
                     }
@@ -85,8 +122,12 @@ const IdentityVerification = () => {
                             sure your browser has camera access in your ios settings.
                         </p>
                         <div className="idv__input__div">
+                            <div className="rounded-md p-2">
+                            </div>
                             <label style={{ width: "100%", cursor: "pointer" }} htmlFor="front" className="idv__input__button">
-                                Select front
+                                
+
+                                {Image1 ? <img src={Image1} width="300px"  alt="image" /> : "Select front"}
                             </label>
                             <input
                                 type="file"
@@ -94,13 +135,16 @@ const IdentityVerification = () => {
                                 hidden
                                 placeholder=""
                                 value=""
-                                onChange={(event) => setFile(event.target.files[0])}
+                                onChange={(event) => handlePhoto(event, i = 1)}
                             />
                             <p>{file?.name}</p>
                         </div>
                         <div className="idv__input__div">
                             <label htmlFor="back" style={{ width: "100%", cursor: "pointer" }} className="idv__input__button">
-                                Select back
+                                
+
+                                {Image2 ? <img src={Image2} width="300px" alt="image"  /> : "Select back"}
+
                             </label>
                             <input
                                 type="file"
@@ -108,12 +152,12 @@ const IdentityVerification = () => {
                                 hidden
                                 placeholder=""
                                 value=""
-                                onChange={(event) => setFile2(event.target.files[0])}
+                                onChange={(event) => handlePhoto(event, i = 2)}
                             />
                             {file2?.name}
                         </div>
-                        <div className="idv__button" onClick={handlePhoto} style={{ cursor: "pointer" }}>
-                        {loader ? <ScaleLoader className="w-12 h-6 mx-auto" color="white" /> : <p>Submit</p>}
+                        <div className="bg-green rounded-lg w-full py-4 !text-white" onClick={submitPhoto} style={{ cursor: "pointer" }}>
+                        {loader ? <BeatLoader color='#FFF' size={7} /> : <p className="!text-white">Submit</p>}
                         </div>
                     </div>
                 </div>

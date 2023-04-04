@@ -3,6 +3,7 @@ import React from "react";
 import { useState } from "react";
 import { useEffect } from "react";
 import axios from "axios";
+import AdminHeader from "../../components/AdminHeader"
 import { BounceLoader, BeatLoader } from "react-spinners";
 import { useRouter } from "next/router"
 import Link from "next/link";
@@ -138,6 +139,7 @@ const UserList = () => {
 
 	) : (
 		<>			
+        <AdminHeader />
 			<div className='userlist-con'>				
 				<div className='userlist-card-con'>
 					{searchloader ? <BeatLoader className="py-4" /> : 

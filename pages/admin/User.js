@@ -1,4 +1,5 @@
 import axios from "axios";
+import AdminHeader from "../../components/AdminHeader"
 import { useRouter } from "next/router";
 import React from "react";
 import { useEffect } from "react";
@@ -150,7 +151,9 @@ const User = () => {
 			<BounceLoader color='#36d7b7' size={200} />
 		</div>
 	) : (
-		<div className='w-[95%] md:w-[80%] lg:w[60%] mx-auto flex flex-col space-y-8 py-6  '>
+		<>
+        <AdminHeader />
+        <div className='w-[95%] md:w-[80%] lg:w[60%] mx-auto flex flex-col space-y-8 py-6  '>
 			<div className='mx-auto flex flex-row md:flex-row gap-4 md:items-center p-4 '>
 				<div className='w-[30%] rounded-full overflow-hid'>
 					<img src='/images/z.png' width='100%' className='rounded-full' />
@@ -421,6 +424,7 @@ const User = () => {
 				)}
 			</div>
 		</div>
+        </>
 	);
 };
 

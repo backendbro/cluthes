@@ -61,10 +61,11 @@ const Login = () => {
 			console.log(error)            
             if (error.response.data.message === "EMAIL DOES NOT EXIST"){
                 router.push("/SignIn")
-            }
+            }           
+            
             if (error.response.data.message === "YOUR ACCT IS UNDER REVIEW"){
-                setMsg("Your account is currently under review")
-            }
+                setMsg(error.response.data.message)
+            }           
             if(error.response.data.message === "VERIFY YOUR ACCT"){
                 localStorage.setItem("userEmail", JSON.stringify(emailRef.current.value))
                 router.push("/EmailToken")

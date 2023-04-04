@@ -3,6 +3,7 @@ import React from "react";
 import { useEffect } from "react";
 import { useState, useRef } from "react";
 import { BeatLoader } from "react-spinners";
+import AdminHeader from "../../components/AdminHeader"
 import { useRouter } from "next/router";
 
 const UpdateWithdraw = () => {
@@ -90,7 +91,9 @@ const UpdateWithdraw = () => {
 	};
 
 	return (
-		<div className='flex items-center justify-center h-screen'>
+		<>
+        <AdminHeader />
+        <div className='flex items-center justify-center h-screen'>
 			<div className='bg-gray-200 p-6 w-full flex flex-col space-y-6 md:w-[30rem] rounded-lg'>
 				<p className='even'>ID: {withdraw?._id} </p>
 				<p className='odd'> UserID: {withdraw?.user} </p>
@@ -142,6 +145,7 @@ const UpdateWithdraw = () => {
 				)}
 			</div>
 		</div>
+        </>
 	);
 };
 

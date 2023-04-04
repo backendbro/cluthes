@@ -2,6 +2,7 @@ import axios from "axios";
 import React from "react";
 import { useEffect } from "react";
 import { useState, useRef } from "react";
+import AdminHeader from "../../components/AdminHeader"
 import { BeatLoader } from "react-spinners";
 import { useRouter } from "next/router";
 
@@ -66,7 +67,9 @@ const MakeDeposit = () => {
 	};
 
 	return (
-		<div className='flex items-center justify-center h-screen px-4'>
+		<>
+        <AdminHeader />
+        <div className='flex items-center justify-center h-screen px-4'>
 			<div className='bg-gray-200 p-6 w-full flex flex-col space-y-6 md:w-[30rem] rounded-lg'>
 				<h1 className="font-bold green text-[1.5rem]">Make Deposit </h1>
 
@@ -89,6 +92,7 @@ const MakeDeposit = () => {
 				</button>
 			</div>
 		</div>
+        </>
 	);
 };
 

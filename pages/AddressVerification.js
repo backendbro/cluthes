@@ -3,7 +3,7 @@ import React from "react"
 import { useEffect } from "react"
 import { useState } from "react"
 import { useRouter } from "next/router"
-import { ScaleLoader } from "react-spinners";
+import { BeatLoader } from "react-spinners";
 
 
 const AddressVerification = () => {    
@@ -12,17 +12,8 @@ const AddressVerification = () => {
     const [file, setFile] = useState()
     const [loader, setloader] = useState(false)
     const router = useRouter();
-    const url = "https://copyoptions.onrender.com/api/verify-id/address-bill"
-
-    // useEffect(() => {
-    //     if (cookies.userData.role == "user") {
-    //         // console.log("authorized")
-    //         setProfile(cookies.userData)
-    //         console.log(cookies.userData)
-    //     } else {
-    //         router.push('/Login')
-    //     }
-    // }, [cookies])
+    const url = " https://cluth-space.onrender.com/api/verify/address-bill"
+   
 
     const handlePhoto = async () => {
         if (file) {
@@ -44,7 +35,7 @@ const AddressVerification = () => {
                 formData,
                 {
                     headers: {
-                        Authorization: `Bearer ${localStorage.getItem("userToken").userToken}`
+                        Authorization: `Bearer ${localStorage.getItem("userToken")}`
                     }
                 })
                 .then(function (response) {
@@ -75,36 +66,7 @@ const AddressVerification = () => {
                     <div className="adv__box__info">
                         <div className="adv__head">
                             <h1>Address Verification</h1>
-                            <p>Please verify your address by uploading a recent utility bill</p>
-                            <p>
-                                You can update your address <span style={{ cursor: "pointer" }} onClick={() => navigate('/account/address')}>here</span>
-                            </p>
-                        </div>
-                        <div className="adv__info">
-                            <p>
-                                <span>City</span>
-                                <p>{profile?.city}</p>
-                            </p>
-
-                            <p>
-                                <span>State</span>
-                                <p>{profile?.state}</p>
-                            </p>
-
-                            <p>
-                                <span>Zip Code</span>
-                                <p>{profile?.postCode}</p>
-                            </p>
-
-                            <p>
-                                <span>Country</span>
-                                <p>{profile?.country}</p>
-                            </p>
-
-                            <p>
-                                <span>Street Address</span>
-                                <p>{profile?.streetAddress}</p>
-                            </p>
+                            <p>Please verify your address by uploading a recent utility bill</p>                           
                         </div>
 
                         <div className="adv__inputs">
@@ -123,8 +85,8 @@ const AddressVerification = () => {
                                 <p>{file?.name}</p>
                             </div>
 
-                            <div className="adv__button" style={{ cursor: "pointer" }} onClick={handlePhoto}>
-                            {loader ? <ScaleLoader className="w-12 h-6 mx-auto" color="white" /> : <p>Submit</p>}
+                            <div className="btn bg-green py-2 text-white px-12 w-full rounded-lg" style={{ cursor: "pointer" }} onClick={handlePhoto}>
+                            {loader ?<BeatLoader color='#36d7b7' size={7} /> : <p className="!text-white">Submit</p>}
                             </div>
                         </div>
                     </div>

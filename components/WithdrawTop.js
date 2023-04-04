@@ -3,75 +3,108 @@ import { ChevronDownIcon, DocumentIcon } from "@heroicons/react/24/solid";
 import CoinModal from "./CoinModal";
 import NetworkModal from "./NetworkModal";
 import WithdrawModal from "./WithdrawModal";
-import Image from "next/image"
+import Image from "next/image";
 import axios from "axios";
-
 
 function WithdrawTop() {
 	const [coinOpen, setCoinOpen] = useState(false);
 	const [WithdrawOpen, setWithdrawOpen] = useState(false);
-    const [coin, setCoin] = useState()
+	const [coin, setCoin] = useState();
+    const [userData, setUserData] = useState()
 	const [networkOpen, setNetworkOpen] = useState(false);
-    const amountRef= useRef()
+    const [verified, setVerified] = useState(true)
+	const [balCorrect, setBalCorrect] = useState(true);
+	const amountRef = useRef();
 	const [converter, setConverter] = useState(null);
-    const [balance, setBalance] = useState()
-   
+	const [balance, setBalance] = useState();
 
-    useEffect(()=>{
-        getBalance()
-    }, [])
+	useEffect(() => {
+		getBalance();
+	}, []);
 
-    const handleWithdraw = () =>thdraw = () => {         
-        setWithdrawOpen(true);
-    }
+    useEffect(() => {        
+		let data = async () => {
+            console.log("waiting...")
+			await axios
+				.get("https://cluth-space.onrender.com/api/auth/logged-in-user", {
+					headers: {
+						Authorization: `Bearer ${localStorage.getItem("userToken")}`,
+					},
+				})
+				.then((res) => {
+					console.log(res);					
+            		setUserData(res.data.user);
+                    if(res.data.user?.addressVerification === "Completed" && res.data.user?.idVerification === "Completed"){                        
+                        setVerified(false)
+                    }
 
-    const getBalance = async () => {
-        
-    const url = "https://cluth-space.onrender.com/api/deposit/get-balance"
-    try {
-        
-        const res = await axios.post(url, 
-            { userId:String(JSON.parse(localStorage.getItem("userData"))._id) }, {
-                headers: {
-                    Authorization: `Bearer ${localStorage.getItem("userToken")}`,
-                    'Content-Type': 'application/json'
-                }
-            });
-            
-            const bal = res.data
-            console.log(bal.balance.balance)   
-            setBalance(bal.balance.balance)
-            console.log(balance)
-            getConverter()
-        } catch (error) {
-            console.log(error.message)
-        }
-        
-    }
-
-    async function getConverter() {
-        console.log(balance)
-        const res = await axios.get(`https://blockchain.info/tobtc?currency=USD&value=${balance}`).then((res)=> {
-            console.log(res.data)
-            setConverter(res.data)
-        }).catch((err)=> console.log(err))
-    }
-
-    
+				})
+				.catch((err) => {
+					console.log(err);
+				});
+		};
+		data();
+	}, []);
 
 
+	const handleWithdraw = () => {
+		setWithdrawOpen(true);
+	};
+
+	const getBalance = async () => {
+		const url = "https://cluth-space.onrender.com/api/deposit/get-balance";
+		try {
+			const res = await axios.post(
+				url,
+				{ userId: String(JSON.parse(localStorage.getItem("userData"))._id) },
+				{
+					headers: {
+						Authorization: `Bearer ${localStorage.getItem("userToken")}`,
+						"Content-Type": "application/json",
+					},
+				},
+			);
+
+			const bal = res.data;
+			console.log(bal.balance.balance);
+			setBalance(bal.balance.balance);
+			console.log(balance);
+			getConverter();
+		} catch (error) {
+			console.log(error);
+		}
+	};
+
+	async function getConverter() {
+		console.log(balance);
+		const res = await axios
+			.get(`https://blockchain.info/tobtc?currency=USD&value=${balance}`)
+			.then((res) => {
+				console.log(res.data);
+				setConverter(res.data);
+			})
+			.catch((err) => console.log(err));
+	}
 
 	return (
 		<div className=' '>
 			{/* // Modals
         // Coin Modal */}
-			{coinOpen && <CoinModal open={coinOpen} setOpen={setCoinOpen} setCoin={setCoin} />}
+			{coinOpen && (
+				<CoinModal open={coinOpen} setOpen={setCoinOpen} setCoin={setCoin} />
+			)}
 			{networkOpen && (
 				<NetworkModal open={networkOpen} setOpen={setNetworkOpen} />
 			)}
 
 			{WithdrawOpen && (
-				<WithdrawModal open={WithdrawOpen} setOpen={setWithdrawOpen} amount={amountRef.current.value} />
+				<WithdrawModal
+					open={WithdrawOpen}
+					setOpen={setWithdrawOpen}
+					amount={amountRef.current.value}    
+                    verified={verified}
+                    
+				/>
 			)}
 			<h1 className='mb-8 text-[1.5rem]'>Withdraw Crypto</h1>
 			<div className='flex flex-col md:flex-row gap-4 w-full md:w-[90%] mx-auto  '>
@@ -86,23 +119,28 @@ function WithdrawTop() {
 									setCoinOpen(true);
 								}}
 							>
-								<div className="flex gap-2">
-                              
-									{coin ?                                    
-                                    <div className="flex gap-2">
-                                          <Image
-                                      className=' rounded-full'
-                                      src={coin.optionsUrl}
-                                      alt="image"
-                                      height={25}
-                                      width={25}
-                                  />
-                                    <h1>
-										{coin.name} <span className='text-gray-500'>{coin.displayName}</span>
-									</h1>
-                                    </div> : <h1>
-										BTC <span className='text-gray-500'>Bitcoin</span>
-									</h1>}
+								<div className='flex gap-2'>
+									{coin ? (
+										<div className='flex gap-2'>
+											<Image
+												className=' rounded-full'
+												src={coin.optionsUrl}
+												alt='image'
+												height={25}
+												width={25}
+											/>
+											<h1>
+												{coin.name}{" "}
+												<span className='text-gray-500'>
+													{coin.displayName}
+												</span>
+											</h1>
+										</div>
+									) : (
+										<h1>
+											BTC <span className='text-gray-500'>Bitcoin</span>
+										</h1>
+									)}
 								</div>
 								<ChevronDownIcon className='w-4 h-4' />
 							</div>
@@ -113,7 +151,7 @@ function WithdrawTop() {
 						<h2 className='hidden md:block'>Withdraw To</h2>
 						<div className='w-full md:w-[60%] '>
 							<div className='flex gap-4 mb-8 border-2 border-b-gray-400 border-transparent w-full md:w-[14rem]'>
-								<h1>Wallet Address</h1>								
+								<h1>Wallet Address</h1>
 							</div>
 
 							<div className='flex flex-col space-y-6 '>
@@ -139,13 +177,16 @@ function WithdrawTop() {
 									</div>
 								</div> */}
 
-                                <div>
+								<div>
 									<p className='text-sm text-gray-400'>Amount</p>
 									<input
 										className='bg-gray-300 rounded-md px-2 py-4 outline-green-300 w-full'
 										type='number'
 										placeholder='Enter Amount'
-                                        ref={amountRef}
+										onChange={() => {
+											balance > parseInt(amountRef.current.value) ? setBalCorrect(true) : setBalCorrect(false);
+										}}
+										ref={amountRef}
 									/>
 								</div>
 
@@ -159,7 +200,8 @@ function WithdrawTop() {
 												</span>{" "}
 											</h2>
 											<span className='text-sm'>
-												{converter} <span className='text-sm text-gray-400'>USDT</span>
+												{converter}{" "}
+												<span className='text-sm text-gray-400'>USDT</span>
 											</span>
 										</div>
 										<div>
@@ -187,13 +229,23 @@ function WithdrawTop() {
 									</div>
 								</div>
 
-                                <p className="text-red-500 text-center">Error processing request</p>
+								{balCorrect === false ? <p className="text-red-500 text-center">Insufficient Funds</p> : ""}
 
 								<button
-									className='w-full bg-green px-6 py-2 rounded-md text-white'
-									onClick={() => {
-										handleWithdraw()
-									}}
+									className={
+										balCorrect
+											? `w-full bg-green px-6 py-2 rounded-md text-white`
+											: "w-full bg-green-300 px-6 py-2 rounded-md text-white"
+									}
+									onClick={
+										balCorrect
+											? () => {
+													handleWithdraw();
+											  }
+											: () => {
+
+                                            }
+									}
 								>
 									Withdraw
 								</button>
