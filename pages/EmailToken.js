@@ -95,22 +95,22 @@ function EmailToken() {
 						/>
 					</label>
 					
-					<div
-						className='text-white  cursor-pointer !mt-14  font-medium rounded-lg bg-green py-[1rem] px-[3rem] text-center md:w-[30%] w-[70%] mx-auto'
-						onClick={sendToken}
-					>
-						{Load ? <BeatLoader color="white" /> : "Resend Token"}                    
-                        
-					</div>
-
-					<div className='text-white  cursor-pointer font-medium rounded-lg bg-green py-[1rem] px-[3rem] text-center md:w-[30%] w-[70%] mx-auto'
+					
+					<div className='text-white  cursor-pointer  !mt-14 font-medium rounded-lg bg-green py-[1rem] px-[3rem] text-center md:w-[30%] w-[70%] mx-auto'
 						onClick={VerifyToken}
                     
                     >
 						{VerifyLoad ? <BeatLoader color="white" /> : "Submit"} 
 					</div>
 					
-					
+					<div
+						className='text-white  cursor-pointer  font-medium rounded-lg bg-green py-[1rem] px-[3rem] text-center md:w-[30%] w-[70%] mx-auto'
+						onClick={sendToken}
+					>
+						{Load ? <BeatLoader color="white" /> : "Resend Token"}                    
+                        
+					</div>
+
 
 					
 				</div>

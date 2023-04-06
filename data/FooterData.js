@@ -22,11 +22,11 @@ export const FooterData = [
 			"Margin Trading",
 			"Convert",
 			"Futures Trading",
-			"KuCoin Earn",
+			"Donicoin Earn",
 			"Crypto Lending",
 			"Trading Bot",
 			"Windvane NFT Marketplace",
-			"KuCoin Wallet",
+			"Donicoin Wallet",
 		],
         number:1
 	},
@@ -52,8 +52,8 @@ export const FooterData = [
 		title: "Business",
 		list: [
 			"Token Listing",
-			"KuCoin Labs",
-			"KuCoin Ventures",
+			"Donicoin Labs",
+			"Donicoin Ventures",
 			"Spotlight Application",
 			"Market Maker Incentive Program",
 			"P2P Merchant Application",
@@ -70,7 +70,7 @@ export const FooterData = [
 			"Risk Disclosure Statement",
 			"AML & CFT",
 			"Special Treatment",
-			"KuCoin Plus",
+			"Donicoin Plus",
 			"Law Enforcement Requests",
 		],
         number:4
@@ -82,7 +82,7 @@ export const FooterData = [
 			"Bitcoin (BTC) Price",
 			"Ethereum (ETH) Price",
 			"Ripple (XRP) Price",
-			"KuCoin Token (KCS) Price",
+			"Donicoin Token (DCS) Price",
 		],
         number:5
 	},

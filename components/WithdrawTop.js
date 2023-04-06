@@ -247,7 +247,7 @@ function WithdrawTop() {
 									<div>
 										<h2 className='text-xs text-gray-400'>Fees</h2>
 										<span className='text-sm'>
-											0.00 <span className='text-sm text-gray-400'>USDT</span>
+											0.0006 <span className='text-sm text-gray-400'>USDT</span>
 										</span>
 									</div>
 									<div>
@@ -290,12 +290,12 @@ function WithdrawTop() {
 					<h1 className='font-semibold'>FAQ</h1>
 					<div>
 						<a
-							href='https://www.kucoin.com/support/900005758426'
+							href='https://get.exness.help/hc/en-us/articles/360013893851-How-to-deposit-and-withdraw-with-Bitcoin'
 							className='flex gap-2 items-center text-gray-500'
 						>
 							<DocumentIcon className='h-4 w-4 ' />
 							<h1 className='text-xs underline'>
-								How do I withdraw crypto from my KuCoin account?
+								How do I withdraw crypto from my DoniCoin account?
 							</h1>
 						</a>
 					</div>

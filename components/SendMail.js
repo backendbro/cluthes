@@ -32,7 +32,7 @@ const SendEmail = () => {
 				{
 					message: body,
 					issue:name,
-					subject:"Request of WithDrawal"
+					subject:"keeping in touch."
 				},
 				{
 					headers: {

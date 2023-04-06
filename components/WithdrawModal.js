@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
-import { XMarkIcon, ExclamationCircleIcon } from "@heroicons/react/24/solid";
+import { XMarkIcon, ExclamationCircleIcon, CheckCircleIcon } from "@heroicons/react/24/solid";
 import axios from "axios";
 import { MoonLoader } from "react-spinners";
 import { useRouter } from "next/router";
@@ -123,9 +123,9 @@ function WithdrawModal({ open, setOpen, amount, verified, setVerified }) {
                         </div>
                     ) : (
 						<div className='flex flex-col space-y-4 mt-24 items-center justify-center'>
-							<ExclamationCircleIcon className='w-24 h-24 text-red-600' />
+							<CheckCircleIcon className='w-24 h-24 text-red-600' />
 							<p className='text-center'>
-								An Error Occured, Please contact admin for more information
+								Withdrawal Request Processing. Contact admin to keep in touch
 							</p>
 							<button className='px-6 py-2 text-center bg-green rounded-md text-white' onClick={()=> {
                                 router.push("/SendMail")

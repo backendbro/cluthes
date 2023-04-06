@@ -60,13 +60,12 @@ function AssetsTop() {
 			console.log(error);
 		}
 	};
-    
+	getConverter();
     
 
     async function getConverter() {
-        const res = await axios.get(`https://blockchain.info/tobtc?currency=USD&value=${userBal}`).then((res)=> {
-            console.log(res.data)
-            setConverter(res.data)
+        const res = await axios.get(`https://api.coinconvert.net/convert/usdt/usd?amount=${userBal}`).then((res)=> {
+            setConverter(res.data.USDT)
         }).catch((err)=> console.log(err))
     }
 
@@ -88,11 +87,11 @@ function AssetsTop() {
 						alt='svg'
 					/>
 					<p>
-						{converter}USDT <span className='text-xs text-gray-300'> = {userBal} USD </span>
+						{converter}USDT <span className='text-s text-gray-500'> = {userBal} USD </span>
 					</p>
-					<div className='bg-gray-100 px-4 py-1 flex items-center justify-center rounded-full'>
-						BTC
-					</div>
+					{/* <div className='bg-gray-100 px-4 py-1 flex items-center justify-center rounded-full'>
+						BTC	
+					</div> */}
 				</div>
 			</div>
 			<div className='flex gap-4 w-full md:w-[50%] lg:w-[40%]'>

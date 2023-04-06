@@ -139,19 +139,19 @@ function DepositTop() {
 					<h1 className='font-semibold'>FAQ</h1>
 					<div>
 						<a
-							href='https://www.kucoin.com/support/900007079063'
+							href='https://get.exness.help/hc/en-us/articles/360013893851-How-to-deposit-and-withdraw-with-Bitcoin'
 							className='flex gap-2 items-center text-gray-500'
 						>
 							<DocumentIcon className='h-4 w-4 ' />
 							<h1 className='text-xs underline'>
-								How do I deposit crypto into my KuCoin account?
+								How do I deposit crypto into my DoniCoin account?
 							</h1>
 						</a>
 					</div>
 
 					<div>
 						<a
-							href='https://www.kucoin.com/support/900006118386'
+							href='https://www.consumerfinance.gov/ask-cfpb/how-do-i-get-my-money-back-after-i-discovered-an-unauthorized-transaction-or-money-missing-from-my-bank-account-en-1017/'
 							className='flex gap-2 items-center text-gray-500'
 						>
 							<DocumentIcon className='h-4 w-4 ' />

@@ -34,7 +34,7 @@ const SendEmail = () => {
 					email: email,
 					message: body,
 					issue:name,
-					subject:"Follow up on of Request of WithDrawal"
+					subject:"Donicoin Team"
 				},
 				{
 					headers: {

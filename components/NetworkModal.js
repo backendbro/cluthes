@@ -74,7 +74,7 @@ function NetworkModal({ open, setOpen, setNetwork }) {
                                     }}
 								>									
 									<h1 value={cryp} key={i}>
-										{data[cryp].name}
+										{data[cryp].displayName}
 									</h1>
 								</div>
 							))

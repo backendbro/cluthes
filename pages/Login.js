@@ -58,9 +58,11 @@ const Login = () => {
 				});
 		} catch (error) {
 			setBtnLoad(false);
-			console.log(error)            
+			   
+			
+
             if (error.response.data.message === "EMAIL DOES NOT EXIST"){
-                router.push("/SignIn")
+				router.push("/SignIn")
             }           
             
             if (error.response.data.message === "YOUR ACCT IS UNDER REVIEW"){
@@ -79,45 +81,42 @@ const Login = () => {
 		
 		return (
 			<div className=' flex flex-col space-y-4 md:space-y-0 py-4 px-8 md:p-0  md:flex-row w-full min-h-[100vh] h-full bg-white '>
-				<div className=' w-[40%] relative'>
-					<div className='flex h-full w-full md:hidden'>
-						<Image
-							src='https://assets.staticimg.com/cms/media/1lB3PkckFDyfxz6VudCEACBeRRBi6sQQ7DDjz0yWM.svg'
-							width={100}
-							height={100}
-							alt='logo'
-						/>
-					</div>
-	
-					<div className='hidden md:flex z-50 bg-green'>
-						<Image
-							src=' https://assets.staticimg.com/public-web/2.6.10/static/logo-en.9ef1fe14.svg'
-							width={200}
-							height={100}
-							alt='logo'
-						/>
-					</div>
-	
-					<div
-						className=' h-full w-full relative hidden md:block bg-center '
-						style={{
-							backgroundImage:
-								"url('https://assets.staticimg.com/cms/media/1OwlAXURk39k0PwC7wB1IZFDrppPaFfuPY22pHrFx.png')",
-						}}
-					>
-						{/* <div className="text-white ml-24 mb-12">
-						<h1 className="text-[2rem] font-bold">Sign up now </h1>
-						<h2 className="text-[1.2rem]">To claim a mystery box</h2>
-						<h1 className="text-[2rem] font-bold">Worth</h1>
-						<h1 className="text-[2rem] font-bold">Up to <span className="text-yellow-300">$500</span></h1>
-						</div>
-						<div className="relative w-full h-[50vh]">
-						<Image src="/images/z.png" layout="fill" className="" />
-						</div> */}
-	
-						{/* <Image src='https://assets.staticimg.com/cms/media/2OuQLG4JvS9XoundliPb57B446zJEXAwQ7AeTgeAv.png' layout='fill' alt='hooll'  /> */}
-					</div>
+				<div className=' w-[45%] relative'>
+				<div className='flex h-full w-full md:hidden'>
+					<Image
+						src='https://assets.staticimg.com/cms/media/1lB3PkckFDyfxz6VudCEACBeRRBi6sQQ7DDjz0yWM.svg'
+						width={100}
+						height={100}
+						alt='logo'
+					/>
 				</div>
+
+				<div className='hidden md:flex z-500 bg-green'>
+					<Image
+						src=' https://assets.staticimg.com/public-web/2.6.10/static/logo-en.9ef1fe14.svg'
+						width={200}
+						height={100}
+						alt='logo'
+					/>
+				</div>
+
+				<div className=' h-full w-full relative hidden md:block  bg-green'>
+					<div className='text-white ml-24 mb-12'>
+						<h1 className='text-[2rem] font-bold'>Log in now </h1>
+						<h2 className='text-[1.2rem]'>To claim a mystery box</h2>
+						<h1 className='text-[2rem] font-bold'>Worth</h1>
+						<h1 className='text-[2rem] font-bold'>
+							Up to <span className='text-yellow-300'>$500</span>
+						</h1>
+					</div>
+
+					<div className='relative w-full h-[50vh]'>
+						<Image src='/images/z.png' layout='fill' className='' alt='logo' />
+					</div>
+
+					{/* <Image src='https://assets.staticimg.com/cms/media/2OuQLG4JvS9XoundliPb57B446zJEXAwQ7AeTgeAv.png' layout='fill' alt='hooll'  /> */}
+				</div>
+			</div>
 				<div className='p-1 md:p-4 gap-y-4 flex space-y-2 flex-col-reverse md:flex-col md:space-y-20  w-full md:w-[60%] bg-white'>
 					<p className=' text-left md:text-right text-[.8rem] text-gray-800 w-full md:w-[60%] mx-auto  md:block'>
 						Dont have an account?{" "}
@@ -179,6 +178,7 @@ const Login = () => {
 									<input
 										type={`${show ? "text" : "password"}`}
 										className='bg-transparent outline-none rounded-lg w-full'
+										placeholder="Password"
 										ref={passwordRef}
 									/>
 									{!show && (

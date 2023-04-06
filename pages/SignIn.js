@@ -54,16 +54,18 @@ function SignIn() {
                         },
                     )
                     .then((res) => {
-                        console.log("Success");
+                      
                         localStorage.setItem("userEmail", JSON.stringify(emailRef.current.value))
                         setBtnLoad(false);
                         router.push("/VerifyEmail");
                     });
             } catch (error) {
-                setBtnLoad(false);
+                if(!error.response){
+					return
+				}
+				setBtnLoad(false);
                 setMsg(error.response.data.message)
-                console.log(error.response.data.message)                
-                console.log(error);
+                
             }
         }
 		
@@ -76,7 +78,7 @@ function SignIn() {
 
 	return (
 		<div className=' flex flex-col space-y-4 md:space-y-0 py-4 px-8 md:p-0  md:flex-row w-full min-h-[100vh] h-full bg-white '>
-			<div className=' w-[40%] relative'>
+			<div className=' w-[45%] relative'>
 				<div className='flex h-full w-full md:hidden'>
 					<Image
 						src='https://assets.staticimg.com/cms/media/1lB3PkckFDyfxz6VudCEACBeRRBi6sQQ7DDjz0yWM.svg'
@@ -86,7 +88,7 @@ function SignIn() {
 					/>
 				</div>
 
-				<div className='hidden md:flex z-50 bg-green'>
+				<div className='hidden md:flex z-500 bg-green'>
 					<Image
 						src=' https://assets.staticimg.com/public-web/2.6.10/static/logo-en.9ef1fe14.svg'
 						width={200}
@@ -183,6 +185,7 @@ function SignIn() {
 									type={`${show ? "text" : "password"}`}
 									className='bg-transparent outline-none w-full rounded-md'
 									ref={passwordRef}
+									placeholder="Password"
 								/>
 								{!show && (
 									<EyeIcon
