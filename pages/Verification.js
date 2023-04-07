@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { AiTwotoneMail } from "react-icons/ai";
 import { BsFillPersonFill } from "react-icons/bs";
-import { BsFillHouseDoorFill } from "react-icons/bs";
+import { HiLockClosed } from "react-icons/hi";
 import {useRouter} from "next/router"
 
 import axios from "axios";
@@ -13,9 +13,6 @@ const Verification = () => {
     const [userMail, setUserMail] = useState()
     const router = useRouter()
 
-	// useEffect( ()=> {
-	//  axios.get("https://copyoptions.onrender.com/api/user/get-user", {})
-	// }, [cookies])
     useEffect(() => {
 		
 		setUserData(JSON.parse(localStorage.getItem("userData")));
@@ -81,6 +78,29 @@ const Verification = () => {
 								{" "}
 								{userData?.idVerification}{" "}
 							</p>
+						</div>
+					</div>
+
+					
+				</div>
+
+				<div className='verification__icons'>					
+
+					<div
+						className='verification__icon'
+						onClick={ 
+							() => {
+                                router.push("/ChangePassword")
+
+							}
+						}
+					>
+						<div className='verification__icon__div2'>
+							<HiLockClosed className='icon' />
+						</div>
+						<div className='verification__text__div'>
+							<p>Change Password</p>
+							
 						</div>
 					</div>
 
