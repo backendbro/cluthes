@@ -17,13 +17,19 @@ function ForgotPassword() {
     const ForgotPassword = async () => {        
         setVerifyLoad(true)
 		
+		if(!inputRef.current.value){
+			setMsg("Fill in the empty field")
+			setVerifyLoad(false)
+			return
+		}
 		
         await axios.post("https://cluth-space.onrender.com/api/auth/forgot-password",
 			{
 				email: inputRef.current.value
 			},
 		).then((res)=> {
-            setVerifyLoad(false)        
+            
+			setVerifyLoad(false)        
             setVerify(true)
 			
 			localStorage.setItem("userEmail", JSON.stringify(inputRef.current.value))
@@ -45,7 +51,7 @@ function ForgotPassword() {
 			<div className='bg-gray-100 shadow-md shadow-gray-400 w-[95%] p-4 md:w-[50rem] mx-auto py-[4rem] '>
 				<div className='flex flex-col space-y-4  justify-center'>
 					<p className='text-[1.1rem] font-medium text-center mb-6' style={{ color: "#051036" }}>
-						{Verify === true ? "Reset password code have been sent to this email." : msg ? "Token Sent Successfully" : `Please enter your registered email address`}
+						{Verify === true ? "Reset password code have been sent to this email." : msg ? msg : `Please enter your registered email address`}
 					</p>
 
 					<label className='md:w-[40%] w-[70%] mx-auto'>						
@@ -53,6 +59,7 @@ function ForgotPassword() {
 							type='text'
                             ref={inputRef}
 							placeholder='Enter Email'
+							required
 							className='p-2 outline-none w-full mx-auto rounded-md'
 							style={{
 									color:"rgb(0, 13, 29)",
