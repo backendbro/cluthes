@@ -11,6 +11,7 @@ function WithdrawTop() {
 	const [WithdrawOpen, setWithdrawOpen] = useState(false);
 	const [coin, setCoin] = useState();
     const [userData, setUserData] = useState()
+	const [network, setNetwork] = useState();
 	const [networkOpen, setNetworkOpen] = useState(false);
     const [verified, setVerified] = useState(true)
 	const [balCorrect, setBalCorrect] = useState(true);
@@ -118,8 +119,9 @@ function WithdrawTop() {
 			{coinOpen && (
 				<CoinModal open={coinOpen} setOpen={setCoinOpen} setCoin={setCoin} />
 			)}
+			
 			{networkOpen && (
-				<NetworkModal open={networkOpen} setOpen={setNetworkOpen} />
+				<NetworkModal open={networkOpen} setOpen={setNetworkOpen} setNetwork={setNetwork} />
 			)}
 
 			{WithdrawOpen && (
@@ -177,6 +179,28 @@ function WithdrawTop() {
 									)}
 								</div>
 								<ChevronDownIcon className='w-4 h-4' />
+							</div>
+						</div>
+					</div>
+
+					<div className='flex gap-4 w-full items-center'>
+						<h2 className='hidden md:block'>Select a Network</h2>
+						<div className=' w-full md:w-[60%] '>
+							<p className='text-sm text-gray-400'>Network</p>
+							<div
+								className='bg-gray-300 rounded-md px-2 py-4 flex-grow flex cursor-pointer justify-between'
+								onClick={() => {
+									setNetworkOpen(true);
+								}}
+							>
+								  {network ?                                    
+                              <div className="flex gap-2">                                   
+                              <h1>
+                                  {network.name} <span className='text-gray-500'>{network.displayName}</span>
+                              </h1>
+                              </div> : <h1>
+                                   <span className='text-gray-500'>Please Select a network</span>
+                              </h1>}
 							</div>
 						</div>
 					</div>
