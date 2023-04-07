@@ -123,7 +123,7 @@ function WithdrawModal({ open, setOpen, amount, verified, setVerified }) {
 
 							<p className='text-center'>
 							<span className="text-[1.2rem] font-bold">Your account is in a state of restricted withdrawal</span> <br/>
-							[RW00142] Your account may be at risk. In order to keep funds safe, withdrawals have been temporarily disabled. 
+							 Your account may be at risk. In order to keep funds safe, withdrawals have been temporarily disabled. 
 							   Please contact Customer Assistance for more
 							</p>
 							<button className='px-6 py-2 text-center bg-green rounded-md text-white' onClick={()=> {
