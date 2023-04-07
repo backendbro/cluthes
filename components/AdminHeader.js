@@ -24,29 +24,13 @@ export default function AdminHeader() {
 	let userToken, userData;
 	
 
-	const getUserDetails = async () => {
-		try {
-			await axios
-				.get(" https://cluth-space.onrender.com/api/auth/logged-in-user  ", {
-					headers: {
-						"Content-Type": "application/json",
-						Authorization: ` Bearer ${userToken}`,
-					},
-				})
-				.then((res) => {
-					console.log(res);
-					setUserDetails(res.data);
-				});
-		} catch (err) {
-			console.log(err);
-		}
-	};
+	
 
 	const logout = () => {
 		router.push("/Login");
 	};
 
-	console.log(userMail);
+	
 
 	return (
 		<div className='flex justify-between p-4 items-center mb-8 lg:mb-0 shadow-md shadow-gray-400'>

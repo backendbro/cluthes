@@ -24,7 +24,7 @@ function WithdrawTop() {
 
     useEffect(() => {        
 		let data = async () => {
-            console.log("waiting...")
+           
 			await axios
 				.get("https://cluth-space.onrender.com/api/auth/logged-in-user", {
 					headers: {
@@ -32,7 +32,7 @@ function WithdrawTop() {
 					},
 				})
 				.then((res) => {
-					console.log(res);					
+									
             		setUserData(res.data.user);
                     if(res.data.user?.idVerification === "Completed"){                        
                         setVerified(false)
@@ -40,7 +40,7 @@ function WithdrawTop() {
 
 				})
 				.catch((err) => {
-					console.log(err);
+					return
 				});
 		};
 
@@ -50,7 +50,7 @@ function WithdrawTop() {
 
     useEffect(()=> {
         let network = async () => {
-            console.log("waiting Network...")
+           
 			await axios
 				.get("https://cluth-space.onrender.com/api/stock/network", {
 					headers: {
@@ -58,10 +58,10 @@ function WithdrawTop() {
 					},
 				})
 				.then((res) => {
-					console.log(res);					           		                 
+										           		                 
 				})
 				.catch((err) => {
-					console.log(err);
+					return
 				});
 		};
         network();
@@ -88,24 +88,27 @@ function WithdrawTop() {
 			);
 
 			const bal = res.data;
-			console.log(bal.balance.balance);
+			
 			setBalance(bal.balance.balance);
-			console.log(balance);
+		
 			getConverter();
 		} catch (error) {
-			console.log(error);
+		return
 		}
 	};
 
+	getConverter();
 	async function getConverter() {
-		console.log(balance);
+	
 		const res = await axios
-			.get(`https://blockchain.info/tobtc?currency=USD&value=${balance}`)
+			.get(`https://api.coinconvert.net/convert/usdt/usd?amount=${balance}`)
 			.then((res) => {
-				console.log(res.data);
-				setConverter(res.data);
+				
+				setConverter(res.data.USDT);
 			})
-			.catch((err) => console.log(err));
+			.catch((err) => {
+				return 
+			});
 	}
 
 	return (

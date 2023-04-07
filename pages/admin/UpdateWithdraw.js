@@ -35,7 +35,7 @@ const UpdateWithdraw = () => {
 	}, []);
 
 	const getWithdrawal = async () => {
-		console.log("Withdraw");
+		
 		await axios
 			.post(
 				` https://cluth-space.onrender.com/api/withdrawal/single-withdraw`,
@@ -49,20 +49,19 @@ const UpdateWithdraw = () => {
 				},
 			)
 			.then((res) => {
-				// setLoad(false);
+			
 				const rep = res.data;
-				console.log(rep);
+				
 				setWithdraw(rep.withDrawalRequest);
-				console.log("Withdraw Success");
+				
 			})
 			.catch((err) => {
-				console.log("Withdraw fail");
-				console.log(err);
+				return 
 			});
 	};
 
 	const updateWithdrawal = async () => {
-		console.log("updating");
+	
 		setLoad(true);
 		await axios
 			.put(
@@ -79,14 +78,14 @@ const UpdateWithdraw = () => {
 				},
 			)
 			.then(function (response) {
-				console.log(response);
+			
 				setLoad(false);
 				router.push(`/admin/User?ID=${withdraw?.user}`);
 			})
 			.catch((err) => {
 				setLoad(false);
 				router.push(`/admin/User?ID=${withdraw?.user}`);
-				console.log(err);
+			
 			});
 	};
 

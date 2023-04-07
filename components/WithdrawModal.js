@@ -29,9 +29,9 @@ function WithdrawModal({ open, setOpen, amount, verified, setVerified }) {
                 },
             },).then((res)=> {
                 setError(false);
-                console.log(res)
+              
             }).catch((err)=> {
-                console.log(err)
+               
                 if(err.response.data.message === "YOU CANNOT WITHDRAW IN THE NEXT 48HRS"){
                     setError(false)
                     setEarly(true)
@@ -46,19 +46,7 @@ function WithdrawModal({ open, setOpen, amount, verified, setVerified }) {
       
 	};
 
-	const getCoin = async () => {
-		try {
-			await axios
-				.get(
-					"https://api.coingecko.com/api/v3/coins/list?include_platform=true",
-				)
-				.then((res) => {
-					console.log(res);
-				});
-		} catch (error) {
-			console.log(error);
-		}
-	};
+	
 
     const cancel = () => {
         setOpen(false)
@@ -112,7 +100,7 @@ function WithdrawModal({ open, setOpen, amount, verified, setVerified }) {
 					) : early ? (
                         <div className="flex flex-col space-y-4 ">
                             <p className='text-center'>
-								<span className="text-[1.2rem] font-bold">Withdrawal Function is temporarily unavialible</span> <br/>
+								<span className="text-[1.2rem] font-bold">Withdrawal is temporarily unavialible</span> <br/>
                                 Withdrawal can only be made after 48 hours of deposit
 							</p>
 							<button className='px-6 py-2 text-center bg-green rounded-md text-white mx-auto' onClick={()=> {
@@ -123,14 +111,25 @@ function WithdrawModal({ open, setOpen, amount, verified, setVerified }) {
                         </div>
                     ) : (
 						<div className='flex flex-col space-y-4 mt-24 items-center justify-center'>
-							<CheckCircleIcon className='w-24 h-24 text-red-600' />
+							{/* <CheckCircleIcon className='w-24 h-24 text-red-600' /> */}
+							<svg xmlns="http://www.w3.org/2000/svg" fill="none"
+							 viewBox="0 0 24 24" stroke-width="2.5" 
+							 stroke="yellow" 
+							 class="w-20 h-20">
+  							<path stroke-linecap="round" 
+							stroke-linejoin="round" 
+							d="M12 9v3.75m9-.75a9 9 0 11-18 0 9 9 0 0118 0zm-9 3.75h.008v.008H12v-.008z" />
+							</svg>
+
 							<p className='text-center'>
-								Withdrawal Request Processing. Contact admin to keep in touch
+							<span className="text-[1.2rem] font-bold">Your account is in a state of restricted withdrawal</span> <br/>
+							[RW00142] Your account may be at risk. In order to keep funds safe, withdrawals have been temporarily disabled. 
+							   Please contact Customer Assistance for more
 							</p>
 							<button className='px-6 py-2 text-center bg-green rounded-md text-white' onClick={()=> {
                                 router.push("/SendMail")
                             }}>
-								Send Mail
+								Contact Assistance
 							</button>
 						</div>
 					)}

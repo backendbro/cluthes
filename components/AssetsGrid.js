@@ -34,7 +34,7 @@ function AssetsGrid() {
 			setUserBal(bal.balance.balance);			
 			getConverter();
 		} catch (error) {
-			console.log(error);
+			return
 		}
 	};
 

@@ -40,11 +40,11 @@ export default function Header() {
 					},
 				})
 				.then((res) => {
-					console.log(res);
+					
 					setUserDetails(res.data);
 				});
 		} catch (err) {
-			console.log(err);
+			return
 		}
 	};
 
@@ -52,7 +52,6 @@ export default function Header() {
 		router.push("./Login");
 	};
 
-	console.log(userMail);
 
 	return (
 		<div className='flex justify-between p-4 items-center mb-8 lg:mb-0'>
@@ -136,7 +135,7 @@ export default function Header() {
 								router.push("/Withdraw");
 							}}
 						>
-							WithDraw
+							Withdraw
 						</li>
 						<li
 							onClick={() => {

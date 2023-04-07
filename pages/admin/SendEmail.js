@@ -22,8 +22,7 @@ const SendEmail = () => {
 	
 
 	const sendMail = async (e) => {
-        // nameRef.current.value  = ""          
-        // bodyRef.current.value = ""
+        
 		e.preventDefault();		
 		setLoader(true);
 		axios
@@ -51,7 +50,7 @@ const SendEmail = () => {
                 router.push(`/admin/User?ID=${ID}`)
 			})
 			.catch((err) => {
-				console.log(err.message);
+				
 				setLoader(false);
 			});
 	};

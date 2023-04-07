@@ -16,19 +16,6 @@ function CoinModal({ open, setOpen, setCoin }) {
 		getCoin();
 	}, []);
 
-	// const res = await axios.get(
-	//     `https://copyoptions.onrender.com/api/stock/currency`,
-	//     {
-	//         headers: {
-	//             Authorization: `Bearer ${cookies.userToken}`,
-	//         },
-	//     },
-	// );
-	// const rep = await res.data;
-	// setActive("AUD_CAD");
-	// console.log(active);
-	// setCrypto(rep.currency);
-	// console.log(rep.currency);
 
 	const getCoin = async () => {
 		try {
@@ -40,10 +27,10 @@ function CoinModal({ open, setOpen, setCoin }) {
 					},
 				},
 			);
-			console.log(res);
+			
 			setData(res.data.crypto);
-		} catch (error) {
-			console.log(error);
+		} catch (err) {
+			return
 		}
 	};
 

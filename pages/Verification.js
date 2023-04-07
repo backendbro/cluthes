@@ -27,9 +27,9 @@ const Verification = () => {
      
 
 	useEffect(() => {
-        // setUserData(JSON.parse(localStorage.getItem("userData")))
+      
 		let data = async () => {
-            console.log("waiting...")
+         
 			await axios
 				.get("https://cluth-space.onrender.com/api/auth/logged-in-user", {
 					headers: {
@@ -37,12 +37,12 @@ const Verification = () => {
 					},
 				})
 				.then((res) => {
-					console.log(res);					
+							
             		setUserData(res.data.user);
 
 				})
 				.catch((err) => {
-					console.log(err);
+					return
 				});
 		};
 		data();

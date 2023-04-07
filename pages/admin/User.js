@@ -67,7 +67,7 @@ const User = () => {
 				setLoad(false);
 				setBalance(balance)
 			} catch (error) {
-				console.log(error.message)
+				return
 			}
 			
 		}
@@ -119,7 +119,7 @@ const User = () => {
 	
 
 	const getWithdrawal = async () => {
-		console.log("Withdraw");
+		
 		await axios
 			.post(
 				` https://cluth-space.onrender.com/api/withdrawal/single-user`,
@@ -135,14 +135,12 @@ const User = () => {
 			.then((res) => {
 				setLoad(false);
 				const rep = res.data;
-				console.log(rep);
+			
 				setWithdrawlData(rep.withDrawalRequests);
-				console.log("Withdraw Success");
+			
 			})
 			.catch((err) => {
-				console.log("Withdraw fail");
-
-				console.log(err);
+				return 
 			});
 	};
 

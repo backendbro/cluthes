@@ -38,17 +38,15 @@ const DepositHistory = () => {
 		"DEC",
 	];
 
-	// console.log(ID)
-
 	useEffect(() => {		
 		getDeposit();
-		// getWithdrawal();
+		
 	}, []);
 
 	const getUser = async () => {
-		console.log("getting" + ID);
+		
 		setLoad(true);
-		console.log(localStorage.getItem("userToken"));
+		
 		await axios
 			.get(`https://cluth-space.onrender.com/api/user/${ID}`, {
 				headers: {
@@ -59,15 +57,15 @@ const DepositHistory = () => {
 				setLoad(false);
 				const rep = res.data;
 				setUser(rep);
-				console.log(rep);
+				
 			})
 			.catch((err) => {
-				console.log(err);
+				return
 			});
 	};
 
 	const getDeposit = async () => {
-		console.log("DEpositt");
+		
 		await axios
 			.post(
 				`https://cluth-space.onrender.com/api/deposit/user-deposit`,
@@ -83,20 +81,18 @@ const DepositHistory = () => {
 			.then((res) => {
 				setLoad(false);
 				const rep = res.data;
-				console.log(rep);
+				
 				setDepositData(rep);
-				console.log("DEpositt Success");
+				
 			})
 			.catch((err) => {
-				console.log("DEpositt fail");
-
-				console.log(err);
+				return
 			});
 	};
 
 	
 	const getWithdrawal = async () => {
-		console.log("Withdraw");
+		
 		await axios
 			.post(
 				` https://cluth-space.onrender.com/api/withdrawal/single-user`,
@@ -112,14 +108,12 @@ const DepositHistory = () => {
 			.then((res) => {
 				setLoad(false);
 				const rep = res.data;
-				console.log(rep);
+				
 				setWithdrawlData(rep.withDrawalRequests);
-				console.log("Withdraw Success");
+				
 			})
 			.catch((err) => {
-				console.log("Withdraw fail");
-
-				console.log(err);
+				return
 			});
 	};
 

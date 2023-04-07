@@ -19,16 +19,14 @@ const AddressVerification = () => {
         if (file) {
             setloader(true)
 
-            console.log('starting')
-
+           
 
             // initialize the form data
             const formData = new FormData()
 
             // append the file form data to 
             formData.append("addressBill", file)
-            console.log(formData)
-
+         
 
 
             await axios.put(url,
@@ -39,7 +37,7 @@ const AddressVerification = () => {
                     }
                 })
                 .then(function (response) {
-                    console.log(response)
+                  
                     if (response.data.message == "IMAGE UPLOADED") {                        
                         setloader(false)
                         router.push("/assets")

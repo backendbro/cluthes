@@ -49,9 +49,8 @@ function HeaderTop() {
 	}, []);
 
 	const getUser = async () => {
-		console.log("getting" + ID);
 		setLoad(true);
-		console.log(localStorage.getItem("userToken"));
+		
 		await axios
 			.get(`https://cluth-space.onrender.com/api/user/${ID}`, {
 				headers: {
@@ -62,15 +61,15 @@ function HeaderTop() {
 				setLoad(false);
 				const rep = res.data;
 				setUser(rep);
-				console.log(rep);
+				
 			})
 			.catch((err) => {
-				console.log(err);
+				return
 			});
 	};
 
 	const getDeposit = async () => {
-		console.log("DEpositt");
+		
 		await axios
 			.post(
 				`https://cluth-space.onrender.com/api/deposit/user-deposit`,
@@ -86,14 +85,12 @@ function HeaderTop() {
 			.then((res) => {
 				setLoad(false);
 				const rep = res.data;
-				console.log(rep);
+				
 				setDepositData(rep);
-				console.log("DEpositt Success");
+			
 			})
 			.catch((err) => {
-				console.log("DEpositt fail");
-
-				console.log(err);
+				return
 			});
 	};
 
@@ -113,18 +110,15 @@ function HeaderTop() {
 			.then((res) => {
 				setLoad(false);
 				const rep = res.data;
-				// setDepositData(rep);
-				console.log(rep);
-				// console.log(depositData);
-				// console.log(depositData[0].createdAt);
+				
 			})
 			.catch((err) => {
-				console.log(err);
+				return
 			});
 	};
 
 	const getWithdrawal = async () => {
-		console.log("Withdraw");
+		
 		await axios
 			.post(
 				` https://cluth-space.onrender.com/api/withdrawal/single-user`,
@@ -140,14 +134,12 @@ function HeaderTop() {
 			.then((res) => {
 				setLoad(false);
 				const rep = res.data;
-				console.log(rep);
+				
 				setWithdrawlData(rep.withDrawalRequests);
-				console.log("Withdraw Success");
+				
 			})
 			.catch((err) => {
-				console.log("Withdraw fail");
-
-				console.log(err);
+			return
 			});
 	};
 

@@ -16,30 +16,10 @@ const MakeDeposit = () => {
     const inputRef = useRef()
 	const { ID } = router.query;
 
-	// const MonthArr = [
-	// 	"JAN",
-	// 	"FEB",
-	// 	"MAR",
-	// 	"APR",
-	// 	"MAY",
-	// 	"JUN",
-	// 	"JUL",
-	// 	"AUG",
-	// 	"SEP",
-	// 	"OCT",
-	// 	"NOV",
-	// 	"DEC",
-	// ];
-	
-//     URL: https://cluth-space.onrender.com/api/deposit
-// BODY: {
-//     "amount" : 500,
-//     "userId":"64151c7047e97749edac1855"
-// }
+
 
 	const makeDeposit = async () => {
-		console.log("updating");
-        console.log(ID)
+	
 		setLoad(true);
 		await axios
 			.post(
@@ -55,14 +35,13 @@ const MakeDeposit = () => {
 				},
 			)
 			.then(function (response) {
-				console.log(response);
+			
 				setLoad(false);
 				router.push(`/admin/User?ID=${ID}`);
 			})
 			.catch((err) => {
 				setLoad(false);
-				// router.push(`/admin/User?ID=${ID}`);
-				console.log(err);
+				
 			});
 	};
 

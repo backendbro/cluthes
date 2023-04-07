@@ -27,10 +27,10 @@ function NetworkModal({ open, setOpen, setNetwork }) {
 					},
 				},
 			);
-			console.log(res);
+			
 			setData(res.data.network);
 		} catch (error) {
-			console.log(error);
+			return
         }
     }
 	

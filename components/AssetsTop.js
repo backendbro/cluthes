@@ -53,11 +53,11 @@ function AssetsTop() {
 			);
 
 			const bal = res.data;
-			console.log(bal.balance.balance);
+			
 			setUserBal(bal.balance.balance);			
 			getConverter();
 		} catch (error) {
-			console.log(error);
+			return
 		}
 	};
 	getConverter();
@@ -66,7 +66,9 @@ function AssetsTop() {
     async function getConverter() {
         const res = await axios.get(`https://api.coinconvert.net/convert/usdt/usd?amount=${userBal}`).then((res)=> {
             setConverter(res.data.USDT)
-        }).catch((err)=> console.log(err))
+        }).catch(()=> {
+			return
+		})
     }
 
 

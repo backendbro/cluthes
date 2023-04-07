@@ -18,13 +18,6 @@ const IdentityVerification = () => {
     const router  = useRouter()
     var i ;
 
-    // useEffect(() => {
-    //     if (cookies.userData.role == "user") {
-    //         console.log("authorized")
-    //     } else {
-    //         navigate('/login')
-    //     }
-    // }, [cookies])
     
 
     const handlePhoto = (event, i) => {
@@ -39,7 +32,7 @@ const IdentityVerification = () => {
             };
           
             reader.onerror = function() {
-              console.log(reader.error);
+             return
             };
         }
 
@@ -54,7 +47,7 @@ const IdentityVerification = () => {
             };
           
             reader.onerror = function() {
-              console.log(reader.error);
+              return
             };
         }            
 
@@ -65,8 +58,7 @@ const IdentityVerification = () => {
         if (file) {
             setloader(true)
 
-            console.log('starting')
-
+           
 
             // initialize the form data
             const formData = new FormData()
@@ -74,7 +66,7 @@ const IdentityVerification = () => {
             // append the file form data to 
             formData.append("frontImage", file)
             formData.append("backImage", file2)
-            console.log(formData)
+      
 
 
 
@@ -86,7 +78,7 @@ const IdentityVerification = () => {
                     }
                 })
                 .then(function (response) {
-                    console.log(response)
+                   
                     if (response.data.message == "IMAGE UPLOADED") {                        
                         setloader(true)
                         setMsg(true)
@@ -97,7 +89,7 @@ const IdentityVerification = () => {
                     }
                 })
                 .catch((err) => {
-                    // setWithdraw(null)
+                
                     alert(err)
                     setloader(false)
                 })

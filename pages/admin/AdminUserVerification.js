@@ -37,7 +37,7 @@ const AdminUserVerification = () => {
 					setUser(rep);
 				})
 				.catch((err) => {
-					console.log(err);
+		
 					return;
 				});
 		}
@@ -47,10 +47,7 @@ const AdminUserVerification = () => {
 
 	const updatProfile = async () => {
 		setLoad(true);
-		console.log(
-			IDref.current.value,			
-			accRef.current.value,
-		);
+		
 		await axios
 			.put(
 				"  https://cluth-space.onrender.com/api/user/update-profile",
@@ -66,14 +63,14 @@ const AdminUserVerification = () => {
 				},
 			)
 			.then((res) => {
-				console.log(res.data);
+			
 				setLoad(false);
 				setErr(false);
 				setMsg(true);
 			})
 			.catch((err) => {
 				alert(err);
-                console.log(err)
+            
 				setLoad(false);
 				setMsg(false);
 				setErr(true);

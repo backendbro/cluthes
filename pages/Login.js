@@ -65,10 +65,10 @@ const Login = () => {
 				router.push("/SignIn")
             }           
             
-            if (error.response.data.message === "YOUR ACCT IS UNDER REVIEW"){
+            if (error.response.data.message === "YOUR ACCOUNT IS UNDER REVIEW"){
                 setMsg(error.response.data.message)
             }           
-            if(error.response.data.message === "VERIFY YOUR ACCT"){
+            if(error.response.data.message === "VERIFY YOUR ACCOUNT"){
                 localStorage.setItem("userEmail", JSON.stringify(emailRef.current.value))
                 router.push("/EmailToken")
             }	
@@ -84,7 +84,7 @@ const Login = () => {
 				<div className=' w-[45%] relative'>
 				<div className='flex h-full w-full md:hidden'>
 					<Image
-						src='https://assets.staticimg.com/cms/media/1lB3PkckFDyfxz6VudCEACBeRRBi6sQQ7DDjz0yWM.svg'
+						src='/images/donicoin-logo.png'
 						width={100}
 						height={100}
 						alt='logo'

@@ -43,14 +43,14 @@ const SendEmail = () => {
 			)
 			.then((res) => {
 				setLoader(false);
-                console.log(res)   
+                  
                 nameRef.current.value  = ""          
                 bodyRef.current.value = ""
                 setMsg("Message Sent Successfuly")
-                // router.push(`/assets`)
+               
 			})
 			.catch((err) => {
-				console.log(err);
+				
 				setLoader(false);
                 setMsg("An Error Occurred, Please Try Again")
 

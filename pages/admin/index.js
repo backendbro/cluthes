@@ -7,6 +7,7 @@ import AdminHeader from "../../components/AdminHeader"
 import { BounceLoader, BeatLoader } from "react-spinners";
 import { useRouter } from "next/router"
 import Link from "next/link";
+import Image from "next/legacy/image";
 
 const UserList = () => {
 	const router = useRouter();
@@ -52,7 +53,7 @@ const UserList = () => {
 
 	const getUser = async () => {
         setload(true)
-		console.log("getting")
+	
         await axios
 			.get(url, {
 				headers: {
@@ -60,26 +61,22 @@ const UserList = () => {
 				},
 			})
 			.then(function (response) {
-				console.log(response);
+				
 				setUserList(response.data);
 				setload(false);
 			})
 			.catch((err) => {
 				setUserList(null);
-				console.log(err);
+				
 			});
 	};
 
-	// useEffect(() => {
-	// 	setload(true);
-	// 	getUser();
-	// }, []);
-	// console.log(userList, "jk");
+
 
 	const deleteUser = async (id) => {
         setId(id)
         setDelLoad(true)
-		console.log(id);
+	
 		await axios
 			.delete(
 				`https://copyoptions.onrender.com/api/admin-user/delete-user`,
@@ -93,38 +90,17 @@ const UserList = () => {
 				},
 			)
 			.then(function (response) {
-				console.log(response);
+				
                 setDelLoad(false)
 				getUser();
 			})
 			.catch((err) => {
-				console.log(err);
+				
                 setDelLoad(false)
 			});
 	};
 
-    const handleSearch = async (e) => {
-        setSearchLoader(true)
-        console.log(search)
-        e.preventDefault()
-     
-        await axios
-			.get(   `https://copyoptions.onrender.com/api/admin-user/search-user/searchString?name=${search}`, {
-				headers: {
-					Authorization: `Bearer ${cookies.userToken}`,
-				},
-			})
-			.then(function (response) {
-				console.log(response);				
-                setSearchLoader(false)
-				setUserList(response.data.searchedUser);
-			})
-			.catch((err) => {
-				setUserList(null);
-				console.log(err);
-                setSearchLoader(false)
-			});
-    }
+   
 
 
     
@@ -153,7 +129,7 @@ const UserList = () => {
                                    href={`/admin/User?ID=${item._id}`}
                                     className='userlist-img'
                                 >
-                                    {item.profilePicture ? <img src={item.profilePicture}  /> : <img
+                                    {item.profilePicture ? <Image src={item.profilePicture} alt="Profile Picture" /> : <Image
                                         src='https://t3.ftcdn.net/jpg/03/05/37/70/360_F_305377064_hcyh2OfYl94tMARpvLw8Rzigdx442ajZ.jpg'
                                         alt='User Profile Picture'
                                     />}

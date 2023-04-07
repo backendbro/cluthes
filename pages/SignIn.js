@@ -24,14 +24,9 @@ function SignIn() {
 
 
 	const signup = async (e) => {
-        console.log(checkRef.current.checked)
+        
 		setBtnLoad(true);
-		console.log(
-			emailRef.current.value,
-			usernameRef.current.value,
-			phoneNoRef.current.value,
-			passwordRef.current.value,
-		);
+		
         if(checkRef.current.checked === false) {
             e.preventDefault()
             setMsg("Please agree to our terms and conditions")
@@ -39,7 +34,7 @@ function SignIn() {
         } else{
             e.preventDefault();
             try {
-                console.log("trying");
+              
                 await axios
                     .post(
                         "https://cluth-space.onrender.com/api/auth/register",
