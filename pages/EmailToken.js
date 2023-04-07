@@ -12,20 +12,6 @@ function EmailToken() {
     const inputRef = useRef()
 	const router = useRouter();
 
-	const TokenUrl = "https://copyoptions.onrender.com/api/user/resend-pin";
-    const VerifyUrl = "https://copyoptions.onrender.com/api/user/confirm-email"
-
-    	//     URL: https://cluth-space.onrender.com/api/auth/confirm-pin
-// METHOD: PUT 
-// BODY: {
-//     "pin":"d9ca24"
-// },
-
-// URL: https://cluth-space.onrender.com/api/auth/resend-pin
-// METHOD: PUT 
-// BODY:{
-//     "email":"backendbomafiaso@gmail.com"
-// }
 		
 
 
@@ -78,14 +64,14 @@ function EmailToken() {
 			<div className='bg-gray-100 shadow-md shadow-gray-400 w-[95%] p-4 md:w-[50rem] mx-auto py-[4rem] '>
 				<div className='flex flex-col space-y-4  justify-center'>
 					<p className='text-[1.1rem] font-medium text-center mb-6' style={{ color: "#051036" }}>
-						{Verify === true ? "Email Verified Successfully" : msg ? "Token Sent Successfully" : `Please enter the verification code that was sent to your email`}
+						{Verify === true ? "Email Verified Successfully" : msg ? "Code Sent Successfully" : `Please enter the verification code that was sent to your email`}
 					</p>
 
 					<label className='md:w-[40%] w-[70%] mx-auto'>						
 						<input
 							type='text'
                             ref={inputRef}
-							placeholder='Enter Token'
+							placeholder='Enter Code'
 							className='p-2 outline-none w-full mx-auto rounded-md'
 							style={{
 									color:"rgb(0, 13, 29)",
@@ -106,7 +92,7 @@ function EmailToken() {
 						className='text-white  cursor-pointer  font-medium rounded-lg bg-green py-[1rem] px-[3rem] text-center md:w-[30%] w-[70%] mx-auto'
 						onClick={sendToken}
 					>
-						{Load ? <BeatLoader color="white" /> : "Resend Token"}                    
+						{Load ? <BeatLoader color="white" /> : "Resend Code"}                    
                         
 					</div>
 

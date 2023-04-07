@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import Image from "next/legacy/image";
-
+import Link from 'next/link'
 import { EyeIcon, EyeSlashIcon } from "@heroicons/react/24/outline";
 import { useState, useRef } from "react";
 import { useRouter } from "next/router";
@@ -210,12 +210,16 @@ const Login = () => {
 									{btnLoad ? <BeatLoader color='#36d7b7' size={7} /> : "Login"}
 								</button>
 	
-								<a
+								{/* <a
 									href='#'
 									className='align-right text-decoration-none text-xs w-full'
 								>
 									Forgot Password?
-								</a>
+								</a> */}
+								<Link href="/ForgotPassword" className='align-right text-decoration-none text-xs w-full green'>
+								Forgot Password?
+								</Link>
+								
 							</div>
 						</form>
 					</div>

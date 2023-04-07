@@ -106,7 +106,7 @@ function WithdrawModal({ open, setOpen, amount, verified, setVerified }) {
 							<button className='px-6 py-2 text-center bg-green rounded-md text-white mx-auto' onClick={()=> {
                                 router.push("/SendMail")
                             }}>
-								Contact Admin
+								OK
 							</button>
                         </div>
                     ) : (

@@ -26,10 +26,10 @@ function ForgotPassword() {
             setVerifyLoad(false)        
             setVerify(true)
 			
-			
+			localStorage.setItem("userEmail", JSON.stringify(inputRef.current.value))
 			setTimeout(() => {
 				router.push("/ResetPassword")
-			}, 2000)
+			}, 1300)
         }).catch((err)=> {
             return 
         })
