@@ -83,9 +83,9 @@ const Login = () => {
 			<div className=' flex flex-col space-y-4 md:space-y-0 py-4 px-8 md:p-0  md:flex-row w-full min-h-[100vh] h-full bg-white '>
 				<div className=' w-[45%] relative'>
 				<div className='flex h-full w-full md:hidden'>
-					<Image
-						src='/images/donicoin-logo.png'
-						width={100}
+				<Image
+						src='/images/logo.jpeg'
+						width={200}
 						height={100}
 						alt='logo'
 					/>
@@ -93,7 +93,7 @@ const Login = () => {
 
 				<div className='hidden md:flex z-500 bg-green'>
 					<Image
-						src=' https://assets.staticimg.com/public-web/2.6.10/static/logo-en.9ef1fe14.svg'
+						src='/images/logo.jpeg'
 						width={200}
 						height={100}
 						alt='logo'
@@ -128,7 +128,7 @@ const Login = () => {
 						</span>{" "}
 					</p>
 	
-					<div className='text-gray-400 w-full md:w-[60%] mx-auto'>
+					<div className='text-gray-400 w-full md:w-[60%] mx-auto !mt-8'>
 						<h1 className='text-[2rem] mb-8 text-black font-bold'>Log In</h1>
 						{/* <div className='flex gap-4 mb-8'>
 							<h1

@@ -76,8 +76,8 @@ function SignIn() {
 			<div className=' w-[45%] relative'>
 				<div className='flex h-full w-full md:hidden'>
 					<Image
-						src='https://assets.staticimg.com/cms/media/1lB3PkckFDyfxz6VudCEACBeRRBi6sQQ7DDjz0yWM.svg'
-						width={100}
+						src='/images/logo.jpeg'
+						width={200}
 						height={100}
 						alt='logo'
 					/>
@@ -85,7 +85,7 @@ function SignIn() {
 
 				<div className='hidden md:flex z-500 bg-green'>
 					<Image
-						src=' https://assets.staticimg.com/public-web/2.6.10/static/logo-en.9ef1fe14.svg'
+						src='/images/logo.jpeg'
 						width={200}
 						height={100}
 						alt='logo'
@@ -120,7 +120,7 @@ function SignIn() {
 					</span>{" "}
 				</p>
 
-				<div className='text-gray-400 w-full md:w-[60%] mx-auto'>
+				<div className='text-gray-400 w-full md:w-[60%] mx-auto !mt-8'>
 					<h1 className='text-[2rem] mb-8 text-black font-bold'>Sign Up</h1>
 					{/* <div className='flex gap-4 mb-8'>
 						<h1

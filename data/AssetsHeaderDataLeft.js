@@ -20,9 +20,5 @@ export const AssetsHeaderDataLeft = [
     {
         name:"Verification",
         href:"/Verification"
-    },
-    {
-        name:"ChangePassword",
-        href:"/ChangePassword"
     }
 ]

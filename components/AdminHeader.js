@@ -37,7 +37,7 @@ export default function AdminHeader() {
 			<div className='w-[80%] flex gap-2 items-center '>
 				{/* logo */}
 				<Image
-					src='https://assets.staticimg.com/cms/media/1lB3PkckFDyfxz6VudCEACBeRRBi6sQQ7DDjz0yWM.svg'
+					src='/images/logo.jpeg'
 					width={100}
 					height={100}
 					alt='logo'
