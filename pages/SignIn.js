@@ -83,13 +83,15 @@ function SignIn() {
 					/>
 				</div>
 
-				<div className='hidden md:flex z-500 bg-green'>
-					<Image
-						src='/images/logo.jpeg'
+				<div className='hidden md:flex z-500 bg-green text-white font-bold pl-8 text-[2rem] pb-10 pt-2'>
+					{/* <Image
+						src='/images/logo.png'
 						width={200}
 						height={100}
 						alt='logo'
-					/>
+					/> */}
+
+                    DONICOIN
 				</div>
 
 				<div className=' h-full w-full relative hidden md:block  bg-green'>

@@ -83,7 +83,7 @@ const Login = () => {
 			<div className=' flex flex-col space-y-4 md:space-y-0 py-4 px-8 md:p-0  md:flex-row w-full min-h-[100vh] h-full bg-white '>
 				<div className=' w-[45%] relative'>
 				<div className='flex h-full w-full md:hidden'>
-				<Image
+					<Image
 						src='/images/logo.jpeg'
 						width={200}
 						height={100}
@@ -91,13 +91,15 @@ const Login = () => {
 					/>
 				</div>
 
-				<div className='hidden md:flex z-500 bg-green'>
-					<Image
-						src='/images/logo.jpeg'
+				<div className='hidden md:flex z-500 bg-green text-white font-bold pl-8 text-[2rem] pb-10 pt-2'>
+					{/* <Image
+						src='/images/logo.png'
 						width={200}
 						height={100}
 						alt='logo'
-					/>
+					/> */}
+
+                    DONICOIN
 				</div>
 
 				<div className=' h-full w-full relative hidden md:block  bg-green'>
