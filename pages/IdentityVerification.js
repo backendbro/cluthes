@@ -115,8 +115,7 @@ const IdentityVerification = () => {
 
                     <div className="idv__inputs">
                         <p>
-                            You may experience difficulties when uploading from an ios device. Make
-                            sure your browser has camera access in your ios settings.
+                            Please ensure your browser has camera access.
                         </p>
                         <div className="idv__input__div">
                             <div className="rounded-md p-2">

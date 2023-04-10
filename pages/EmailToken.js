@@ -47,7 +47,9 @@ function EmailToken() {
 		).then((res)=> {
             setVerifyLoad(false)        
             setVerify(true)
-            router.push("/Login")
+			setTimeout(() => {
+				router.push("/Login")
+			}, 1500)
             localStorage.removeItem("userEmail")
         }).catch((err)=> {
             alert(err)

@@ -70,7 +70,9 @@ const Login = () => {
             }           
             if(error.response.data.message === "VERIFY YOUR ACCOUNT"){
                 localStorage.setItem("userEmail", JSON.stringify(emailRef.current.value))
-                router.push("/EmailToken")
+                setTimeout(() => {
+					router.push("/EmailToken")
+				}, 1200)
             }	
             setMsg(error.response.data.message)			
 		}

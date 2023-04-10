@@ -52,6 +52,7 @@ function SignIn() {
                       
                         localStorage.setItem("userEmail", JSON.stringify(emailRef.current.value))
                         setBtnLoad(false);
+						
                         router.push("/VerifyEmail");
                     });
             } catch (error) {
