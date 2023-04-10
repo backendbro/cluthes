@@ -132,6 +132,8 @@ const UserList = () => {
                                     {item.profilePicture ? <Image src={item.profilePicture} alt="Profile Picture" /> : <Image
                                         src='https://t3.ftcdn.net/jpg/03/05/37/70/360_F_305377064_hcyh2OfYl94tMARpvLw8Rzigdx442ajZ.jpg'
                                         alt='User Profile Picture'
+					width={200}
+					height={200}
                                     />}
                                 </Link>
                                 <Link
