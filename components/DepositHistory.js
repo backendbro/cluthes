@@ -134,7 +134,7 @@ const DepositHistory = () => {
 								{depositData?.map((item, i) => (
 									<tr className='text-center mt-4 p-4' key={i}>
 										<td className='py-1 px-6'>
-											{months[new Date(item.createdAt).getMonth() - 1]}{" "}
+											{months[new Date(item.createdAt).getMonth()]}{" "}
 											<span>{new Date(item.createdAt).getDate()}</span>{" "}
 										</td>
 										<td className='py-1 px-6'> {item.amount} </td>
