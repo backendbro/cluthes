@@ -78,7 +78,7 @@ const WithdrawHistory = () => {
 			<table className='p-4 rounded-lg w-full bg-gray-100'>
 				<thead className=''>
 					<tr className='text-center'>
-						{/* <th className='text-sm font-medium p-2'>Date</th> */}
+						 <th className='text-sm font-medium p-2'>Date</th> 
 						<th className='text-sm font-medium p-2'>Amount</th>
 						<th className='text-sm font-medium p-2'>Status</th>
 					</tr>
