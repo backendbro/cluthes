@@ -86,10 +86,10 @@ const WithdrawHistory = () => {
 				<tbody>
 					{withdrawlData?.map((item, i) => (
 						<tr className='text-center mt-4 p-4' key={i}>
-							{/* <td className='py-1 px-6'>
+							 <td className='py-1 px-6'>
 								{months[new Date(item.createdAt).getMonth()]}{" "}
 								<span>{new Date(item.createdAt).getDate()}</span>{" "}
-							</td> */}
+							</td> 
 							<td className='py-1 px-6'> {item.amount} </td>
 							<td className=' '>
 								{item.status === "Confirmed" && <span className=' bg-green-200  green py-1 px-6 rounded-lg'>
