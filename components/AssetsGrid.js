@@ -38,6 +38,7 @@ function AssetsGrid() {
 		}
 	};
 
+	
 	getConverter();
     async function getConverter() {
         const res = await axios.get(`https://blockchain.info/tobtc?currency=USD&value=${userBal}`).then((res)=> {

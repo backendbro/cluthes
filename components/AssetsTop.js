@@ -61,15 +61,21 @@ function AssetsTop() {
 		}
 	};
 	getConverter();
-    
-
     async function getConverter() {
-        const res = await axios.get(`https://api.coinconvert.net/convert/usdt/usd?amount=${userBal}`).then((res)=> {
-            setConverter(res.data.USDT)
-        }).catch(()=> {
+        const res = await axios.get(`https://blockchain.info/tobtc?currency=USD&value=${userBal}`).then((res)=> {
+            setConverter(res.data)
+        }).catch((err)=> { 
 			return
 		})
     }
+
+    // async function getConverter() {
+    //     const res = await axios.get(`https://api.coinconvert.net/convert/usdt/usd?amount=${userBal}`).then((res)=> {
+    //         setConverter(res.data.USDT)
+    //     }).catch(()=> {
+	// 		return
+	// 	})
+    // }
 
 
 		
@@ -89,7 +95,7 @@ function AssetsTop() {
 						alt='svg'
 					/>
 					<p>
-						{converter}USDT <span className='text-s text-gray-500'> = {userBal} USD </span>
+						{converter} BTC <span className='text-s text-gray-500'> = {userBal} USD </span>
 					</p>
 					{/* <div className='bg-gray-100 px-4 py-1 flex items-center justify-center rounded-full'>
 						BTC	
